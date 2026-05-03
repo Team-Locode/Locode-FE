@@ -184,22 +184,23 @@ ex) [feat] MainView 에셋 추가 #123
 - issue 한 개 당 한 개의 기능만 지향합니다.(너무 작으면 최대 3개까지만 묶어주세요.)
 
 **Pull Reqeust** 
-- [#이슈번호] {:깃모지:} {feat/api 등 작업 주제}: {작업 내용}
-- PR 템플릿을 확인하고 작성한다
+
+- [{feat, fix, refactor…}] {커밋 내용을 그대로 복사해주시면 됩니다.}
+- 템플릿 안에 내용을 채워준다. (아는 지식, 모르겠는 부분, 팀원들과 공유하고싶은 부분 모두 자세하게~)
 - 본인 제외 최소 한 명의 팀원들의 Approve가 있어야 merge가 가능하다.
 - 리뷰어들은 단순히 approve를 한다기보다 코드 변화를 체크하고 네임컨벤션을 지키고 있는지를 확인한다.
 
 **branch 이름**
 
-**브랜치 이름 구조 : <타입-기능명>** 
+**브랜치 이름 구조 : <타입/기능명>** 
 
-ex. feature-main, api/-main
+ex. feat/main, api/main
 
 **Commit Message**
 
 **(타입깃모지) 커밋메세지** 
 
-ex. [#이슈번호] ✨ feat: 추가 mainview 
+ex. ✨ feat: 추가 mainview (#이슈번호) 
 
 **Merge**
 
