@@ -1,0 +1,314 @@
+/* colors.css */
+@layer base {
+  :root {
+    /* Primary Colors - Blue */
+    --color-primary: #1575fb;
+    --color-primary-2: #3D8CFC;
+    --color-primary-3: #77AFFD;
+    --color-primary-4: #9FC6FD;
+    --color-primary-5: #E8F1FF;
+    --color-primary-6: #0F52B0;
+
+    /* Secondary Colors - Yellow/Orange */
+    --color-secondary: #FFC445;
+    --color-secondary-2: #FFCE65;
+    --color-secondary-3: #FFDD93;
+    --color-secondary-4: #FFE7B3;
+    --color-secondary-5: #FFE7B3;
+    --color-secondary-6: #FFAF00;
+
+    /* Gray Scale */
+    --color-gray-1: #1B1D1F;
+    --color-gray-2: #26282B;
+    --color-gray-3: #454C53;
+    --color-gray-4: #72787F;
+    --color-gray-5: #9EA4AA;
+    --color-gray-6: #C9CDD2;
+    --color-gray-7: #E8EBED;
+    --color-gray-8: #F2F4F6;
+    --color-gray-9: #F7F8F9;
+    --color-gray-10: #FDFDFE;
+  }
+}
+
+@layer components {
+  /* Text Colors - Primary */
+  .text-primary { @apply text-[var(--color-primary)]; }
+  .text-primary-2 { @apply text-[var(--color-primary-2)]; }
+  .text-primary-3 { @apply text-[var(--color-primary-3)]; }
+  .text-primary-4 { @apply text-[var(--color-primary-4)]; }
+  .text-primary-5 { @apply text-[var(--color-primary-5)]; }
+  .text-primary-6 { @apply text-[var(--color-primary-6)]; }
+
+  /* Text Colors - Secondary */
+  .text-secondary { @apply text-[var(--color-secondary)]; }
+  .text-secondary-2 { @apply text-[var(--color-secondary-2)]; }
+  .text-secondary-3 { @apply text-[var(--color-secondary-3)]; }
+  .text-secondary-4 { @apply text-[var(--color-secondary-4)]; }
+  .text-secondary-5 { @apply text-[var(--color-secondary-5)]; }
+  .text-secondary-6 { @apply text-[var(--color-secondary-6)]; }
+
+  /* Text Colors - Gray */
+  .text-gray-1 { @apply text-[var(--color-gray-1)]; }
+  .text-gray-2 { @apply text-[var(--color-gray-2)]; }
+  .text-gray-3 { @apply text-[var(--color-gray-3)]; }
+  .text-gray-4 { @apply text-[var(--color-gray-4)]; }
+  .text-gray-5 { @apply text-[var(--color-gray-5)]; }
+  .text-gray-6 { @apply text-[var(--color-gray-6)]; }
+  .text-gray-7 { @apply text-[var(--color-gray-7)]; }
+  .text-gray-8 { @apply text-[var(--color-gray-8)]; }
+  .text-gray-9 { @apply text-[var(--color-gray-9)]; }
+  .text-gray-10 { @apply text-[var(--color-gray-10)]; }
+
+  /* Background Colors - Primary */
+  .bg-primary { @apply bg-[var(--color-primary)]; }
+  .bg-primary-2 { @apply bg-[var(--color-primary-2)]; }
+  .bg-primary-3 { @apply bg-[var(--color-primary-3)]; }
+  .bg-primary-4 { @apply bg-[var(--color-primary-4)]; }
+  .bg-primary-5 { @apply bg-[var(--color-primary-5)]; }
+  .bg-primary-6 { @apply bg-[var(--color-primary-6)]; }
+
+  /* Background Colors - Secondary */
+  .bg-secondary { @apply bg-[var(--color-secondary)]; }
+  .bg-secondary-2 { @apply bg-[var(--color-secondary-2)]; }
+  .bg-secondary-3 { @apply bg-[var(--color-secondary-3)]; }
+  .bg-secondary-4 { @apply bg-[var(--color-secondary-4)]; }
+  .bg-secondary-5 { @apply bg-[var(--color-secondary-5)]; }
+  .bg-secondary-6 { @apply bg-[var(--color-secondary-6)]; }
+
+  /* Background Colors - Gray */
+  .bg-gray-1 { @apply bg-[var(--color-gray-1)]; }
+  .bg-gray-2 { @apply bg-[var(--color-gray-2)]; }
+  .bg-gray-3 { @apply bg-[var(--color-gray-3)]; }
+  .bg-gray-4 { @apply bg-[var(--color-gray-4)]; }
+  .bg-gray-5 { @apply bg-[var(--color-gray-5)]; }
+  .bg-gray-6 { @apply bg-[var(--color-gray-6)]; }
+  .bg-gray-7 { @apply bg-[var(--color-gray-7)]; }
+  .bg-gray-8 { @apply bg-[var(--color-gray-8)]; }
+  .bg-gray-9 { @apply bg-[var(--color-gray-9)]; }
+  .bg-gray-10 { @apply bg-[var(--color-gray-10)]; }
+
+  /* Border Colors - Primary */
+  .border-primary { @apply border-[var(--color-primary)]; }
+  .border-primary-2 { @apply border-[var(--color-primary-2)]; }
+  .border-primary-3 { @apply border-[var(--color-primary-3)]; }
+  .border-primary-4 { @apply border-[var(--color-primary-4)]; }
+  .border-primary-5 { @apply border-[var(--color-primary-5)]; }
+  .border-primary-6 { @apply border-[var(--color-primary-6)]; }
+
+  /* Border Colors - Secondary */
+  .border-secondary { @apply border-[var(--color-secondary)]; }
+  .border-secondary-2 { @apply border-[var(--color-secondary-2)]; }
+  .border-secondary-3 { @apply border-[var(--color-secondary-3)]; }
+  .border-secondary-4 { @apply border-[var(--color-secondary-4)]; }
+  .border-secondary-5 { @apply border-[var(--color-secondary-5)]; }
+  .border-secondary-6 { @apply border-[var(--color-secondary-6)]; }
+
+  /* Border Colors - Gray */
+  .border-gray-1 { @apply border-[var(--color-gray-1)]; }
+  .border-gray-2 { @apply border-[var(--color-gray-2)]; }
+  .border-gray-3 { @apply border-[var(--color-gray-3)]; }
+  .border-gray-4 { @apply border-[var(--color-gray-4)]; }
+  .border-gray-5 { @apply border-[var(--color-gray-5)]; }
+  .border-gray-6 { @apply border-[var(--color-gray-6)]; }
+  .border-gray-7 { @apply border-[var(--color-gray-7)]; }
+  .border-gray-8 { @apply border-[var(--color-gray-8)]; }
+  .border-gray-9 { @apply border-[var(--color-gray-9)]; }
+  .border-gray-10 { @apply border-[var(--color-gray-10)]; }
+
+  /* Hover Background Colors - Primary */
+  .hover\:bg-primary { @apply hover:bg-[var(--color-primary)]; }
+  .hover\:bg-primary-2 { @apply hover:bg-[var(--color-primary-2)]; }
+  .hover\:bg-primary-3 { @apply hover:bg-[var(--color-primary-3)]; }
+  .hover\:bg-primary-4 { @apply hover:bg-[var(--color-primary-4)]; }
+  .hover\:bg-primary-5 { @apply hover:bg-[var(--color-primary-5)]; }
+  .hover\:bg-primary-6 { @apply hover:bg-[var(--color-primary-6)]; }
+
+  /* Hover Background Colors - Secondary */
+  .hover\:bg-secondary { @apply hover:bg-[var(--color-secondary)]; }
+  .hover\:bg-secondary-2 { @apply hover:bg-[var(--color-secondary-2)]; }
+  .hover\:bg-secondary-3 { @apply hover:bg-[var(--color-secondary-3)]; }
+  .hover\:bg-secondary-4 { @apply hover:bg-[var(--color-secondary-4)]; }
+  .hover\:bg-secondary-5 { @apply hover:bg-[var(--color-secondary-5)]; }
+  .hover\:bg-secondary-6 { @apply hover:bg-[var(--color-secondary-6)]; }
+
+  /* Hover Text Colors - Primary */
+  .hover\:text-primary { @apply hover:text-[var(--color-primary)]; }
+  .hover\:text-primary-2 { @apply hover:text-[var(--color-primary-2)]; }
+  .hover\:text-primary-3 { @apply hover:text-[var(--color-primary-3)]; }
+  .hover\:text-primary-4 { @apply hover:text-[var(--color-primary-4)]; }
+  .hover\:text-primary-5 { @apply hover:text-[var(--color-primary-5)]; }
+  .hover\:text-primary-6 { @apply hover:text-[var(--color-primary-6)]; }
+
+  /* Hover Text Colors - Secondary */
+  .hover\:text-secondary { @apply hover:text-[var(--color-secondary)]; }
+  .hover\:text-secondary-2 { @apply hover:text-[var(--color-secondary-2)]; }
+  .hover\:text-secondary-3 { @apply hover:text-[var(--color-secondary-3)]; }
+  .hover\:text-secondary-4 { @apply hover:text-[var(--color-secondary-4)]; }
+  .hover\:text-secondary-5 { @apply hover:text-[var(--color-secondary-5)]; }
+  .hover\:text-secondary-6 { @apply hover:text-[var(--color-secondary-6)]; }
+
+  /* Hover Border Colors - Primary */
+  .hover\:border-primary { @apply hover:border-[var(--color-primary)]; }
+  .hover\:border-primary-2 { @apply hover:border-[var(--color-primary-2)]; }
+  .hover\:border-primary-3 { @apply hover:border-[var(--color-primary-3)]; }
+  .hover\:border-primary-4 { @apply hover:border-[var(--color-primary-4)]; }
+  .hover\:border-primary-5 { @apply hover:border-[var(--color-primary-5)]; }
+  .hover\:border-primary-6 { @apply hover:border-[var(--color-primary-6)]; }
+
+  /* Hover Border Colors - Secondary */
+  .hover\:border-secondary { @apply hover:border-[var(--color-secondary)]; }
+  .hover\:border-secondary-2 { @apply hover:border-[var(--color-secondary-2)]; }
+  .hover\:border-secondary-3 { @apply hover:border-[var(--color-secondary-3)]; }
+  .hover\:border-secondary-4 { @apply hover:border-[var(--color-secondary-4)]; }
+  .hover\:border-secondary-5 { @apply hover:border-[var(--color-secondary-5)]; }
+  .hover\:border-secondary-6 { @apply hover:border-[var(--color-secondary-6)]; }
+
+  /* Focus Ring Colors - Primary */
+  .focus\:ring-primary { @apply focus:ring-[var(--color-primary)]; }
+  .focus\:ring-primary-2 { @apply focus:ring-[var(--color-primary-2)]; }
+  .focus\:ring-primary-3 { @apply focus:ring-[var(--color-primary-3)]; }
+  .focus\:ring-primary-4 { @apply focus:ring-[var(--color-primary-4)]; }
+  .focus\:ring-primary-5 { @apply focus:ring-[var(--color-primary-5)]; }
+  .focus\:ring-primary-6 { @apply focus:ring-[var(--color-primary-6)]; }
+
+  /* Focus Ring Colors - Secondary */
+  .focus\:ring-secondary { @apply focus:ring-[var(--color-secondary)]; }
+  .focus\:ring-secondary-2 { @apply focus:ring-[var(--color-secondary-2)]; }
+  .focus\:ring-secondary-3 { @apply focus:ring-[var(--color-secondary-3)]; }
+  .focus\:ring-secondary-4 { @apply focus:ring-[var(--color-secondary-4)]; }
+  .focus\:ring-secondary-5 { @apply focus:ring-[var(--color-secondary-5)]; }
+  .focus\:ring-secondary-6 { @apply focus:ring-[var(--color-secondary-6)]; }
+
+  /* Focus Background Colors - Primary */
+  .focus\:bg-primary { @apply focus:bg-[var(--color-primary)]; }
+  .focus\:bg-primary-2 { @apply focus:bg-[var(--color-primary-2)]; }
+  .focus\:bg-primary-3 { @apply focus:bg-[var(--color-primary-3)]; }
+  .focus\:bg-primary-4 { @apply focus:bg-[var(--color-primary-4)]; }
+  .focus\:bg-primary-5 { @apply focus:bg-[var(--color-primary-5)]; }
+  .focus\:bg-primary-6 { @apply focus:bg-[var(--color-primary-6)]; }
+
+  /* Focus Background Colors - Secondary */
+  .focus\:bg-secondary { @apply focus:bg-[var(--color-secondary)]; }
+  .focus\:bg-secondary-2 { @apply focus:bg-[var(--color-secondary-2)]; }
+  .focus\:bg-secondary-3 { @apply focus:bg-[var(--color-secondary-3)]; }
+  .focus\:bg-secondary-4 { @apply focus:bg-[var(--color-secondary-4)]; }
+  .focus\:bg-secondary-5 { @apply focus:bg-[var(--color-secondary-5)]; }
+  .focus\:bg-secondary-6 { @apply focus:bg-[var(--color-secondary-6)]; }
+
+  /* Focus Text Colors - Primary */
+  .focus\:text-primary { @apply focus:text-[var(--color-primary)]; }
+  .focus\:text-primary-2 { @apply focus:text-[var(--color-primary-2)]; }
+  .focus\:text-primary-3 { @apply focus:text-[var(--color-primary-3)]; }
+  .focus\:text-primary-4 { @apply focus:text-[var(--color-primary-4)]; }
+  .focus\:text-primary-5 { @apply focus:text-[var(--color-primary-5)]; }
+  .focus\:text-primary-6 { @apply focus:text-[var(--color-primary-6)]; }
+
+  /* Focus Text Colors - Secondary */
+  .focus\:text-secondary { @apply focus:text-[var(--color-secondary)]; }
+  .focus\:text-secondary-2 { @apply focus:text-[var(--color-secondary-2)]; }
+  .focus\:text-secondary-3 { @apply focus:text-[var(--color-secondary-3)]; }
+  .focus\:text-secondary-4 { @apply focus:text-[var(--color-secondary-4)]; }
+  .focus\:text-secondary-5 { @apply focus:text-[var(--color-secondary-5)]; }
+  .focus\:text-secondary-6 { @apply focus:text-[var(--color-secondary-6)]; }
+
+  /* Focus Border Colors - Primary */
+  .focus\:border-primary { @apply focus:border-[var(--color-primary)]; }
+  .focus\:border-primary-2 { @apply focus:border-[var(--color-primary-2)]; }
+  .focus\:border-primary-3 { @apply focus:border-[var(--color-primary-3)]; }
+  .focus\:border-primary-4 { @apply focus:border-[var(--color-primary-4)]; }
+  .focus\:border-primary-5 { @apply focus:border-[var(--color-primary-5)]; }
+  .focus\:border-primary-6 { @apply focus:border-[var(--color-primary-6)]; }
+
+  /* Focus Border Colors - Secondary */
+  .focus\:border-secondary { @apply focus:border-[var(--color-secondary)]; }
+  .focus\:border-secondary-2 { @apply focus:border-[var(--color-secondary-2)]; }
+  .focus\:border-secondary-3 { @apply focus:border-[var(--color-secondary-3)]; }
+  .focus\:border-secondary-4 { @apply focus:border-[var(--color-secondary-4)]; }
+  .focus\:border-secondary-5 { @apply focus:border-[var(--color-secondary-5)]; }
+  .focus\:border-secondary-6 { @apply focus:border-[var(--color-secondary-6)]; }
+
+  /* Hover Background Colors - Gray */
+  .hover\:bg-gray-1 { @apply hover:bg-[var(--color-gray-1)]; }
+  .hover\:bg-gray-2 { @apply hover:bg-[var(--color-gray-2)]; }
+  .hover\:bg-gray-3 { @apply hover:bg-[var(--color-gray-3)]; }
+  .hover\:bg-gray-4 { @apply hover:bg-[var(--color-gray-4)]; }
+  .hover\:bg-gray-5 { @apply hover:bg-[var(--color-gray-5)]; }
+  .hover\:bg-gray-6 { @apply hover:bg-[var(--color-gray-6)]; }
+  .hover\:bg-gray-7 { @apply hover:bg-[var(--color-gray-7)]; }
+  .hover\:bg-gray-8 { @apply hover:bg-[var(--color-gray-8)]; }
+  .hover\:bg-gray-9 { @apply hover:bg-[var(--color-gray-9)]; }
+  .hover\:bg-gray-10 { @apply hover:bg-[var(--color-gray-10)]; }
+
+  /* Hover Text Colors - Gray */
+  .hover\:text-gray-1 { @apply hover:text-[var(--color-gray-1)]; }
+  .hover\:text-gray-2 { @apply hover:text-[var(--color-gray-2)]; }
+  .hover\:text-gray-3 { @apply hover:text-[var(--color-gray-3)]; }
+  .hover\:text-gray-4 { @apply hover:text-[var(--color-gray-4)]; }
+  .hover\:text-gray-5 { @apply hover:text-[var(--color-gray-5)]; }
+  .hover\:text-gray-6 { @apply hover:text-[var(--color-gray-6)]; }
+  .hover\:text-gray-7 { @apply hover:text-[var(--color-gray-7)]; }
+  .hover\:text-gray-8 { @apply hover:text-[var(--color-gray-8)]; }
+  .hover\:text-gray-9 { @apply hover:text-[var(--color-gray-9)]; }
+  .hover\:text-gray-10 { @apply hover:text-[var(--color-gray-10)]; }
+
+  /* Hover Border Colors - Gray */
+  .hover\:border-gray-1 { @apply hover:border-[var(--color-gray-1)]; }
+  .hover\:border-gray-2 { @apply hover:border-[var(--color-gray-2)]; }
+  .hover\:border-gray-3 { @apply hover:border-[var(--color-gray-3)]; }
+  .hover\:border-gray-4 { @apply hover:border-[var(--color-gray-4)]; }
+  .hover\:border-gray-5 { @apply hover:border-[var(--color-gray-5)]; }
+  .hover\:border-gray-6 { @apply hover:border-[var(--color-gray-6)]; }
+  .hover\:border-gray-7 { @apply hover:border-[var(--color-gray-7)]; }
+  .hover\:border-gray-8 { @apply hover:border-[var(--color-gray-8)]; }
+  .hover\:border-gray-9 { @apply hover:border-[var(--color-gray-9)]; }
+  .hover\:border-gray-10 { @apply hover:border-[var(--color-gray-10)]; }
+
+  /* Focus Ring Colors - Gray */
+  .focus\:ring-gray-1 { @apply focus:ring-[var(--color-gray-1)]; }
+  .focus\:ring-gray-2 { @apply focus:ring-[var(--color-gray-2)]; }
+  .focus\:ring-gray-3 { @apply focus:ring-[var(--color-gray-3)]; }
+  .focus\:ring-gray-4 { @apply focus:ring-[var(--color-gray-4)]; }
+  .focus\:ring-gray-5 { @apply focus:ring-[var(--color-gray-5)]; }
+  .focus\:ring-gray-6 { @apply focus:ring-[var(--color-gray-6)]; }
+  .focus\:ring-gray-7 { @apply focus:ring-[var(--color-gray-7)]; }
+  .focus\:ring-gray-8 { @apply focus:ring-[var(--color-gray-8)]; }
+  .focus\:ring-gray-9 { @apply focus:ring-[var(--color-gray-9)]; }
+  .focus\:ring-gray-10 { @apply focus:ring-[var(--color-gray-10)]; }
+
+  /* Focus Background Colors - Gray */
+  .focus\:bg-gray-1 { @apply focus:bg-[var(--color-gray-1)]; }
+  .focus\:bg-gray-2 { @apply focus:bg-[var(--color-gray-2)]; }
+  .focus\:bg-gray-3 { @apply focus:bg-[var(--color-gray-3)]; }
+  .focus\:bg-gray-4 { @apply focus:bg-[var(--color-gray-4)]; }
+  .focus\:bg-gray-5 { @apply focus:bg-[var(--color-gray-5)]; }
+  .focus\:bg-gray-6 { @apply focus:bg-[var(--color-gray-6)]; }
+  .focus\:bg-gray-7 { @apply focus:bg-[var(--color-gray-7)]; }
+  .focus\:bg-gray-8 { @apply focus:bg-[var(--color-gray-8)]; }
+  .focus\:bg-gray-9 { @apply focus:bg-[var(--color-gray-9)]; }
+  .focus\:bg-gray-10 { @apply focus:bg-[var(--color-gray-10)]; }
+
+  /* Focus Text Colors - Gray */
+  .focus\:text-gray-1 { @apply focus:text-[var(--color-gray-1)]; }
+  .focus\:text-gray-2 { @apply focus:text-[var(--color-gray-2)]; }
+  .focus\:text-gray-3 { @apply focus:text-[var(--color-gray-3)]; }
+  .focus\:text-gray-4 { @apply focus:text-[var(--color-gray-4)]; }
+  .focus\:text-gray-5 { @apply focus:text-[var(--color-gray-5)]; }
+  .focus\:text-gray-6 { @apply focus:text-[var(--color-gray-6)]; }
+  .focus\:text-gray-7 { @apply focus:text-[var(--color-gray-7)]; }
+  .focus\:text-gray-8 { @apply focus:text-[var(--color-gray-8)]; }
+  .focus\:text-gray-9 { @apply focus:text-[var(--color-gray-9)]; }
+  .focus\:text-gray-10 { @apply focus:text-[var(--color-gray-10)]; }
+
+  /* Focus Border Colors - Gray */
+  .focus\:border-gray-1 { @apply focus:border-[var(--color-gray-1)]; }
+  .focus\:border-gray-2 { @apply focus:border-[var(--color-gray-2)]; }
+  .focus\:border-gray-3 { @apply focus:border-[var(--color-gray-3)]; }
+  .focus\:border-gray-4 { @apply focus:border-[var(--color-gray-4)]; }
+  .focus\:border-gray-5 { @apply focus:border-[var(--color-gray-5)]; }
+  .focus\:border-gray-6 { @apply focus:border-[var(--color-gray-6)]; }
+  .focus\:border-gray-7 { @apply focus:border-[var(--color-gray-7)]; }
+  .focus\:border-gray-8 { @apply focus:border-[var(--color-gray-8)]; }
+  .focus\:border-gray-9 { @apply focus:border-[var(--color-gray-9)]; }
+  .focus\:border-gray-10 { @apply focus:border-[var(--color-gray-10)]; }
+}

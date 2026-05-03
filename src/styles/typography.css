@@ -1,0 +1,29 @@
+/* typography.css */
+@layer base {
+  :root {
+    /* Font Family - Pretendard */
+    --font-pretendard: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  }
+}
+
+@layer components {
+  /* Regular */
+  .text-regular-22 { @apply text-[22px] font-normal; }
+
+  /* Medium */
+  .text-medium-15 { @apply text-[15px] font-medium; }
+  .text-medium-18 { @apply text-[18px] font-medium; }
+  .text-medium-20 { @apply text-[20px] font-medium; }
+  .text-medium-24 { @apply text-[24px] font-medium; }
+
+  /* SemiBold */
+  .text-semibold-20 { @apply text-[20px] font-semibold; }
+  .text-semibold-24 { @apply text-[24px] font-semibold; }
+  .text-semibold-28 { @apply text-[28px] font-semibold; }
+  .text-semibold-32 { @apply text-[32px] font-semibold; }
+
+  /* Bold */
+  .text-bold-28 { @apply text-[28px] font-bold; }
+  .text-bold-32 { @apply text-[32px] font-bold; }
+  .text-bold-40 { @apply text-[40px] font-bold; }
+}

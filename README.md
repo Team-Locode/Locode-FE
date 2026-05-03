@@ -226,5 +226,3 @@ ex. [#이슈번호] ✨ feat: 추가 mainview
 | 프로젝트 시작 | 🎉 | `:tada:` | 프로젝트를 시작했어요! |
 
 https://gitmoji.dev/
-# Locode-FE
-# Locode-FE
