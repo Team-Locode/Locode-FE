@@ -75,17 +75,6 @@ export default function MainPage() {
           <div className="w-12 h-12 rounded-full bg-pink-200 border-4 border-[#EB5468] cursor-pointer shadow-md flex items-center justify-center">
              <span className="text-xs">✓</span>
           </div>
-          <div className="w-12 h-12 rounded-full bg-pink-200 border-4 border-[#EB5468] cursor-pointer shadow-md flex items-center justify-center">
-             <span className="text-xs">✓</span>
-          </div>
-          <div className="w-12 h-12 rounded-full bg-pink-200 border-4 border-[#EB5468] cursor-pointer shadow-md flex items-center justify-center">
-             <span className="text-xs">✓</span>
-          </div>
-          <div className="w-12 h-12 rounded-full bg-pink-200 border-4 border-[#EB5468] cursor-pointer shadow-md flex items-center justify-center">
-             <span className="text-xs">✓</span>
-          </div><div className="w-12 h-12 rounded-full bg-pink-200 border-4 border-[#EB5468] cursor-pointer shadow-md flex items-center justify-center">
-             <span className="text-xs">✓</span>
-          </div>
         </div>
         <p className="mt-4 text-sm font-medium">선택: 분홍색</p>
       </Card>
