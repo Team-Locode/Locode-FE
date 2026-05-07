@@ -16,12 +16,14 @@ const publicRoutes: RouteObject[] = [
     errorElement: <NotFound />,
     children: [
       {
-        index: true,
+        path: "",
         element: <MainPage />,
-      },
-      {
-        path: "modal",
-        element: <ModalPage />,
+        children: [
+          {
+            path: "modal",
+            element: <ModalPage />,
+          },
+        ],
       },
     ],
   },

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Card from "../component/Card";
+import { Outlet } from "react-router-dom";
 
 // src/pages/MainPage.tsx
 export default function MainPage() {
@@ -8,6 +9,7 @@ export default function MainPage() {
 
   return (
     <div className="flex flex-col items-center w-full p-8">
+      <Outlet />
       <h2 className="text-pink-4 text-2xl font-bold mb-4">
         🤍 소중한 사람을 위한 꽃다발 만들기
       </h2>
