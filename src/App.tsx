@@ -1,13 +1,8 @@
 import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom';
 import './App.css'
-import RootLayout from './layout/RootLayout;';
+import RootLayout from './layout/RootLayout';
 import NotFound from './pages/NotFound';
-import ProtectedLayout from './layout/ProtectedLayout';
-import LoginPage from './pages/LoginPage';
-import Home from './pages/Home';
-import Review from './pages/Review';
-import Library from './pages/Library';
-import Profile from './pages/Profile';
+import MainPage from './pages/MainPage';
 
 const publicRoutes: RouteObject[] = [
   {
@@ -17,40 +12,13 @@ const publicRoutes: RouteObject[] = [
     children: [
       {
         index: true,
-        path: 'login',
-        element: <LoginPage />,
+        element: <MainPage />,
       },
     ],
   },
 ];
 
-const protectedRoutes: RouteObject[] = [
-  {
-    path: "/",
-    element: <ProtectedLayout />,
-    errorElement: <NotFound />,
-    children: [
-      {
-        path: "home",
-        element: <Home />,
-      },
-      {
-        path: "review",
-        element: <Review />,
-      },
-      {
-        path: "library",
-        element: <Library />,
-      },
-      {
-        path: "profile",
-        element: <Profile />,
-      },
-    ],
-  },
-];
-
-const router = createBrowserRouter([...publicRoutes, ...protectedRoutes]);
+const router = createBrowserRouter([...publicRoutes]);
 
 
 function App() {
