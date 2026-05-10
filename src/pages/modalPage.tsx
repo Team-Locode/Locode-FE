@@ -5,10 +5,11 @@ import {
   FaCalendarCheck,
   FaComment,
   FaInstagram,
-  FaExternalLinkAlt,
 } from "react-icons/fa"; // react-icons 설치 필요
 import PortfolioComponent from "../component/portfolioComponent";
 
+//TODO:네이버 예약,하단 네이버 버튼
+// 사장님한테 링크 받아서 해야함(아니면 예약에서 튕김)
 export default function ModalPage() {
   const navigate = useNavigate();
 
@@ -82,11 +83,29 @@ export default function ModalPage() {
           <div className="space-y-3">
             <p className="font-bold pt-4 text-gray-800 ml-1">주문/상담하기</p>
             <div className="grid grid-cols-2 gap-3">
-              <button className="flex flex-col items-center justify-center py-4 bg-[#58C777] text-white rounded-2xl font-bold gap-1 shadow-sm hover:opacity-90 transition">
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://m.place.naver.com/place/1958826162/home", //네이버 예약,하단 네이버 버튼 사장님한테 링크 받아서 해야함(아니면 예약에서 튕김)
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
+                className="flex flex-col items-center justify-center py-4 bg-[#58C777] text-white rounded-2xl font-bold gap-1 shadow-sm hover:opacity-90 transition"
+              >
                 <FaCalendarCheck size={20} />
                 <span className="text-sm">네이버 예약</span>
               </button>
-              <button className="flex flex-col items-center justify-center py-4 bg-[#FAE100] text-[#3C1E1E] rounded-2xl font-bold gap-1 shadow-sm hover:opacity-90 transition">
+              <button
+                onClick={() =>
+                  window.open(
+                    "http://pf.kakao.com/_axkXExj/",
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
+                className="flex flex-col items-center justify-center py-4 bg-[#FAE100] text-[#3C1E1E] rounded-2xl font-bold gap-1 shadow-sm hover:opacity-90 transition"
+              >
                 <FaComment size={20} />
                 <span className="text-sm">카카오톡 상담</span>
               </button>
@@ -100,6 +119,43 @@ export default function ModalPage() {
           {/* 포트폴리오 링크 */}
           <div className="flex justify-between items-center pt-4 ">
             <PortfolioComponent />
+          </div>
+
+          {/* 하단 인스타그램,네이버 연결 버튼 */}
+          <div className="flex flex-col items-center w-full mt-6 space-y-6">
+            {/* 1. 구분선 (사진 속 연한 회색 선) */}
+            <div className="w-full h-[1px] border-t border-pink-2"></div>
+
+            {/* 2. SNS 아이콘 버튼들 */}
+            <div className="flex gap-4 justify-center items-center">
+              {/* 인스타그램 버튼 */}
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://www.instagram.com/towbflower131/",
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
+                className="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-full hover:bg-gray-100 transition shadow-sm border border-gray-100"
+              >
+                <FaInstagram className="text-xl text-gray-700" />
+              </button>
+
+              {/* 네이버 버튼 */}
+              <button
+                onClick={() =>
+                  window.open(
+                    "https://m.place.naver.com/place/1958826162/home", //네이버 예약,하단 네이버 버튼 사장님한테 링크 받아서 해야함(아니면 예약에서 튕김)
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
+                className="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-full hover:bg-gray-100 transition shadow-sm border border-gray-100"
+              >
+                <span className="text-xl font-black text-[#03C75A]">N</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

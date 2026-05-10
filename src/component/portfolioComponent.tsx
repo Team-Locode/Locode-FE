@@ -27,7 +27,7 @@ export default function PortfolioComponent() {
   };
 
   // 이미지 다운로드 함수
-  const downloadImage = ({ imageUrl }: { imageUrl?: string }) => {
+  const downloadImage = (imageUrl?: string) => {
     // 1. URL이 없으면 함수 종료 (방어 코드)
     if (!imageUrl) return;
 
@@ -65,7 +65,16 @@ export default function PortfolioComponent() {
     <div className="w-full">
       <div className="flex justify-between items-center mb-5">
         <span className="font-bold text-gray-800">사장님 포트폴리오</span>
-        <button className="text-pink-500 text-sm flex items-center gap-1 hover:underline">
+        <button
+          onClick={() =>
+            window.open(
+              "https://www.instagram.com/towbflower131/",
+              "_blank",
+              "noopener,noreferrer",
+            )
+          }
+          className="text-pink-500 text-sm flex items-center gap-1 hover:underline"
+        >
           더 보기 <FaExternalLinkAlt size={12} />
         </button>
       </div>
