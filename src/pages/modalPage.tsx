@@ -7,6 +7,7 @@ import {
   FaInstagram,
   FaExternalLinkAlt,
 } from "react-icons/fa"; // react-icons 설치 필요
+import PortfolioComponent from "../component/portfolioComponent";
 
 export default function ModalPage() {
   const navigate = useNavigate();
@@ -20,6 +21,18 @@ export default function ModalPage() {
 🎨 컬러톤: 화이트/내추럴 계열
 
 ※ 커스터마이저로 제작된 이미지입니다.`;
+
+  //복사하기 함수
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(summaryContent);
+      alert("주문 내용이 클립보드에 복사되었습니다! 🎉");
+      // 만약 토스트 메시지 라이브러리를 쓰신다면 alert 대신 쓰시면 더 예뻐요.
+    } catch (err) {
+      alert("복사에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
       <div
@@ -33,7 +46,6 @@ export default function ModalPage() {
             ×
           </button>
         </div>
-
         {/* 컨텐츠 영역: 이미지 및 설명 */}
         <div className="p-6">
           <div className="bg-content-area rounded-2xl p-10 flex justify-center mb-6">
@@ -58,14 +70,17 @@ export default function ModalPage() {
             {/* 2. 기존 빈 div 대신 SummaryBox 적용 */}
             <SummaryBox content={summaryContent} />
 
-            <button className="w-full flex items-center justify-center gap-2 py-3 border border-gray-200 rounded-xl text-sm font-medium hover:bg-gray-50 transition">
+            <button
+              onClick={handleCopy}
+              className="w-full flex items-center justify-center gap-2 py-3 border border-gray-200 rounded-xl text-sm font-medium hover:bg-gray-50 transition"
+            >
               <FaCopy className="text-gray-400" /> 주문 내용 복사하기
             </button>
           </div>
 
           {/* 주문/상담하기 섹션 */}
           <div className="space-y-3">
-            <p className="font-bold text-gray-800 ml-1">주문/상담하기</p>
+            <p className="font-bold pt-4 text-gray-800 ml-1">주문/상담하기</p>
             <div className="grid grid-cols-2 gap-3">
               <button className="flex flex-col items-center justify-center py-4 bg-[#58C777] text-white rounded-2xl font-bold gap-1 shadow-sm hover:opacity-90 transition">
                 <FaCalendarCheck size={20} />
@@ -83,11 +98,8 @@ export default function ModalPage() {
           </div>
 
           {/* 포트폴리오 링크 */}
-          <div className="flex justify-between items-center pt-4 border-t border-gray-100">
-            <span className="font-bold text-gray-800">사장님 포트폴리오</span>
-            <button className="text-pink-500 text-sm flex items-center gap-1 hover:underline">
-              더 보기 <FaExternalLinkAlt size={12} />
-            </button>
+          <div className="flex justify-between items-center pt-4 ">
+            <PortfolioComponent />
           </div>
         </div>
       </div>
