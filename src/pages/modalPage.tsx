@@ -1,18 +1,33 @@
-import { useState } from "react";
-import Card from "../component/Card";
 import { useNavigate } from "react-router-dom";
+import SummaryBox from "../component/SummaryBox";
+import {
+  FaCopy,
+  FaCalendarCheck,
+  FaComment,
+  FaInstagram,
+  FaExternalLinkAlt,
+} from "react-icons/fa"; // react-icons 설치 필요
 
 export default function ModalPage() {
   const navigate = useNavigate();
 
+  // 요약에 들어갈 실제 내용 (예시 데이터)
+  const summaryContent = `[플라워토브 꽃다발 요청]
+🎂 받는 분: 엄마를 위한 꽃다발
+💐 스타일: 유니크한 형태
+🌸 꽃 구성: 장미(하양)
+🎀 포장지: 분홍색
+🎨 컬러톤: 화이트/내추럴 계열
+
+※ 커스터마이저로 제작된 이미지입니다.`;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
       <div
-        className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh]"
+        className="relative w-full max-w-md bg-pink rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* 헤더: 닫기 버튼 */}
-        <div className="flex justify-between items-center p-6 border-b">
+        <div className="flex justify-between items-center p-6 border-b border-pink-2">
           <h2 className="text-xl font-bold">꽃다발 완성! 🎉</h2>
           <button onClick={() => navigate(-1)} className="text-2xl">
             ×
@@ -21,7 +36,7 @@ export default function ModalPage() {
 
         {/* 컨텐츠 영역: 이미지 및 설명 */}
         <div className="p-6">
-          <div className="bg-[#FFF5F6] rounded-2xl p-10 flex justify-center mb-6">
+          <div className="bg-content-area rounded-2xl p-10 flex justify-center mb-6">
             {/* 여기에 꽃다발 이미지 */}
             <div className="w-40 h-40 bg-pink-2 rounded-t-full relative">
               <span className="absolute -top-10 left-1/2 -translate-x-1/2">
@@ -38,9 +53,41 @@ export default function ModalPage() {
           </div>
 
           <div className="space-y-4">
-            <p className="font-bold border-t pt-4">주문 요약</p>
+            <p className="font-bold border-t border-pink-2 pt-4">주문 요약</p>
             {/* 긴 내용... (자동으로 스크롤 생김) */}
-            <div className="h-40 bg-gray-50 rounded-lg"></div>
+            {/* 2. 기존 빈 div 대신 SummaryBox 적용 */}
+            <SummaryBox content={summaryContent} />
+
+            <button className="w-full flex items-center justify-center gap-2 py-3 border border-gray-200 rounded-xl text-sm font-medium hover:bg-gray-50 transition">
+              <FaCopy className="text-gray-400" /> 주문 내용 복사하기
+            </button>
+          </div>
+
+          {/* 주문/상담하기 섹션 */}
+          <div className="space-y-3">
+            <p className="font-bold text-gray-800 ml-1">주문/상담하기</p>
+            <div className="grid grid-cols-2 gap-3">
+              <button className="flex flex-col items-center justify-center py-4 bg-[#58C777] text-white rounded-2xl font-bold gap-1 shadow-sm hover:opacity-90 transition">
+                <FaCalendarCheck size={20} />
+                <span className="text-sm">네이버 예약</span>
+              </button>
+              <button className="flex flex-col items-center justify-center py-4 bg-[#FAE100] text-[#3C1E1E] rounded-2xl font-bold gap-1 shadow-sm hover:opacity-90 transition">
+                <FaComment size={20} />
+                <span className="text-sm">카카오톡 상담</span>
+              </button>
+            </div>
+            <button className="w-full flex items-center justify-center gap-2 py-4 border border-gray-200 rounded-2xl text-sm font-bold hover:bg-gray-50 transition">
+              <FaInstagram className="text-pink-500" /> 인스타그램 스토리
+              공유하기
+            </button>
+          </div>
+
+          {/* 포트폴리오 링크 */}
+          <div className="flex justify-between items-center pt-4 border-t border-gray-100">
+            <span className="font-bold text-gray-800">사장님 포트폴리오</span>
+            <button className="text-pink-500 text-sm flex items-center gap-1 hover:underline">
+              더 보기 <FaExternalLinkAlt size={12} />
+            </button>
           </div>
         </div>
       </div>

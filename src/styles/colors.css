@@ -2,83 +2,200 @@
 @layer base {
   :root {
     /* Primary Colors - pink */
-    --color-pink: #FFF5F6; /* 배경 색 */
-    --color-pink-2: #ECD9D9; /* 배경 border 색 */
-    --color-pink-3: #6E5E5B; /* 글자 색 1 예) 헤더 */
+    --color-pink: #fff5f6; /* 배경 색 */
+    --color-pink-2: #ecd9d9; /* 배경 border 색 */
+    --color-pink-3: #6e5e5b; /* 글자 색 1 예) 헤더 */
     --color-pink-4: #342422; /* 글자 색 2 예) 검정 대용 */
 
-    --color-highlight: #EB5468; /* 강조 표현 */
+    --color-highlight: #eb5468; /* 강조 표현 */
+    --color-content-bg: oklab(
+      0.959999 0.00983775 0.00175911 / 0.5
+    ); /*완성 시 꽃 다발 뒷배경*/
+    /* 30% 투명도의 oklab 색상 */
+    --summary-bg: oklab(0.959999 0.00983775 0.00175911 / 0.3);
+    --summary-text: lab(41.8321 5.88313 3.9148);
   }
 }
 
 @layer components {
   /* Text Colors - pink */
-  .text-pink { @apply text-[var(--color-pink)]; }
-  .text-pink-2 { @apply text-[var(--color-pink-2)]; }
-  .text-pink-3 { @apply text-[var(--color-pink-3)]; }
-  .text-pink-4 { @apply text-[var(--color-pink-4)]; }
-  .text-highlight { @apply text-[var(--color-highlight)]; }
+  .text-pink {
+    @apply text-[var(--color-pink)];
+  }
+  .text-pink-2 {
+    @apply text-[var(--color-pink-2)];
+  }
+  .text-pink-3 {
+    @apply text-[var(--color-pink-3)];
+  }
+  .text-pink-4 {
+    @apply text-[var(--color-pink-4)];
+  }
+  .text-highlight {
+    @apply text-[var(--color-highlight)];
+  }
 
   /* Background Colors - pink */
-  .bg-pink { @apply bg-[var(--color-pink)]; }
-  .bg-pink-2 { @apply bg-[var(--color-pink-2)]; }
-  .bg-pink-3 { @apply bg-[var(--color-pink-3)]; }
-  .bg-pink-4 { @apply bg-[var(--color-pink-4)]; }
-  .bg-highlight { @apply bg-[var(--color-highlight)]; }
+  .bg-pink {
+    @apply bg-[var(--color-pink)];
+  }
+  .bg-pink-2 {
+    @apply bg-[var(--color-pink-2)];
+  }
+  .bg-pink-3 {
+    @apply bg-[var(--color-pink-3)];
+  }
+  .bg-pink-4 {
+    @apply bg-[var(--color-pink-4)];
+  }
+  .bg-highlight {
+    @apply bg-[var(--color-highlight)];
+  }
+  .bg-content-area {
+    background-color: var(--color-content-bg);
+  }
+  .bg-summary {
+    background-color: var(--summary-bg);
+  }
 
   /* Border Colors - pink */
-  .border-pink { @apply border-[var(--color-pink)]; }
-  .border-pink-2 { @apply border-[var(--color-pink-2)]; }
-  .border-pink-3 { @apply border-[var(--color-pink-3)]; }
-  .border-pink-4 { @apply border-[var(--color-pink-4)]; }
-  .border-highlight { @apply border-[var(--color-highlight)]; }
+  .border-pink {
+    @apply border-[var(--color-pink)];
+  }
+  .border-pink-2 {
+    @apply border-[var(--color-pink-2)];
+  }
+  .border-pink-3 {
+    @apply border-[var(--color-pink-3)];
+  }
+  .border-pink-4 {
+    @apply border-[var(--color-pink-4)];
+  }
+  .border-highlight {
+    @apply border-[var(--color-highlight)];
+  }
 
   /* Hover Background Colors - pink */
-  .hover\:bg-pink { @apply hover:bg-[var(--color-pink)]; }
-  .hover\:bg-pink-2 { @apply hover:bg-[var(--color-pink-2)]; }
-  .hover\:bg-pink-3 { @apply hover:bg-[var(--color-pink-3)]; }
-  .hover\:bg-pink-4 { @apply hover:bg-[var(--color-pink-4)]; }
-  .hover\:bg-highlight { @apply hover:bg-[var(--color-highlight)]; }
-  
+  .hover\:bg-pink {
+    @apply hover:bg-[var(--color-pink)];
+  }
+  .hover\:bg-pink-2 {
+    @apply hover:bg-[var(--color-pink-2)];
+  }
+  .hover\:bg-pink-3 {
+    @apply hover:bg-[var(--color-pink-3)];
+  }
+  .hover\:bg-pink-4 {
+    @apply hover:bg-[var(--color-pink-4)];
+  }
+  .hover\:bg-highlight {
+    @apply hover:bg-[var(--color-highlight)];
+  }
+
   /* Hover Text Colors - pink */
-  .hover\:text-pink { @apply hover:text-[var(--color-pink)]; }
-  .hover\:text-pink-2 { @apply hover:text-[var(--color-pink-2)]; }
-  .hover\:text-pink-3 { @apply hover:text-[var(--color-pink-3)]; }
-  .hover\:text-pink-4 { @apply hover:text-[var(--color-pink-4)]; }
-  .hover\:text-highlight { @apply hover:text-[var(--color-highlight)]; }
+  .hover\:text-pink {
+    @apply hover:text-[var(--color-pink)];
+  }
+  .hover\:text-pink-2 {
+    @apply hover:text-[var(--color-pink-2)];
+  }
+  .hover\:text-pink-3 {
+    @apply hover:text-[var(--color-pink-3)];
+  }
+  .hover\:text-pink-4 {
+    @apply hover:text-[var(--color-pink-4)];
+  }
+  .hover\:text-highlight {
+    @apply hover:text-[var(--color-highlight)];
+  }
 
   /* Hover Border Colors - pink */
-  .hover\:border-pink { @apply hover:border-[var(--color-pink)]; }
-  .hover\:border-pink-2 { @apply hover:border-[var(--color-pink-2)]; }
-  .hover\:border-pink-3 { @apply hover:border-[var(--color-pink-3)]; }
-  .hover\:border-pink-4 { @apply hover:border-[var(--color-pink-4)]; }
-  .hover\:border-pink-5 { @apply hover:border-[var(--color-pink-5)]; }
+  .hover\:border-pink {
+    @apply hover:border-[var(--color-pink)];
+  }
+  .hover\:border-pink-2 {
+    @apply hover:border-[var(--color-pink-2)];
+  }
+  .hover\:border-pink-3 {
+    @apply hover:border-[var(--color-pink-3)];
+  }
+  .hover\:border-pink-4 {
+    @apply hover:border-[var(--color-pink-4)];
+  }
+  .hover\:border-pink-5 {
+    @apply hover:border-[var(--color-pink-5)];
+  }
 
   /* Focus Ring Colors - pink */
-  .focus\:ring-pink { @apply focus:ring-[var(--color-pink)]; }
-  .focus\:ring-pink-2 { @apply focus:ring-[var(--color-pink-2)]; }
-  .focus\:ring-pink-3 { @apply focus:ring-[var(--color-pink-3)]; }
-  .focus\:ring-pink-4 { @apply focus:ring-[var(--color-pink-4)]; }
-  .focus\:ring-highlight { @apply focus:ring-[var(--color-highlight)]; }
+  .focus\:ring-pink {
+    @apply focus:ring-[var(--color-pink)];
+  }
+  .focus\:ring-pink-2 {
+    @apply focus:ring-[var(--color-pink-2)];
+  }
+  .focus\:ring-pink-3 {
+    @apply focus:ring-[var(--color-pink-3)];
+  }
+  .focus\:ring-pink-4 {
+    @apply focus:ring-[var(--color-pink-4)];
+  }
+  .focus\:ring-highlight {
+    @apply focus:ring-[var(--color-highlight)];
+  }
 
   /* Focus Background Colors - pink */
-  .focus\:bg-pink { @apply focus:bg-[var(--color-pink)]; }
-  .focus\:bg-pink-2 { @apply focus:bg-[var(--color-pink-2)]; }
-  .focus\:bg-pink-3 { @apply focus:bg-[var(--color-pink-3)]; }
-  .focus\:bg-pink-4 { @apply focus:bg-[var(--color-pink-4)]; }
-  .focus\:bg-highlight { @apply focus:bg-[var(--color-highlight)]; }
+  .focus\:bg-pink {
+    @apply focus:bg-[var(--color-pink)];
+  }
+  .focus\:bg-pink-2 {
+    @apply focus:bg-[var(--color-pink-2)];
+  }
+  .focus\:bg-pink-3 {
+    @apply focus:bg-[var(--color-pink-3)];
+  }
+  .focus\:bg-pink-4 {
+    @apply focus:bg-[var(--color-pink-4)];
+  }
+  .focus\:bg-highlight {
+    @apply focus:bg-[var(--color-highlight)];
+  }
 
   /* Focus Text Colors - pink */
-  .focus\:text-pink { @apply focus:text-[var(--color-pink)]; }
-  .focus\:text-pink-2 { @apply focus:text-[var(--color-pink-2)]; }
-  .focus\:text-pink-3 { @apply focus:text-[var(--color-pink-3)]; }
-  .focus\:text-pink-4 { @apply focus:text-[var(--color-pink-4)]; }
-  .focus\:text-highlight { @apply focus:text-[var(--color-highlight)]; }
+  .focus\:text-pink {
+    @apply focus:text-[var(--color-pink)];
+  }
+  .focus\:text-pink-2 {
+    @apply focus:text-[var(--color-pink-2)];
+  }
+  .focus\:text-pink-3 {
+    @apply focus:text-[var(--color-pink-3)];
+  }
+  .focus\:text-pink-4 {
+    @apply focus:text-[var(--color-pink-4)];
+  }
+  .focus\:text-highlight {
+    @apply focus:text-[var(--color-highlight)];
+  }
+
+  /*text*/
+  .text-summary {
+    color: var(--summary-text);
+  }
 
   /* Focus Border Colors - pink */
-  .focus\:border-pink { @apply focus:border-[var(--color-pink)]; }
-  .focus\:border-pink-2 { @apply focus:border-[var(--color-pink-2)]; }
-  .focus\:border-pink-3 { @apply focus:border-[var(--color-pink-3)]; }
-  .focus\:border-pink-4 { @apply focus:border-[var(--color-pink-4)]; }
-  .focus\:border-highlight { @apply focus:border-[var(--color-highlight)]; }
+  .focus\:border-pink {
+    @apply focus:border-[var(--color-pink)];
+  }
+  .focus\:border-pink-2 {
+    @apply focus:border-[var(--color-pink-2)];
+  }
+  .focus\:border-pink-3 {
+    @apply focus:border-[var(--color-pink-3)];
+  }
+  .focus\:border-pink-4 {
+    @apply focus:border-[var(--color-pink-4)];
+  }
+  .focus\:border-highlight {
+    @apply focus:border-[var(--color-highlight)];
+  }
 }
