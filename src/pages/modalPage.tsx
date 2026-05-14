@@ -13,20 +13,28 @@ import PortfolioComponent from "../component/portfolioComponent";
 export default function ModalPage() {
   const navigate = useNavigate();
 
+  const data = {
+    target: "엄마를 위한 꽃다발",
+    style: "유니크한 형태",
+    flowers: "장미(하양)",
+    wrapping: "분홍색",
+    tone: "화이트/내추럴 계열",
+  };
+
   // 요약에 들어갈 실제 내용 (예시 데이터)
-  const summaryContent = `[플라워토브 꽃다발 요청]
-🎂 받는 분: 엄마를 위한 꽃다발
-💐 스타일: 유니크한 형태
-🌸 꽃 구성: 장미(하양)
-🎀 포장지: 분홍색
-🎨 컬러톤: 화이트/내추럴 계열
+  const formattedSummary = `[플라워토브 꽃다발 요청]
+🎂 받는 분: ${data.target}
+💐 스타일: ${data.style}
+🌸 꽃 구성: ${data.flowers}
+🎀 포장지: ${data.wrapping}
+🎨 컬러톤: ${data.tone}
 
 ※ 커스터마이저로 제작된 이미지입니다.`;
 
   //복사하기 함수
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(summaryContent);
+      await navigator.clipboard.writeText(formattedSummary);
       alert("주문 내용이 클립보드에 복사되었습니다! 🎉");
       // 만약 토스트 메시지 라이브러리를 쓰신다면 alert 대신 쓰시면 더 예뻐요.
     } catch (err) {
@@ -69,7 +77,7 @@ export default function ModalPage() {
             <p className="font-bold border-t border-pink-2 pt-4">주문 요약</p>
             {/* 긴 내용... (자동으로 스크롤 생김) */}
             {/* 2. 기존 빈 div 대신 SummaryBox 적용 */}
-            <SummaryBox content={summaryContent} />
+            <SummaryBox content={formattedSummary} />
 
             <button
               onClick={handleCopy}
