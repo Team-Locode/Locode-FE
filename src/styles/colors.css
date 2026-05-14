@@ -2,14 +2,19 @@
 @layer base {
   :root {
     /* Primary Colors - pink */
-    --color-pink: #FFF5F6; /* 배경 색 */
-    --color-pink-2: #ECD9D9; /* 배경 border 색 */
-    --color-pink-3: #6E5E5B; /* 글자 색 1 예) 헤더 */
+    --color-pink: #fff5f6; /* 배경 색 */
+    --color-pink-2: #ecd9d9; /* 배경 border 색 */
+    --color-pink-3: #6e5e5b; /* 글자 색 1 예) 헤더 */
     --color-pink-4: #342422; /* 글자 색 2 예) 검정 대용 */
     --color-pink-5: #FFAABB; /* 버튼 색 */
 
     --color-highlight: #EB5468; /* 강조 표현 */
-    --color-notice: #F9F0E1; /* 안내 문구 배경 */
+    --color-content-bg: oklab(
+      0.959999 0.00983775 0.00175911 / 0.5
+    ); /*완성 시 꽃 다발 뒷배경*/
+    /* 30% 투명도의 oklab 색상 */
+    --summary-bg: oklab(0.959999 0.00983775 0.00175911 / 0.3);
+    --summary-text: lab(41.8321 5.88313 3.9148);
   }
 }
 
@@ -41,32 +46,76 @@
   .border-highlight { @apply border-[var(--color-highlight)]; }
   .border-notice { @apply border-[var(--color-notice)]; }
 
-
   /* Focus Ring Colors - pink */
-  .focus\:ring-pink { @apply focus:ring-[var(--color-pink)]; }
-  .focus\:ring-pink-2 { @apply focus:ring-[var(--color-pink-2)]; }
-  .focus\:ring-pink-3 { @apply focus:ring-[var(--color-pink-3)]; }
-  .focus\:ring-pink-4 { @apply focus:ring-[var(--color-pink-4)]; }
-  .focus\:ring-highlight { @apply focus:ring-[var(--color-highlight)]; }
+  .focus\:ring-pink {
+    @apply focus:ring-[var(--color-pink)];
+  }
+  .focus\:ring-pink-2 {
+    @apply focus:ring-[var(--color-pink-2)];
+  }
+  .focus\:ring-pink-3 {
+    @apply focus:ring-[var(--color-pink-3)];
+  }
+  .focus\:ring-pink-4 {
+    @apply focus:ring-[var(--color-pink-4)];
+  }
+  .focus\:ring-highlight {
+    @apply focus:ring-[var(--color-highlight)];
+  }
 
   /* Focus Background Colors - pink */
-  .focus\:bg-pink { @apply focus:bg-[var(--color-pink)]; }
-  .focus\:bg-pink-2 { @apply focus:bg-[var(--color-pink-2)]; }
-  .focus\:bg-pink-3 { @apply focus:bg-[var(--color-pink-3)]; }
-  .focus\:bg-pink-4 { @apply focus:bg-[var(--color-pink-4)]; }
-  .focus\:bg-highlight { @apply focus:bg-[var(--color-highlight)]; }
+  .focus\:bg-pink {
+    @apply focus:bg-[var(--color-pink)];
+  }
+  .focus\:bg-pink-2 {
+    @apply focus:bg-[var(--color-pink-2)];
+  }
+  .focus\:bg-pink-3 {
+    @apply focus:bg-[var(--color-pink-3)];
+  }
+  .focus\:bg-pink-4 {
+    @apply focus:bg-[var(--color-pink-4)];
+  }
+  .focus\:bg-highlight {
+    @apply focus:bg-[var(--color-highlight)];
+  }
 
   /* Focus Text Colors - pink */
-  .focus\:text-pink { @apply focus:text-[var(--color-pink)]; }
-  .focus\:text-pink-2 { @apply focus:text-[var(--color-pink-2)]; }
-  .focus\:text-pink-3 { @apply focus:text-[var(--color-pink-3)]; }
-  .focus\:text-pink-4 { @apply focus:text-[var(--color-pink-4)]; }
-  .focus\:text-highlight { @apply focus:text-[var(--color-highlight)]; }
+  .focus\:text-pink {
+    @apply focus:text-[var(--color-pink)];
+  }
+  .focus\:text-pink-2 {
+    @apply focus:text-[var(--color-pink-2)];
+  }
+  .focus\:text-pink-3 {
+    @apply focus:text-[var(--color-pink-3)];
+  }
+  .focus\:text-pink-4 {
+    @apply focus:text-[var(--color-pink-4)];
+  }
+  .focus\:text-highlight {
+    @apply focus:text-[var(--color-highlight)];
+  }
+
+  /*text*/
+  .text-summary {
+    color: var(--summary-text);
+  }
 
   /* Focus Border Colors - pink */
-  .focus\:border-pink { @apply focus:border-[var(--color-pink)]; }
-  .focus\:border-pink-2 { @apply focus:border-[var(--color-pink-2)]; }
-  .focus\:border-pink-3 { @apply focus:border-[var(--color-pink-3)]; }
-  .focus\:border-pink-4 { @apply focus:border-[var(--color-pink-4)]; }
-  .focus\:border-highlight { @apply focus:border-[var(--color-highlight)]; }
+  .focus\:border-pink {
+    @apply focus:border-[var(--color-pink)];
+  }
+  .focus\:border-pink-2 {
+    @apply focus:border-[var(--color-pink-2)];
+  }
+  .focus\:border-pink-3 {
+    @apply focus:border-[var(--color-pink-3)];
+  }
+  .focus\:border-pink-4 {
+    @apply focus:border-[var(--color-pink-4)];
+  }
+  .focus\:border-highlight {
+    @apply focus:border-[var(--color-highlight)];
+  }
 }
