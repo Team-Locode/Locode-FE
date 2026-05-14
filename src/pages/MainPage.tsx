@@ -1,17 +1,18 @@
 import { useState } from "react";
-import Card from "../component/Card";
 import { Outlet } from "react-router-dom";
+import CompleteFlower from "../component/CompleteFlower";
+import ColorWrapper from "../component/ColorWrapper";
+import FlowerStyle from "../component/FlowerStyle";
 
 // src/pages/MainPage.tsx
 export default function MainPage() {
   const [person, setPerson] = useState("");
-  const [selectedStyle, setSelectedStyle] = useState("unique");
 
   return (
     <div className="flex flex-col items-center w-full p-8">
       <Outlet />
-      <h2 className="text-pink-4 text-2xl font-bold mb-4">
-        🤍 소중한 사람을 위한 꽃다발 만들기
+      <h2 className="text-pink-4 text-2xl font-bold mb-4 text-center">
+        🤍 소중한 사람을 위한 <br/>꽃다발 만들기
       </h2>
       <div className="flex items-center gap-2 text-lg font-medium text-pink-4">
         {/* 인물 입력창 (밑줄 포인트) */}
@@ -33,69 +34,27 @@ export default function MainPage() {
       </p>
 
       {/* 카드 섹션 - 꽃다발 스타일(유니크/클래식)*/}
-      <Card title="꽃다발 스타일" className="mt-5 text-sm">
-        <div className="flex gap-2">
-          {/* 유니크 카드 */}
-          <Card
-            isSelected={selectedStyle === "unique"}
-            onClick={() => setSelectedStyle("unique")}
-            className="flex-1"
-          >
-            <div className="flex justify-between items-start relative">
-              <div className="flex-shrink-0">
-                <h4 className="text-base font-semibold mb-2 text-pink-4">
-                  유니크
-                </h4>
-                <p className="text-pink-3 text-xs whitespace-nowrap">
-                  자유롭고 개성있는 스타일
-                </p>
-              </div>
-              {selectedStyle === "unique" && (
-                <span className="absolute -top-1 -right-1 text-highlight text-2xl leading">
-                  ✓
-                </span>
-              )}
-            </div>
-          </Card>
-
-          {/* 클래식 카드 */}
-          <Card
-            isSelected={selectedStyle === "classic"}
-            onClick={() => setSelectedStyle("classic")}
-            className="flex-1 "
-          >
-            <div className="flex justify-between items-start relative">
-              <div>
-                <h4 className="text-base font-semibold mb-2 text-pink-4">
-                  클래식
-                </h4>
-                <p className="text-pink-3 text-xs whitespace-nowrap">
-                  정갈하고 우아한 스타일
-                </p>
-              </div>
-              {selectedStyle === "classic" && (
-                <span className="absolute -top-1 -right-1 text-highlight text-2xl leading">
-                  ✓
-                </span>
-              )}
-            </div>
-          </Card>
-        </div>
-      </Card>
+      <FlowerStyle />
 
       {/* 카드 섹션 - 포장지컬러 */}
-      <Card title="꽃다발 스타일" className="mt-5">
-        <div className="flex gap-4 items-center">
-          {/* 여기에 색상 원형 컴포넌트들을 넣으면 됩니다! */}
-          <div className="w-12 h-12 rounded-full bg-pink-200 border-4 border-[#EB5468] cursor-pointer shadow-md flex items-center justify-center">
-            <span className="text-xs">✓</span>
-          </div>
-          <div className="w-12 h-12 rounded-full bg-pink-200 border-4 border-[#EB5468] cursor-pointer shadow-md flex items-center justify-center">
-            <span className="text-xs">✓</span>
-          </div>
+      <ColorWrapper />
+
+      {/* 카드 섹션 - 꽃 완성 */}
+      <CompleteFlower />
+
+      {/* 안내문 */}
+      <div className="box-border w-[300px] min-w-[340px] flex-shrink-0 rounded-[25px] border border-pink-2 bg-notice p-5 flex items-start gap-6">
+
+        <div className="flex flex-col gap-1">
+          <h2 className="text-base font-semibold text-pink-4">
+            ❤️  플라워토브와 함께
+          </h2>
+
+          <p className="text-xs text-pink-3 ml-6">
+            특별한 날, 소중한 사람에게 마음을 전하세요. 완성된 꽃다발 이미지로 상담을 시작할 수 있어요.
+          </p>
         </div>
-        <p className="mt-4 text-sm font-medium">선택: 분홍색</p>
-      </Card>
+      </div>
     </div>
   );
 }

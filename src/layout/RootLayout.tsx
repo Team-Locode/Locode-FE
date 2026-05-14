@@ -1,6 +1,7 @@
 // src/layout/root-layout.tsx
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
+import Footer from './Footer';
 
 
 const RootLayout = () => {
@@ -15,6 +16,8 @@ const RootLayout = () => {
       <div className='flex flex-1 w-full pt-16'>
         <Outlet />
       </div>
+
+      <Footer />
       
     </div>
   );
