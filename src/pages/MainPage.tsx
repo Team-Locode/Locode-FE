@@ -7,6 +7,8 @@ import FlowerStyle from "../component/FlowerStyle";
 // src/pages/MainPage.tsx
 export default function MainPage() {
   const [person, setPerson] = useState("");
+  const [selectedStyle, setSelectedStyle] = useState("classic");
+  const [selectedColor, setSelectedColor] = useState("분홍색");
 
   return (
     <div className="flex flex-col items-center w-full p-8">
@@ -34,13 +36,20 @@ export default function MainPage() {
       </p>
 
       {/* 카드 섹션 - 꽃다발 스타일(유니크/클래식)*/}
-      <FlowerStyle />
+      <FlowerStyle
+        selectedStyle={selectedStyle}
+        setSelectedStyle={setSelectedStyle}
+      />
 
       {/* 카드 섹션 - 포장지컬러 */}
-      <ColorWrapper />
+      <ColorWrapper
+      selectedStyle={selectedStyle}
+      selectedColor={selectedColor}
+      setSelectedColor={setSelectedColor}
+    />
 
       {/* 카드 섹션 - 꽃 완성 */}
-      <CompleteFlower />
+      <CompleteFlower selectedColor={selectedColor} />
 
       {/* 안내문 */}
       <div className="box-border w-[300px] min-w-[340px] flex-shrink-0 rounded-[25px] border border-pink-2 bg-notice p-5 flex items-start gap-6">

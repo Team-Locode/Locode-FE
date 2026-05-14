@@ -1,32 +1,60 @@
 import { useState } from "react";
 import Card from "./Card";
 
-import wrapperBack from "../assets/flowers/wrapperBack.png";
 import canationPink from "../assets/flowers/canationPink.png";
 import gerbaraBlue from "../assets/flowers/gerbaraBlue.png";
 import gerbaraPink from "../assets/flowers/gerbaraPink.png";
 import gerbaraYellow from "../assets/flowers/gerbaraYellow.png";
 import lavenderPurple from "../assets/flowers/lavenderPurple.png";
+import tulipRed from "../assets/flowers/tulipRed.png";
+import tulipYellow from "../assets/flowers/tulipYellow.png";
 import lisianthusPink from "../assets/flowers/LisianthusPink.png";
+import lisianthusPurple from "../assets/flowers/LisianthusPurple.png";
 import pomponBlue from "../assets/flowers/PomponBlue.png";
 import pomponYellow from "../assets/flowers/pomponYellow.png";
 import roseBlack from "../assets/flowers/roseBlack.png";
 import roseBlue from "../assets/flowers/roseBlue.png";
 import rosePink from "../assets/flowers/rosePink.png";
-import rosePurple from "../assets/flowers/rosePurple.png";
 import roseRed from "../assets/flowers/roseRed.png";
 import roseWhite from "../assets/flowers/roseWhite.png";
 
+{/* 꽃다발 뒷배경 */}
+import wrapperPinkBack from "../assets/seeWrapper/classic/wrapperPinkBack.png";
+import wrapperYellowBack from "../assets/seeWrapper/classic/wrapperYellowBack.png";
+import wrapperWhiteBack from "../assets/seeWrapper/classic/wrapperWhiteBack2.png";
+import wrapperPurpleBack from "../assets/seeWrapper/classic/wrapperPurpleBack.png";
+import wrapperGreenBack from "../assets/seeWrapper/classic/wrapperGreenBack.png";
+import wrapperBrownBack from "../assets/seeWrapper/classic/wrapperBrownBack.png";
+import wrapperBlueBack from "../assets/seeWrapper/classic/wrapperBlueBack.png";
+
+import wrapperEastBack from "../assets/seeWrapper/unique/wrapperEastBack.png";
+import wrapperWestBack from "../assets/seeWrapper/unique/wrapperWestBack.png";
+import wrapperBlackBack from "../assets/seeWrapper/unique/wrapperBlackBack.png";
+
+{/* 꽃다발 앞덮개 */}
+import wrapperPinkFront from "../assets/seeWrapper/classic/wrapperPinkFront.png";
+import wrapperYellowFront from "../assets/seeWrapper/classic/wrapperYellowFront.png";
+import wrapperWhiteFront from "../assets/seeWrapper/classic/wrapperWhiteFront.png";
+import wrapperPurpleFront from "../assets/seeWrapper/classic/wrapperPurpleFront.png";
+import wrapperGreenFront from "../assets/seeWrapper/classic/wrapperGreenFront.png";
+import wrapperBrownFront from "../assets/seeWrapper/classic/wrapperBrownFront.png";
+import wrapperBlueFront from "../assets/seeWrapper/classic/wrapperBlueFront.png";
+
+import wrapperEastFront from "../assets/seeWrapper/unique/wrapperEastFront.png";
+import wrapperWestFront from "../assets/seeWrapper/unique/wrapperWestFront.png";
+import wrapperBlackFront from "../assets/seeWrapper/unique/wrapperBlackFront.png";
+
 const flowers = {
-  장미: [roseRed, rosePink, roseWhite, rosePurple, roseBlue, roseBlack],
+  장미: [roseRed, rosePink, roseWhite, roseBlue, roseBlack],
+  튤립: [tulipRed, tulipYellow],
   거베라: [gerbaraPink, gerbaraYellow, gerbaraBlue],
-  리시안셔스: [lisianthusPink],
-  폼폰: [pomponBlue, pomponYellow],
+  리시안셔스: [lisianthusPink, lisianthusPurple],
+  폼폼국화: [pomponBlue, pomponYellow],
   라벤더: [lavenderPurple],
   카네이션: [canationPink],
 };
 
-const flowerPositions = [
+const classicFlowerPositions = [
   { left: "50%", top: "0%", rotate: "-10deg" },
   { left: "36%", top: "6%", rotate: "-25deg" },
   { left: "64%", top: "6%", rotate: "20deg" },
@@ -34,9 +62,55 @@ const flowerPositions = [
   { left: "57%", top: "18%", rotate: "12deg" },
 ];
 
-export default function CompleteFlower() {
-  const [selectedFlowers, setSelectedFlowers] = useState<string[]>([]);
+const uniqueFlowerPositions = [
+  { left: "53%", top: "6%", rotate: "-5deg" },
+  { left: "43%", top: "11%", rotate: "-18deg" },
+  { left: "62%", top: "11%", rotate: "18deg" },
+  { left: "48%", top: "20%", rotate: "-6deg" },
+  { left: "58%", top: "20%", rotate: "8deg" },
+];
 
+const uniqueWrapperNames = ["동양풍", "서양풍", "검정색"];
+
+const wrapperBackImages: Record<string, string> = {
+  분홍색: wrapperPinkBack,
+  노란색: wrapperYellowBack,
+  하얀색: wrapperWhiteBack,
+  보라색: wrapperPurpleBack,
+  연두색: wrapperGreenBack,
+  갈색: wrapperBrownBack,
+  하늘색: wrapperBlueBack,
+  동양풍: wrapperEastBack,
+  서양풍: wrapperWestBack,
+  검정색: wrapperBlackBack,
+};
+
+const wrapperFrontImages: Record<string, string> = {
+  분홍색: wrapperPinkFront,
+  노란색: wrapperYellowFront,
+  하얀색: wrapperWhiteFront,
+  보라색: wrapperPurpleFront,
+  연두색: wrapperGreenFront,
+  갈색: wrapperBrownFront,
+  하늘색: wrapperBlueFront,
+
+  동양풍: wrapperEastFront,
+  서양풍: wrapperWestFront,
+  검정색: wrapperBlackFront,
+};
+
+export default function CompleteFlower({
+  selectedColor,
+}: {
+  selectedColor: string;
+}) {
+  const [selectedFlowers, setSelectedFlowers] = useState<string[]>([]);
+  const isUniqueWrapper = uniqueWrapperNames.includes(selectedColor);
+
+  const currentFlowerPositions = isUniqueWrapper
+    ? uniqueFlowerPositions
+    : classicFlowerPositions;
+  
   const handleAddFlower = (flower: string) => {
     if (selectedFlowers.length >= 5) return;
 
@@ -45,6 +119,12 @@ export default function CompleteFlower() {
 
   const handleReset = () => {
     setSelectedFlowers([]);
+  };
+
+  const handleRemoveFlower = (removeIndex: number) => {
+    setSelectedFlowers((prev) =>
+      prev.filter((_, index) => index !== removeIndex)
+    );
   };
 
   return (
@@ -66,21 +146,32 @@ export default function CompleteFlower() {
               <img
                 key={index}
                 src={flower}
+                onClick={() => handleRemoveFlower(index)}
                 alt="선택한 꽃"
-                className="absolute w-30 h-30 object-contain z-30"
+                className={`
+                  absolute object-contain z-20 cursor-pointer
+                  ${isUniqueWrapper ? "w-28 h-28" : "w-40 h-40"}
+                `}
                 style={{
-                  left: flowerPositions[index].left,
-                  top: flowerPositions[index].top,
-                  transform: `translateX(-50%) rotate(${flowerPositions[index].rotate})`,
+                  left: currentFlowerPositions[index].left,
+                  top: currentFlowerPositions[index].top,
+                  transform: `translateX(-50%) rotate(${currentFlowerPositions[index].rotate})`,
                 }}
               />
             ))}
 
-            {/* 포장지 */}
+            {/* 포장지 뒷면 */}
             <img
-              src={wrapperBack}
+              src={wrapperBackImages[selectedColor]}
+              alt="포장지 뒷면"
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[280px] z-10"
+            />
+
+            {/* 포장지 앞면 */}
+            <img
+              src={wrapperFrontImages[selectedColor]}
               alt="포장지 앞면"
-              className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[280px] z-20"
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[280px] z-30 pointer-events-none"
             />
           </div>
         </div>
@@ -96,7 +187,8 @@ export default function CompleteFlower() {
           }
         >
           <p className="text-sm text-pink-3 mb-4">
-            꽃을 클릭하거나 꽃다발로 드래그해주세요
+            꽃을 클릭하여 꽃다발에 추가해주세요<br/>
+            ※완성된 꽃다발에서 꽃을 클릭하여 취소할 수 있어요!
           </p>
 
           <div className="max-h-[360px] overflow-y-auto pr-2">
