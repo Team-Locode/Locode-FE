@@ -18,7 +18,9 @@ import rosePink from "../assets/flowers/rosePink.png";
 import roseRed from "../assets/flowers/roseRed.png";
 import roseWhite from "../assets/flowers/roseWhite.png";
 
-{/* 꽃다발 뒷배경 */}
+{
+  /* 꽃다발 뒷배경 */
+}
 import wrapperPinkBack from "../assets/seeWrapper/classic/wrapperPinkBack.png";
 import wrapperYellowBack from "../assets/seeWrapper/classic/wrapperYellowBack.png";
 import wrapperWhiteBack from "../assets/seeWrapper/classic/wrapperWhiteBack2.png";
@@ -31,7 +33,9 @@ import wrapperEastBack from "../assets/seeWrapper/unique/wrapperEastBack.png";
 import wrapperWestBack from "../assets/seeWrapper/unique/wrapperWestBack.png";
 import wrapperBlackBack from "../assets/seeWrapper/unique/wrapperBlackBack.png";
 
-{/* 꽃다발 앞덮개 */}
+{
+  /* 꽃다발 앞덮개 */
+}
 import wrapperPinkFront from "../assets/seeWrapper/classic/wrapperPinkFront.png";
 import wrapperYellowFront from "../assets/seeWrapper/classic/wrapperYellowFront.png";
 import wrapperWhiteFront from "../assets/seeWrapper/classic/wrapperWhiteFront.png";
@@ -44,7 +48,7 @@ import wrapperEastFront from "../assets/seeWrapper/unique/wrapperEastFront.png";
 import wrapperWestFront from "../assets/seeWrapper/unique/wrapperWestFront.png";
 import wrapperBlackFront from "../assets/seeWrapper/unique/wrapperBlackFront.png";
 
-const flowers = {
+export const flowers = {
   장미: [roseRed, rosePink, roseWhite, roseBlue, roseBlack],
   튤립: [tulipRed, tulipYellow],
   거베라: [gerbaraPink, gerbaraYellow, gerbaraBlue],
@@ -54,7 +58,7 @@ const flowers = {
   카네이션: [canationPink],
 };
 
-const classicFlowerPositions = [
+export const classicFlowerPositions = [
   { left: "50%", top: "0%", rotate: "-10deg" },
   { left: "36%", top: "6%", rotate: "-25deg" },
   { left: "64%", top: "6%", rotate: "20deg" },
@@ -62,7 +66,7 @@ const classicFlowerPositions = [
   { left: "57%", top: "18%", rotate: "12deg" },
 ];
 
-const uniqueFlowerPositions = [
+export const uniqueFlowerPositions = [
   { left: "53%", top: "6%", rotate: "-5deg" },
   { left: "43%", top: "11%", rotate: "-18deg" },
   { left: "62%", top: "11%", rotate: "18deg" },
@@ -70,9 +74,9 @@ const uniqueFlowerPositions = [
   { left: "58%", top: "20%", rotate: "8deg" },
 ];
 
-const uniqueWrapperNames = ["동양풍", "서양풍", "검정색"];
+export const uniqueWrapperNames = ["동양풍", "서양풍", "검정색"];
 
-const wrapperBackImages: Record<string, string> = {
+export const wrapperBackImages: Record<string, string> = {
   분홍색: wrapperPinkBack,
   노란색: wrapperYellowBack,
   하얀색: wrapperWhiteBack,
@@ -85,7 +89,7 @@ const wrapperBackImages: Record<string, string> = {
   검정색: wrapperBlackBack,
 };
 
-const wrapperFrontImages: Record<string, string> = {
+export const wrapperFrontImages: Record<string, string> = {
   분홍색: wrapperPinkFront,
   노란색: wrapperYellowFront,
   하얀색: wrapperWhiteFront,
@@ -110,7 +114,7 @@ export default function CompleteFlower({
   const currentFlowerPositions = isUniqueWrapper
     ? uniqueFlowerPositions
     : classicFlowerPositions;
-  
+
   const handleAddFlower = (flower: string) => {
     if (selectedFlowers.length >= 5) return;
 
@@ -123,7 +127,7 @@ export default function CompleteFlower({
 
   const handleRemoveFlower = (removeIndex: number) => {
     setSelectedFlowers((prev) =>
-      prev.filter((_, index) => index !== removeIndex)
+      prev.filter((_, index) => index !== removeIndex),
     );
   };
 
@@ -187,7 +191,8 @@ export default function CompleteFlower({
           }
         >
           <p className="text-sm text-pink-3 mb-4">
-            꽃을 클릭하여 꽃다발에 추가해주세요<br/>
+            꽃을 클릭하여 꽃다발에 추가해주세요
+            <br />
             ※완성된 꽃다발에서 꽃을 클릭하여 취소할 수 있어요!
           </p>
 

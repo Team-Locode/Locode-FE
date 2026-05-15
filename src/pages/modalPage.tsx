@@ -20,7 +20,12 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
     summary: {
       purpose: "엄마를 위한 꽃다발",
       style: "유니크한 형태",
-      flowers: [], // 여기에 꽃 이미지 URL 배열이 들어옴
+      flowers: [
+        {
+          type: "ROSE",
+          color: "RED",
+        },
+      ], // 여기에 꽃 이미지 URL 배열이 들어옴
       paper: "분홍색",
       colorTone: ["화이트/내추럴 계열"],
     },
@@ -30,7 +35,7 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
   const formattedSummary = `[플라워토브 꽃다발 요청]
 🎂 받는 분: ${displayData.summary.purpose}
 💐 스타일: ${displayData.summary.style}
-🌸 꽃 구성: ${Array.isArray(displayData.summary.flowers) ? displayData.summary.flowers.join(", ") : displayData.summary.flowers}
+🌸 꽃 구성: ${Array.isArray(displayData.summary.flowers.type) ? displayData.summary.flowers.join(", ") : displayData.summary.flowers}
 🎀 포장지: ${displayData.summary.paper}
 🎨 컬러톤: ${displayData.summary.colorTone}
 
