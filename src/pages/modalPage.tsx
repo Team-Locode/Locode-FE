@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import SummaryBox from "../component/SummaryBox";
 import {
   FaCopy,
@@ -7,27 +6,33 @@ import {
   FaInstagram,
 } from "react-icons/fa"; // react-icons 설치 필요
 import PortfolioComponent from "../component/portfolioComponent";
+import BouquetViewer from "../component/BoquetViewer";
 
 //TODO:네이버 예약,하단 네이버 버튼
 // 사장님한테 링크 받아서 해야함(아니면 예약에서 튕김)
-export default function ModalPage() {
-  const navigate = useNavigate();
-
-  const data = {
-    target: "엄마를 위한 꽃다발",
-    style: "유니크한 형태",
-    flowers: "장미(하양)",
-    wrapping: "분홍색",
-    tone: "화이트/내추럴 계열",
+type ModalPageProps = {
+  onClose: () => void;
+  bouquetData: any; // API 응답 데이터를 받을 Props 추가
+};
+export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
+  // 만약 props로 데이터가 안 넘어왔을 때를 대비한 기본값(테스트용)
+  const displayData = bouquetData || {
+    summary: {
+      purpose: "엄마를 위한 꽃다발",
+      style: "유니크한 형태",
+      flowers: [], // 여기에 꽃 이미지 URL 배열이 들어옴
+      paper: "분홍색",
+      colorTone: ["화이트/내추럴 계열"],
+    },
   };
 
   // 요약에 들어갈 실제 내용 (예시 데이터)
   const formattedSummary = `[플라워토브 꽃다발 요청]
-🎂 받는 분: ${data.target}
-💐 스타일: ${data.style}
-🌸 꽃 구성: ${data.flowers}
-🎀 포장지: ${data.wrapping}
-🎨 컬러톤: ${data.tone}
+🎂 받는 분: ${displayData.summary.purpose}
+💐 스타일: ${displayData.summary.style}
+🌸 꽃 구성: ${Array.isArray(displayData.summary.flowers) ? displayData.summary.flowers.join(", ") : displayData.summary.flowers}
+🎀 포장지: ${displayData.summary.paper}
+🎨 컬러톤: ${displayData.summary.colorTone}
 
 ※ 커스터마이저로 제작된 이미지입니다.`;
 
@@ -51,7 +56,7 @@ export default function ModalPage() {
         {/* 헤더: 닫기 버튼 */}
         <div className="flex justify-between items-center p-6 border-b border-pink-2">
           <h2 className="text-xl font-bold">꽃다발 완성! 🎉</h2>
-          <button onClick={() => navigate(-1)} className="text-2xl">
+          <button onClick={onClose} className="text-2xl">
             ×
           </button>
         </div>
@@ -59,11 +64,10 @@ export default function ModalPage() {
         <div className="p-6">
           <div className="bg-content-area rounded-2xl p-10 flex justify-center mb-6">
             {/* 여기에 꽃다발 이미지 */}
-            <div className="w-40 h-40 bg-pink-2 rounded-t-full relative">
-              <span className="absolute -top-10 left-1/2 -translate-x-1/2">
-                🌸
-              </span>
-            </div>
+            <BouquetViewer
+              selectedFlowers={displayData.summary.flowers}
+              selectedColor={displayData.summary.paper}
+            />
           </div>
 
           <div className="text-center">

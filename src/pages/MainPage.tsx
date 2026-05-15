@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Card from "../component/Card";
 import { Outlet } from "react-router-dom";
 import CompleteFlower from "../component/CompleteFlower";
 import ColorWrapper from "../component/ColorWrapper";
@@ -14,7 +15,8 @@ export default function MainPage() {
     <div className="flex flex-col items-center w-full p-8">
       <Outlet />
       <h2 className="text-pink-4 text-2xl font-bold mb-4 text-center">
-        🤍 소중한 사람을 위한 <br/>꽃다발 만들기
+        🤍 소중한 사람을 위한 <br />
+        꽃다발 만들기
       </h2>
       <div className="flex items-center gap-2 text-lg font-medium text-pink-4">
         {/* 인물 입력창 (밑줄 포인트) */}
@@ -43,24 +45,24 @@ export default function MainPage() {
 
       {/* 카드 섹션 - 포장지컬러 */}
       <ColorWrapper
-      selectedStyle={selectedStyle}
-      selectedColor={selectedColor}
-      setSelectedColor={setSelectedColor}
-    />
+        selectedStyle={selectedStyle}
+        selectedColor={selectedColor}
+        setSelectedColor={setSelectedColor}
+      />
 
       {/* 카드 섹션 - 꽃 완성 */}
       <CompleteFlower selectedColor={selectedColor} />
 
       {/* 안내문 */}
       <div className="box-border w-[300px] min-w-[340px] flex-shrink-0 rounded-[25px] border border-pink-2 bg-notice p-5 flex items-start gap-6">
-
         <div className="flex flex-col gap-1">
           <h2 className="text-base font-semibold text-pink-4">
-            ❤️  플라워토브와 함께
+            ❤️ 플라워토브와 함께
           </h2>
 
           <p className="text-xs text-pink-3 ml-6">
-            특별한 날, 소중한 사람에게 마음을 전하세요. 완성된 꽃다발 이미지로 상담을 시작할 수 있어요.
+            특별한 날, 소중한 사람에게 마음을 전하세요. 완성된 꽃다발 이미지로
+            상담을 시작할 수 있어요.
           </p>
         </div>
       </div>
