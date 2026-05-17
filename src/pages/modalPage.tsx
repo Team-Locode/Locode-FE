@@ -4,9 +4,14 @@ import {
   FaCalendarCheck,
   FaComment,
   FaInstagram,
+  FaImage,
 } from "react-icons/fa"; // react-icons 설치 필요
 import PortfolioComponent from "../component/portfolioComponent";
 import BouquetViewer from "../component/BoquetViewer";
+import { useRef } from "react";
+import { toPng } from "html-to-image";
+
+import StoryCanvas from "../component/StoryCanvas";
 
 //TODO:네이버 예약,하단 네이버 버튼
 // 사장님한테 링크 받아서 해야함(아니면 예약에서 튕김)
@@ -31,6 +36,11 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
     },
   };
 
+  // 꽃 이름을 문자열로 가공 (텍스트 주문서용)
+  const flowerNames = displayData.summary.flowers
+    .map((f: any) => `${f.type}(${f.color})`)
+    .join(", ");
+
   // 요약에 들어갈 실제 내용 (예시 데이터)
   const formattedSummary = `[플라워토브 꽃다발 요청]
 🎂 받는 분: ${displayData.summary.purpose}
@@ -52,8 +62,49 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
     }
   };
 
+  // 💡 인스타 스토리용 숨겨진 영역을 가리킬 Ref
+  const storyRef = useRef<HTMLDivElement>(null);
+
+  // 💡 인스타 스토리 이미지 다운로드 함수
+  const handleDownloadStoryImage = async () => {
+    if (!storyRef.current) return;
+
+    try {
+      // 폰트가 완전히 로드될 때까지 대기
+      await document.fonts.ready;
+
+      // 이미지가 제자리에 렌더링될 수 있도록 300ms 대기 후 캡처
+      const dataUrl = await new Promise<string>((resolve, reject) => {
+        setTimeout(async () => {
+          try {
+            const url = await toPng(storyRef.current!, {
+              cacheBust: true,
+              // 💡 컴포넌트에서 이미 크기를 키웠으므로 화질 개선용으로 2~3배만 고정해줍니다.
+              pixelRatio: 2,
+              skipFonts: true,
+            });
+            resolve(url);
+          } catch (err) {
+            reject(err);
+          }
+        }, 300);
+      });
+
+      // 가짜 a 태그 생성 후 다운로드 실행
+      const link = document.createElement("a");
+      link.download = `story_${displayData.summary.purpose || "꽃다발"}.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (error) {
+      console.error("스토리 이미지 생성 중 오류 발생:", error);
+      alert("이미지 저장에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+      {/* 🔥 [💥 중요] 인스타그램 스토리용 9:16 숨겨진 캔버스 영역 */}
+      <StoryCanvas ref={storyRef} displayData={displayData} />
       <div
         className="relative w-full max-w-md bg-pink rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
@@ -99,6 +150,12 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
           {/* 주문/상담하기 섹션 */}
           <div className="space-y-3">
             <p className="font-bold pt-4 text-gray-800 ml-1">주문/상담하기</p>
+            <button
+              onClick={handleDownloadStoryImage}
+              className="w-full bg-[#ff62b3] text-white flex items-center justify-center gap-2 py-4 border border-gray-200 rounded-2xl text-sm font-semibold hover:bg-gray-50 transition"
+            >
+              <FaImage className="text-white" /> 꽃다발 이미지 저장하기
+            </button>
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={() =>
