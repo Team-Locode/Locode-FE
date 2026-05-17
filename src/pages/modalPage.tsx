@@ -152,7 +152,7 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
             <p className="font-bold pt-4 text-gray-800 ml-1">주문/상담하기</p>
             <button
               onClick={handleDownloadStoryImage}
-              className="w-full bg-[#ff62b3] text-white flex items-center justify-center gap-2 py-4 border border-gray-200 rounded-2xl text-sm font-semibold hover:bg-gray-50 transition"
+              className="w-full bg-[#ff62b3] text-white flex items-center justify-center gap-2 py-4 border border-gray-200 rounded-2xl text-sm font-semibold hover:opacity-90 transition"
             >
               <FaImage className="text-white" /> 꽃다발 이미지 저장하기
             </button>
