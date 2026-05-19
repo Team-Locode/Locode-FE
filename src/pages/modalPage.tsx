@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import SummaryBox from "../component/SummaryBox";
 import {
   FaCopy,
@@ -10,8 +9,13 @@ import PortfolioComponent from "../component/portfolioComponent";
 
 //TODO:네이버 예약,하단 네이버 버튼
 // 사장님한테 링크 받아서 해야함(아니면 예약에서 튕김)
-export default function ModalPage() {
-  const navigate = useNavigate();
+type ModalPageProps = {
+  onClose: () => void;
+};
+
+export default function ModalPage({
+  onClose,
+}: ModalPageProps) {
 
   const data = {
     target: "엄마를 위한 꽃다발",
@@ -51,7 +55,7 @@ export default function ModalPage() {
         {/* 헤더: 닫기 버튼 */}
         <div className="flex justify-between items-center p-6 border-b border-pink-2">
           <h2 className="text-xl font-bold">꽃다발 완성! 🎉</h2>
-          <button onClick={() => navigate(-1)} className="text-2xl">
+          <button onClick={onClose} className="text-2xl">
             ×
           </button>
         </div>
