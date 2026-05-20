@@ -10,53 +10,59 @@ import PortfolioComponent from "../component/portfolioComponent";
 import BouquetViewer from "../component/BoquetViewer";
 import { useRef } from "react";
 import { toPng } from "html-to-image";
-
-import StoryCanvas from "../component/StoryCanvas";
+import { StoryCanvas } from "../component/StoryCanvas";
 
 //TODO:네이버 예약,하단 네이버 버튼
 // 사장님한테 링크 받아서 해야함(아니면 예약에서 튕김)
+// MainPage에서 정의한 인터페이스와 동일하게 props 지정
 type ModalPageProps = {
   onClose: () => void;
-  bouquetData: any; // API 응답 데이터를 받을 Props 추가
+  bouquetData: any;
 };
 export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
-  // 만약 props로 데이터가 안 넘어왔을 때를 대비한 기본값(테스트용)
+  // 백엔드 실제 응답 구조에 맞춘 기본값 분기 처리
   const displayData = bouquetData || {
+    bouquetId: 3,
     summary: {
       purpose: "엄마를 위한 꽃다발",
-      style: "유니크한 형태",
-      flowers: [
-        {
-          type: "ROSE",
-          color: "RED",
-        },
-      ], // 여기에 꽃 이미지 URL 배열이 들어옴
-      paper: "분홍색",
+      style: "클래식",
+      flowers: ["장미(레드)", "장미(블랙)", "장미(옐로우)"],
+      paper: "분홍",
       colorTone: ["컬러풀"],
     },
   };
 
-  // 꽃 이름을 문자열로 가공 (텍스트 주문서용)
-  const flowerNames = displayData.summary.flowers
-    .map((f: any) => `${f.type}(${f.color})`)
-    .join(", ");
+  // 🎯 서버에서 한글 문자열 배열로 오기 때문에 바로 join 처리
+  const flowerNames = Array.isArray(displayData.summary.flowers)
+    ? displayData.summary.flowers.join(", ")
+    : "";
 
-  // 요약에 들어갈 실제 내용 (예시 데이터)
+  // 🎯 "분홍" 뒤에 "색"을 붙여서 wrapperBackImages 키값("분홍색")과 매칭 보정
+  const paperColor = displayData.summary.paper?.endsWith("색")
+    ? displayData.summary.paper
+    : `${displayData.summary.paper}색`;
+
+  const recipientName = displayData.summary.purpose
+    ?.replace(/[을를]?\s*위한\s*꽃다발/g, "")
+    .trim();
+
+  // 요약에 들어갈 실제 주문서 텍스트
   const formattedSummary = `[플라워토브 꽃다발 요청]
-🎂 받는 분: ${displayData.summary.purpose}
+🎂 받는 분: ${recipientName}
 💐 스타일: ${displayData.summary.style}
 🌸 꽃 구성: ${flowerNames}
-🎀 포장지: ${displayData.summary.paper}
-🎨 컬러톤: ${displayData.summary.colorTone}
+🎀 포장지: ${paperColor}
+🎨 컬러톤: ${displayData.summary.colorTone?.join(", ")}
 
 ※ 커스터마이저로 제작된 이미지입니다.`;
 
-  //복사하기 함수
+  // 복사하기 함수
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(formattedSummary);
-      alert("주문 내용이 클립보드에 복사되었습니다! 🎉");
-      // 만약 토스트 메시지 라이브러리를 쓰신다면 alert 대신 쓰시면 더 예뻐요.
+      alert(
+        "주문 내용이 클립보드에 복사되었습니다! 🎉\n카톡이나 네이버 예약 시 붙여넣어 주세요.",
+      );
     } catch (err) {
       alert("복사에 실패했습니다. 다시 시도해주세요.");
     }
@@ -127,7 +133,9 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
           </div>
 
           <div className="text-center">
-            <h3 className="text-lg font-semibold mb-4">엄마를 위한 꽃다발</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              {displayData.summary.purpose || "나만의 꽃다발"}
+            </h3>
             <div className="bg-orange-50 text-orange-600 text-sm p-3 rounded-xl mb-6">
               ⚠️ 실제와는 다를 수 있음. 자세한 요구는 상담 필요!!
             </div>

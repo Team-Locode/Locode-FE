@@ -75,10 +75,10 @@ const flowers: Record<string, FlowerItem[]> = {
     { image: pomponYellow, type: "POMPON", color: "YELLOW" },
   ],
   라벤더: [{ image: lavenderPurple, type: "LAVENDER", color: "PURPLE" }],
-  카네이션: [{ image: canationPink, type: "CANATION", color: "PINK" }],
+  카네이션: [{ image: canationPink, type: "CARNATION", color: "PINK" }],
 };
 
-const classicFlowerPositions = [
+export const classicFlowerPositions = [
   { left: "50%", top: "3%", rotate: "-10deg" },
   { left: "36%", top: "6%", rotate: "-25deg" },
   { left: "64%", top: "6%", rotate: "20deg" },
@@ -86,7 +86,7 @@ const classicFlowerPositions = [
   { left: "55%", top: "18%", rotate: "12deg" },
 ];
 
-const uniqueFlowerPositions = [
+export const uniqueFlowerPositions = [
   { left: "55%", top: "6%", rotate: "-5deg" },
   { left: "45%", top: "10%", rotate: "-18deg" },
   { left: "62%", top: "11%", rotate: "18deg" },
@@ -117,11 +117,21 @@ export const wrapperFrontImages: Record<string, string> = {
   연두색: wrapperGreenFront,
   갈색: wrapperBrownFront,
   하늘색: wrapperBlueFront,
-
   동양풍: wrapperEastFront,
   서양풍: wrapperWestFront,
   검정색: wrapperBlackFront,
 };
+// 백엔드 응답 Body와 똑같은 구조로 인터페이스 정의
+export interface BouquetResponse {
+  bouquetId: number;
+  summary: {
+    purpose: string;
+    style: string;
+    flowers: string[]; // ["장미(레드)", "장미(블랙)", ...]
+    paper: string; // "분홍"
+    colorTone: string[]; // ["컬러풀"]
+  };
+}
 
 export default function CompleteFlower({
   selectedColor,
@@ -130,7 +140,7 @@ export default function CompleteFlower({
 }: {
   selectedColor: string;
   person: string;
-  onComplete: () => void;
+  onComplete: (data: BouquetResponse) => void;
 }) {
   const [selectedFlowers, setSelectedFlowers] = useState<FlowerItem[]>([]);
   const isUniqueWrapper = uniqueWrapperNames.includes(selectedColor);
@@ -162,10 +172,9 @@ export default function CompleteFlower({
     연두색: "CLASSIC_GREEN",
     갈색: "CLASSIC_BROWN",
     하늘색: "CLASSIC_SKY_BLUE",
-
     동양풍: "UNIQUE_ORIENTAL",
     서양풍: "UNIQUE_FRENCH_VINTAGE",
-    검정색: "CLASSIC_BLACK",
+    검정색: "UNIQUE_BLACK",
   };
 
   const handleComplete = async () => {
@@ -195,7 +204,7 @@ export default function CompleteFlower({
     console.log("response:", data);
 
     if (response.ok) {
-      onComplete();
+      onComplete(data);
     }
   };
 

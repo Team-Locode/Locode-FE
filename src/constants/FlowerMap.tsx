@@ -35,13 +35,13 @@ export const FLOWER_MAP: Record<string, Record<string, string>> = {
     BLUE: pomponBlue,
     YELLOW: pomponYellow,
   },
-  CANATION: {
+  CARNATION: {
     PINK: canationPink,
   },
-  GERBARA: {
+  GERBERA: {
     BLUE: gerbaraBlue,
     PINK: gerbaraPink,
-    YEELOW: gerbaraYellow,
+    YELLOW: gerbaraYellow,
   },
   LAVENDER: {
     PURPLE: lavenderPurple,
