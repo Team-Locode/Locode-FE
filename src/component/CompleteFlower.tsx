@@ -18,7 +18,9 @@ import rosePink from "../assets/flowers/rosePink.png";
 import roseRed from "../assets/flowers/roseRed.png";
 import roseWhite from "../assets/flowers/roseWhite.png";
 
-{/* 꽃다발 뒷배경 */}
+{
+  /* 꽃다발 뒷배경 */
+}
 import wrapperPinkBack from "../assets/seeWrapper/classic/wrapperPinkBack.png";
 import wrapperYellowBack from "../assets/seeWrapper/classic/wrapperYellowBack.png";
 import wrapperWhiteBack from "../assets/seeWrapper/classic/wrapperWhiteBack2.png";
@@ -31,7 +33,9 @@ import wrapperEastBack from "../assets/seeWrapper/unique/wrapperEastBack.png";
 import wrapperWestBack from "../assets/seeWrapper/unique/wrapperWestBack.png";
 import wrapperBlackBack from "../assets/seeWrapper/unique/wrapperBlackBack.png";
 
-{/* 꽃다발 앞덮개 */}
+{
+  /* 꽃다발 앞덮개 */
+}
 import wrapperPinkFront from "../assets/seeWrapper/classic/wrapperPinkFront.png";
 import wrapperYellowFront from "../assets/seeWrapper/classic/wrapperYellowFront.png";
 import wrapperWhiteFront from "../assets/seeWrapper/classic/wrapperWhiteFront.png";
@@ -47,38 +51,34 @@ import { FlowerItem } from "../types/flowers";
 
 const flowers: Record<string, FlowerItem[]> = {
   장미: [
-    {image: roseRed, type: "ROSE", color: "RED"},
-    {image: rosePink, type: "ROSE", color: "PINK"},
-    {image: roseWhite, type: "ROSE", color: "WHITE"},
-    {image: roseBlue, type: "ROSE", color: "BLUE"},
-    {image: roseBlack, type: "ROSE", color: "BLACK"},
+    { image: roseRed, type: "ROSE", color: "RED" },
+    { image: rosePink, type: "ROSE", color: "PINK" },
+    { image: roseWhite, type: "ROSE", color: "WHITE" },
+    { image: roseBlue, type: "ROSE", color: "BLUE" },
+    { image: roseBlack, type: "ROSE", color: "BLACK" },
   ],
   튤립: [
-    {image: tulipRed, type: "TULIP", color: "RED"},
-    {image: tulipYellow, type: "TULIP", color: "YELLOW"},
+    { image: tulipRed, type: "TULIP", color: "RED" },
+    { image: tulipYellow, type: "TULIP", color: "YELLOW" },
   ],
   거베라: [
-    {image: gerbaraPink, type: "GERBERA", color: "PINK"},
-    {image: gerbaraYellow, type: "GERBERA", color: "YELLOW"},
-    {image: gerbaraBlue, type: "GERBERA", color: "BLUE"},
+    { image: gerbaraPink, type: "GERBERA", color: "PINK" },
+    { image: gerbaraYellow, type: "GERBERA", color: "YELLOW" },
+    { image: gerbaraBlue, type: "GERBERA", color: "BLUE" },
   ],
   리시안셔스: [
-    {image: lisianthusPink, type: "LISIANTHUS", color: "PINK"},
-    {image: lisianthusPurple, type: "LISIANTHUS", color: "PURPLE"},
+    { image: lisianthusPink, type: "LISIANTHUS", color: "PINK" },
+    { image: lisianthusPurple, type: "LISIANTHUS", color: "PURPLE" },
   ],
   폼폼국화: [
-    {image: pomponBlue, type: "POMPON", color: "BLUE"},
-    {image: pomponYellow, type: "POMPON", color: "YELLOW"},
+    { image: pomponBlue, type: "POMPON", color: "BLUE" },
+    { image: pomponYellow, type: "POMPON", color: "YELLOW" },
   ],
-  라벤더: [
-    {image: lavenderPurple, type: "LAVENDER", color: "PURPLE"},
-  ],
-  카네이션: [
-    {image: canationPink, type: "CANATION", color: "PINK"},
-  ],
+  라벤더: [{ image: lavenderPurple, type: "LAVENDER", color: "PURPLE" }],
+  카네이션: [{ image: canationPink, type: "CARNATION", color: "PINK" }],
 };
 
-const classicFlowerPositions = [
+export const classicFlowerPositions = [
   { left: "50%", top: "3%", rotate: "-10deg" },
   { left: "36%", top: "6%", rotate: "-25deg" },
   { left: "64%", top: "6%", rotate: "20deg" },
@@ -86,7 +86,7 @@ const classicFlowerPositions = [
   { left: "55%", top: "18%", rotate: "12deg" },
 ];
 
-const uniqueFlowerPositions = [
+export const uniqueFlowerPositions = [
   { left: "55%", top: "6%", rotate: "-5deg" },
   { left: "45%", top: "10%", rotate: "-18deg" },
   { left: "62%", top: "11%", rotate: "18deg" },
@@ -94,9 +94,9 @@ const uniqueFlowerPositions = [
   { left: "58%", top: "20%", rotate: "8deg" },
 ];
 
-const uniqueWrapperNames = ["동양풍", "서양풍", "검정색"];
+export const uniqueWrapperNames = ["동양풍", "서양풍", "검정색"];
 
-const wrapperBackImages: Record<string, string> = {
+export const wrapperBackImages: Record<string, string> = {
   분홍색: wrapperPinkBack,
   노란색: wrapperYellowBack,
   하얀색: wrapperWhiteBack,
@@ -109,7 +109,7 @@ const wrapperBackImages: Record<string, string> = {
   검정색: wrapperBlackBack,
 };
 
-const wrapperFrontImages: Record<string, string> = {
+export const wrapperFrontImages: Record<string, string> = {
   분홍색: wrapperPinkFront,
   노란색: wrapperYellowFront,
   하얀색: wrapperWhiteFront,
@@ -117,11 +117,21 @@ const wrapperFrontImages: Record<string, string> = {
   연두색: wrapperGreenFront,
   갈색: wrapperBrownFront,
   하늘색: wrapperBlueFront,
-
   동양풍: wrapperEastFront,
   서양풍: wrapperWestFront,
   검정색: wrapperBlackFront,
 };
+// 백엔드 응답 Body와 똑같은 구조로 인터페이스 정의
+export interface BouquetResponse {
+  bouquetId: number;
+  summary: {
+    purpose: string;
+    style: string;
+    flowers: string[]; // ["장미(레드)", "장미(블랙)", ...]
+    paper: string; // "분홍"
+    colorTone: string[]; // ["컬러풀"]
+  };
+}
 
 export default function CompleteFlower({
   selectedColor,
@@ -130,7 +140,7 @@ export default function CompleteFlower({
 }: {
   selectedColor: string;
   person: string;
-  onComplete: () => void;
+  onComplete: (data: BouquetResponse) => void;
 }) {
   const [selectedFlowers, setSelectedFlowers] = useState<FlowerItem[]>([]);
   const isUniqueWrapper = uniqueWrapperNames.includes(selectedColor);
@@ -138,7 +148,7 @@ export default function CompleteFlower({
   const currentFlowerPositions = isUniqueWrapper
     ? uniqueFlowerPositions
     : classicFlowerPositions;
-  
+
   const handleAddFlower = (flower: FlowerItem) => {
     if (selectedFlowers.length >= 5) return;
     setSelectedFlowers((prev) => [...prev, flower]);
@@ -150,7 +160,7 @@ export default function CompleteFlower({
 
   const handleRemoveFlower = (removeIndex: number) => {
     setSelectedFlowers((prev) =>
-      prev.filter((_, index) => index !== removeIndex)
+      prev.filter((_, index) => index !== removeIndex),
     );
   };
 
@@ -162,10 +172,9 @@ export default function CompleteFlower({
     연두색: "CLASSIC_GREEN",
     갈색: "CLASSIC_BROWN",
     하늘색: "CLASSIC_SKY_BLUE",
-
     동양풍: "UNIQUE_ORIENTAL",
     서양풍: "UNIQUE_FRENCH_VINTAGE",
-    검정색: "CLASSIC_BLACK",
+    검정색: "UNIQUE_BLACK",
   };
 
   const handleComplete = async () => {
@@ -195,7 +204,7 @@ export default function CompleteFlower({
     console.log("response:", data);
 
     if (response.ok) {
-      onComplete();
+      onComplete(data);
     }
   };
 
@@ -271,7 +280,8 @@ export default function CompleteFlower({
           }
         >
           <p className="text-sm text-pink-3 mb-4">
-            꽃을 클릭하여 꽃다발에 추가해주세요<br/>
+            꽃을 클릭하여 꽃다발에 추가해주세요
+            <br />
             ※완성된 꽃다발에서 꽃을 클릭하여 취소할 수 있어요!
           </p>
 

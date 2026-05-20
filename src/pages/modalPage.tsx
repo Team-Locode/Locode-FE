@@ -4,50 +4,113 @@ import {
   FaCalendarCheck,
   FaComment,
   FaInstagram,
+  FaImage,
 } from "react-icons/fa"; // react-icons 설치 필요
 import PortfolioComponent from "../component/portfolioComponent";
+import BouquetViewer from "../component/BoquetViewer";
+import { useRef } from "react";
+import { toPng } from "html-to-image";
+import { StoryCanvas } from "../component/StoryCanvas";
 
 //TODO:네이버 예약,하단 네이버 버튼
 // 사장님한테 링크 받아서 해야함(아니면 예약에서 튕김)
+// MainPage에서 정의한 인터페이스와 동일하게 props 지정
 type ModalPageProps = {
   onClose: () => void;
+  bouquetData: any;
 };
-
-export default function ModalPage({
-  onClose,
-}: ModalPageProps) {
-
-  const data = {
-    target: "엄마를 위한 꽃다발",
-    style: "유니크한 형태",
-    flowers: "장미(하양)",
-    wrapping: "분홍색",
-    tone: "화이트/내추럴 계열",
+export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
+  // 백엔드 실제 응답 구조에 맞춘 기본값 분기 처리
+  const displayData = bouquetData || {
+    bouquetId: 3,
+    summary: {
+      purpose: "엄마를 위한 꽃다발",
+      style: "클래식",
+      flowers: ["장미(레드)", "장미(블랙)", "장미(옐로우)"],
+      paper: "분홍",
+      colorTone: ["컬러풀"],
+    },
   };
 
-  // 요약에 들어갈 실제 내용 (예시 데이터)
+  // 🎯 서버에서 한글 문자열 배열로 오기 때문에 바로 join 처리
+  const flowerNames = Array.isArray(displayData.summary.flowers)
+    ? displayData.summary.flowers.join(", ")
+    : "";
+
+  // 🎯 "분홍" 뒤에 "색"을 붙여서 wrapperBackImages 키값("분홍색")과 매칭 보정
+  const paperColor = displayData.summary.paper?.endsWith("색")
+    ? displayData.summary.paper
+    : `${displayData.summary.paper}색`;
+
+  const recipientName = displayData.summary.purpose
+    ?.replace(/[을를]?\s*위한\s*꽃다발/g, "")
+    .trim();
+
+  // 요약에 들어갈 실제 주문서 텍스트
   const formattedSummary = `[플라워토브 꽃다발 요청]
-🎂 받는 분: ${data.target}
-💐 스타일: ${data.style}
-🌸 꽃 구성: ${data.flowers}
-🎀 포장지: ${data.wrapping}
-🎨 컬러톤: ${data.tone}
+🎂 받는 분: ${recipientName}
+💐 스타일: ${displayData.summary.style}
+🌸 꽃 구성: ${flowerNames}
+🎀 포장지: ${paperColor}
+🎨 컬러톤: ${displayData.summary.colorTone?.join(", ")}
 
 ※ 커스터마이저로 제작된 이미지입니다.`;
 
-  //복사하기 함수
+  // 복사하기 함수
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(formattedSummary);
-      alert("주문 내용이 클립보드에 복사되었습니다! 🎉");
-      // 만약 토스트 메시지 라이브러리를 쓰신다면 alert 대신 쓰시면 더 예뻐요.
+      alert(
+        "주문 내용이 클립보드에 복사되었습니다! 🎉\n카톡이나 네이버 예약 시 붙여넣어 주세요.",
+      );
     } catch (err) {
       alert("복사에 실패했습니다. 다시 시도해주세요.");
     }
   };
 
+  // 💡 인스타 스토리용 숨겨진 영역을 가리킬 Ref
+  const storyRef = useRef<HTMLDivElement>(null);
+
+  // 💡 인스타 스토리 이미지 다운로드 함수
+  const handleDownloadStoryImage = async () => {
+    if (!storyRef.current) return;
+
+    try {
+      // 폰트가 완전히 로드될 때까지 대기
+      await document.fonts.ready;
+
+      // 이미지가 제자리에 렌더링될 수 있도록 300ms 대기 후 캡처
+      const dataUrl = await new Promise<string>((resolve, reject) => {
+        setTimeout(async () => {
+          try {
+            const url = await toPng(storyRef.current!, {
+              cacheBust: true,
+              // 💡 컴포넌트에서 이미 크기를 키웠으므로 화질 개선용으로 2~3배만 고정해줍니다.
+              pixelRatio: 2,
+              skipFonts: true,
+            });
+            resolve(url);
+          } catch (err) {
+            reject(err);
+          }
+        }, 300);
+      });
+
+      // 가짜 a 태그 생성 후 다운로드 실행
+      const link = document.createElement("a");
+      link.download = `story_${displayData.summary.purpose || "꽃다발"}.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (error) {
+      console.error("스토리 이미지 생성 중 오류 발생:", error);
+      alert("이미지 저장에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+      {/* 🔥 [💥 중요] 인스타그램 스토리용 9:16 숨겨진 캔버스 영역 */}
+      <StoryCanvas ref={storyRef} displayData={displayData} />
       <div
         className="relative w-full max-w-md bg-pink rounded-3xl shadow-2xl overflow-y-auto max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
@@ -63,15 +126,16 @@ export default function ModalPage({
         <div className="p-6">
           <div className="bg-content-area rounded-2xl p-10 flex justify-center mb-6">
             {/* 여기에 꽃다발 이미지 */}
-            <div className="w-40 h-40 bg-pink-2 rounded-t-full relative">
-              <span className="absolute -top-10 left-1/2 -translate-x-1/2">
-                🌸
-              </span>
-            </div>
+            <BouquetViewer
+              selectedFlowers={displayData.summary.flowers}
+              selectedColor={displayData.summary.paper}
+            />
           </div>
 
           <div className="text-center">
-            <h3 className="text-lg font-semibold mb-4">엄마를 위한 꽃다발</h3>
+            <h3 className="text-lg font-semibold mb-4">
+              {displayData.summary.purpose || "나만의 꽃다발"}
+            </h3>
             <div className="bg-orange-50 text-orange-600 text-sm p-3 rounded-xl mb-6">
               ⚠️ 실제와는 다를 수 있음. 자세한 요구는 상담 필요!!
             </div>
@@ -94,11 +158,17 @@ export default function ModalPage({
           {/* 주문/상담하기 섹션 */}
           <div className="space-y-3">
             <p className="font-bold pt-4 text-gray-800 ml-1">주문/상담하기</p>
+            <button
+              onClick={handleDownloadStoryImage}
+              className="w-full bg-[#ff62b3] text-white flex items-center justify-center gap-2 py-4 border border-gray-200 rounded-2xl text-sm font-semibold hover:opacity-90 transition"
+            >
+              <FaImage className="text-white" /> 꽃다발 이미지 저장하기
+            </button>
             <div className="grid grid-cols-2 gap-3">
               <button
                 onClick={() =>
                   window.open(
-                    "https://m.place.naver.com/place/1958826162/home", //네이버 예약,하단 네이버 버튼 사장님한테 링크 받아서 해야함(아니면 예약에서 튕김)
+                    "https://m.place.naver.com/place/1958826162/home", //네이버 예약,하단 네이버 버튼 사장님한테 링크 받아ㅇ 서 해야함(아니면 예약에서 튕김)
                     "_blank",
                     "noopener,noreferrer",
                   )
