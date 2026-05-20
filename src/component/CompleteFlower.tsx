@@ -49,71 +49,46 @@ import wrapperWestFront from "../assets/seeWrapper/unique/wrapperWestFront.png";
 import wrapperBlackFront from "../assets/seeWrapper/unique/wrapperBlackFront.png";
 import { FlowerItem } from "../types/flowers";
 
-<<<<<<< HEAD
-export const flowers = {
-  장미: [roseRed, rosePink, roseWhite, roseBlue, roseBlack],
-  튤립: [tulipRed, tulipYellow],
-  거베라: [gerbaraPink, gerbaraYellow, gerbaraBlue],
-  리시안셔스: [lisianthusPink, lisianthusPurple],
-  폼폼국화: [pomponBlue, pomponYellow],
-  라벤더: [lavenderPurple],
-  카네이션: [canationPink],
-};
-
-export const classicFlowerPositions = [
-  { left: "50%", top: "0%", rotate: "-10deg" },
-=======
 const flowers: Record<string, FlowerItem[]> = {
   장미: [
-    {image: roseRed, type: "ROSE", color: "RED"},
-    {image: rosePink, type: "ROSE", color: "PINK"},
-    {image: roseWhite, type: "ROSE", color: "WHITE"},
-    {image: roseBlue, type: "ROSE", color: "BLUE"},
-    {image: roseBlack, type: "ROSE", color: "BLACK"},
+    { image: roseRed, type: "ROSE", color: "RED" },
+    { image: rosePink, type: "ROSE", color: "PINK" },
+    { image: roseWhite, type: "ROSE", color: "WHITE" },
+    { image: roseBlue, type: "ROSE", color: "BLUE" },
+    { image: roseBlack, type: "ROSE", color: "BLACK" },
   ],
   튤립: [
-    {image: tulipRed, type: "TULIP", color: "RED"},
-    {image: tulipYellow, type: "TULIP", color: "YELLOW"},
+    { image: tulipRed, type: "TULIP", color: "RED" },
+    { image: tulipYellow, type: "TULIP", color: "YELLOW" },
   ],
   거베라: [
-    {image: gerbaraPink, type: "GERBERA", color: "PINK"},
-    {image: gerbaraYellow, type: "GERBERA", color: "YELLOW"},
-    {image: gerbaraBlue, type: "GERBERA", color: "BLUE"},
+    { image: gerbaraPink, type: "GERBERA", color: "PINK" },
+    { image: gerbaraYellow, type: "GERBERA", color: "YELLOW" },
+    { image: gerbaraBlue, type: "GERBERA", color: "BLUE" },
   ],
   리시안셔스: [
-    {image: lisianthusPink, type: "LISIANTHUS", color: "PINK"},
-    {image: lisianthusPurple, type: "LISIANTHUS", color: "PURPLE"},
+    { image: lisianthusPink, type: "LISIANTHUS", color: "PINK" },
+    { image: lisianthusPurple, type: "LISIANTHUS", color: "PURPLE" },
   ],
   폼폼국화: [
-    {image: pomponBlue, type: "POMPON", color: "BLUE"},
-    {image: pomponYellow, type: "POMPON", color: "YELLOW"},
+    { image: pomponBlue, type: "POMPON", color: "BLUE" },
+    { image: pomponYellow, type: "POMPON", color: "YELLOW" },
   ],
-  라벤더: [
-    {image: lavenderPurple, type: "LAVENDER", color: "PURPLE"},
-  ],
-  카네이션: [
-    {image: canationPink, type: "CANATION", color: "PINK"},
-  ],
+  라벤더: [{ image: lavenderPurple, type: "LAVENDER", color: "PURPLE" }],
+  카네이션: [{ image: canationPink, type: "CANATION", color: "PINK" }],
 };
 
 const classicFlowerPositions = [
   { left: "50%", top: "3%", rotate: "-10deg" },
->>>>>>> b999e0315bba5ba284548ab78e4d717bc32f3bed
   { left: "36%", top: "6%", rotate: "-25deg" },
   { left: "64%", top: "6%", rotate: "20deg" },
   { left: "43%", top: "18%", rotate: "-8deg" },
   { left: "55%", top: "18%", rotate: "12deg" },
 ];
 
-<<<<<<< HEAD
-export const uniqueFlowerPositions = [
-  { left: "53%", top: "6%", rotate: "-5deg" },
-  { left: "43%", top: "11%", rotate: "-18deg" },
-=======
 const uniqueFlowerPositions = [
   { left: "55%", top: "6%", rotate: "-5deg" },
   { left: "45%", top: "10%", rotate: "-18deg" },
->>>>>>> b999e0315bba5ba284548ab78e4d717bc32f3bed
   { left: "62%", top: "11%", rotate: "18deg" },
   { left: "48%", top: "20%", rotate: "-6deg" },
   { left: "58%", top: "20%", rotate: "8deg" },
@@ -164,7 +139,6 @@ export default function CompleteFlower({
     ? uniqueFlowerPositions
     : classicFlowerPositions;
 
-  
   const handleAddFlower = (flower: FlowerItem) => {
     if (selectedFlowers.length >= 5) return;
     setSelectedFlowers((prev) => [...prev, flower]);
