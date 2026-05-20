@@ -4,12 +4,14 @@ import { Outlet } from "react-router-dom";
 import CompleteFlower from "../component/CompleteFlower";
 import ColorWrapper from "../component/ColorWrapper";
 import FlowerStyle from "../component/FlowerStyle";
+import ModalPage from "./modalPage";
 
 // src/pages/MainPage.tsx
 export default function MainPage() {
   const [person, setPerson] = useState("");
   const [selectedStyle, setSelectedStyle] = useState("classic");
   const [selectedColor, setSelectedColor] = useState("분홍색");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="flex flex-col items-center w-full p-8">
@@ -51,7 +53,14 @@ export default function MainPage() {
       />
 
       {/* 카드 섹션 - 꽃 완성 */}
-      <CompleteFlower selectedColor={selectedColor} />
+      <CompleteFlower
+        selectedColor={selectedColor}
+        person={person}
+        onComplete={() => setIsModalOpen(true)}
+      />
+      {isModalOpen && (
+        <ModalPage onClose={() => setIsModalOpen(false)} />
+      )}
 
       {/* 안내문 */}
       <div className="box-border w-[300px] min-w-[340px] flex-shrink-0 rounded-[25px] border border-pink-2 bg-notice p-5 flex items-start gap-6">
