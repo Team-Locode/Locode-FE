@@ -32,7 +32,7 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
         },
       ], // 여기에 꽃 이미지 URL 배열이 들어옴
       paper: "분홍색",
-      colorTone: ["화이트/내추럴 계열"],
+      colorTone: ["컬러풀"],
     },
   };
 
@@ -45,7 +45,7 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
   const formattedSummary = `[플라워토브 꽃다발 요청]
 🎂 받는 분: ${displayData.summary.purpose}
 💐 스타일: ${displayData.summary.style}
-🌸 꽃 구성: ${Array.isArray(displayData.summary.flowers.type) ? displayData.summary.flowers.join(", ") : displayData.summary.flowers}
+🌸 꽃 구성: ${flowerNames}
 🎀 포장지: ${displayData.summary.paper}
 🎨 컬러톤: ${displayData.summary.colorTone}
 
@@ -160,7 +160,7 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
               <button
                 onClick={() =>
                   window.open(
-                    "https://m.place.naver.com/place/1958826162/home", //네이버 예약,하단 네이버 버튼 사장님한테 링크 받아서 해야함(아니면 예약에서 튕김)
+                    "https://m.place.naver.com/place/1958826162/home", //네이버 예약,하단 네이버 버튼 사장님한테 링크 받아ㅇ 서 해야함(아니면 예약에서 튕김)
                     "_blank",
                     "noopener,noreferrer",
                   )
