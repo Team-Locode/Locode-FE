@@ -202,6 +202,7 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
           <div className="flex justify-between items-center pt-4 ">
             <PortfolioComponent
               requestedTones={displayData.summary.colorTone}
+              requestedStyle={displayData.summary.style}
             />
           </div>
 

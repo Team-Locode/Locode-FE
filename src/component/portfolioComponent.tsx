@@ -1,44 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-// 1. 포트폴리오 데이터 (서버 대신 프론트에 저장해둔 이미지들)
+// 1. 🎯 데이터에 style(클래식/유니크) 속성 추가
 const portfolioData = [
-  { src: "/images/port1.jpg", tags: ["핑크"] },
-  { src: "/images/port2.jpg", tags: ["핑크", "화이트"] },
-  { src: "/images/port3.jpg", tags: ["블랙", "레드"] },
-  { src: "/images/port4.jpg", tags: ["컬러풀"] },
-  { src: "/images/port5.jpg", tags: ["옐로우"] },
+  { src: "/images/port1.jpg", tags: ["핑크"], style: "클래식" },
+  { src: "/images/port2.jpg", tags: ["핑크", "화이트"], style: "클래식" },
+  { src: "/images/port3.jpg", tags: ["블랙", "레드"], style: "유니크" },
+  { src: "/images/port4.jpg", tags: ["컬러풀"], style: "유니크" },
+  { src: "/images/port5.jpg", tags: ["옐로우"], style: "클래식" },
 ];
 
-// 2. 🎯 부모 컴포넌트로부터 넘어오는 컬러톤 데이터를 Props로 받습니다!
+// 2. 🎯 부모 컴포넌트로부터 넘어오는 Props에 requestedStyle 추가
 interface PortfolioComponentProps {
   requestedTones: string[]; // 예: ["핑크", "화이트"]
+  requestedStyle: string; // 예: "클래식" 또는 "유니크"
 }
 
 export default function PortfolioComponent({
   requestedTones = [],
+  requestedStyle = "클래식", // 기본값
 }: PortfolioComponentProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // 3. 🎯 필터링 로직은 컴포넌트 내부에서 처리하여 props가 바뀔 때마다 재계산되게 합니다.
-  // 1순위: 모두 포함(AND)
-  let displayImages = portfolioData.filter((image) =>
+  // 🎯 부모에서 옵션을 바꾸면 사진 인덱스를 다시 0(처음)으로 리셋 (에러 방지용)
+  useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [requestedTones, requestedStyle]);
+
+  // 3. 🎯 2단계 필터링 로직
+  // [1단계] 사용자가 선택한 스타일(클래식/유니크)의 사진만 먼저 싹 모읍니다.
+  const styleFilteredImages = portfolioData.filter(
+    (image) => image.style === requestedStyle,
+  );
+
+  // (방어 코드: 혹시 해당 스타일의 사진이 아예 없다면 전체 사진을 기준으로 삼음)
+  const baseImages =
+    styleFilteredImages.length > 0 ? styleFilteredImages : portfolioData;
+
+  // [2단계] 모아둔 스타일 사진들 안에서 컬러톤을 필터링합니다.
+
+  // 1순위: 교집합(AND) - 요청한 컬러톤이 모두 들어간 완벽 매칭 사진
+  let displayImages = baseImages.filter((image) =>
     requestedTones.every((tone) => image.tags.includes(tone)),
   );
 
-  // 2순위: 하나라도 포함(OR)
+  // 2순위: 완벽하게 겹치는 사진이 없다면? 하나라도 겹치는(OR) 사진들을 보여줌
   if (displayImages.length === 0) {
-    displayImages = portfolioData.filter((image) =>
+    displayImages = baseImages.filter((image) =>
       requestedTones.some((tone) => image.tags.includes(tone)),
     );
   }
 
-  // 3순위: 아예 없으면 전체 보여주기
+  // 3순위: 하나라도 겹치는 컬러 사진조차 없다면? 해당 스타일의 전체 사진을 보여줌
   if (displayImages.length === 0) {
-    displayImages = portfolioData;
+    displayImages = baseImages;
   }
 
-  // 4. 🎯 filteredImages 대신 displayImages 사용
   const handlePrevImage = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? displayImages.length - 1 : prevIndex - 1,
@@ -100,7 +117,7 @@ export default function PortfolioComponent({
 
       {/* 갤러리 메인 컨테이너 */}
       <div className="relative w-full aspect-square max-w-[400px] mx-auto rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm">
-        {/* 이미지 - 🎯 객체에서 .src를 꼭 뽑아서 써야 합니다! */}
+        {/* 이미지 */}
         <img
           src={displayImages[currentImageIndex]?.src}
           alt={`Portfolio ${currentImageIndex + 1}`}
@@ -108,7 +125,7 @@ export default function PortfolioComponent({
           style={{ WebkitTouchCallout: "default" }}
         />
 
-        {/* 다운로드 버튼 - 🎯 .src 추가 */}
+        {/* 다운로드 버튼 */}
         <button
           onClick={() => downloadImage(displayImages[currentImageIndex]?.src)}
           className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center bg-white/70 hover:bg-white text-gray-700 rounded-full shadow-sm backdrop-blur-sm transition-all"
@@ -130,19 +147,23 @@ export default function PortfolioComponent({
           </svg>
         </button>
 
-        {/* 네비게이션 버튼 */}
-        <button
-          onClick={handlePrevImage}
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white/70 hover:bg-white text-gray-700 rounded-full shadow-sm backdrop-blur-sm transition-all"
-        >
-          &lt;
-        </button>
-        <button
-          onClick={handleNextImage}
-          className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white/70 hover:bg-white text-gray-700 rounded-full shadow-sm backdrop-blur-sm transition-all"
-        >
-          &gt;
-        </button>
+        {/* 네비게이션 버튼 (사진이 2장 이상일 때만 보임) */}
+        {displayImages.length > 1 && (
+          <>
+            <button
+              onClick={handlePrevImage}
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white/70 hover:bg-white text-gray-700 rounded-full shadow-sm backdrop-blur-sm transition-all"
+            >
+              &lt;
+            </button>
+            <button
+              onClick={handleNextImage}
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white/70 hover:bg-white text-gray-700 rounded-full shadow-sm backdrop-blur-sm transition-all"
+            >
+              &gt;
+            </button>
+          </>
+        )}
 
         {/* 인디케이터 (점) */}
         <div className="absolute bottom-4 left-0 w-full flex justify-center gap-1.5">
