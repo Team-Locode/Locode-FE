@@ -1,126 +1,23 @@
+import { flowers } from "../constants/flowers";
+import {
+  wrapperBackImages,
+  wrapperFrontImages,
+  paperDesignMap,
+  uniqueWrapperNames,
+} from "../constants/wrappers";
+
+import {
+  classicFlowerPositions,
+  uniqueFlowerPositions,
+} from "../constants/positions";
+
+import { createBouquet } from "../api/bouquet";
+
 import { useState } from "react";
 import Card from "./Card";
-
-import canationPink from "../assets/flowers/canationPink.png";
-import gerbaraBlue from "../assets/flowers/gerbaraBlue.png";
-import gerbaraPink from "../assets/flowers/gerbaraPink.png";
-import gerbaraYellow from "../assets/flowers/gerbaraYellow.png";
-import lavenderPurple from "../assets/flowers/lavenderPurple.png";
-import tulipRed from "../assets/flowers/tulipRed.png";
-import tulipYellow from "../assets/flowers/tulipYellow.png";
-import lisianthusPink from "../assets/flowers/LisianthusPink.png";
-import lisianthusPurple from "../assets/flowers/LisianthusPurple.png";
-import pomponBlue from "../assets/flowers/PomponBlue.png";
-import pomponYellow from "../assets/flowers/pomponYellow.png";
-import roseBlack from "../assets/flowers/roseBlack.png";
-import roseBlue from "../assets/flowers/roseBlue.png";
-import rosePink from "../assets/flowers/rosePink.png";
-import roseRed from "../assets/flowers/roseRed.png";
-import roseWhite from "../assets/flowers/roseWhite.png";
-
-{
-  /* 꽃다발 뒷배경 */
-}
-import wrapperPinkBack from "../assets/seeWrapper/classic/wrapperPinkBack.png";
-import wrapperYellowBack from "../assets/seeWrapper/classic/wrapperYellowBack.png";
-import wrapperWhiteBack from "../assets/seeWrapper/classic/wrapperWhiteBack2.png";
-import wrapperPurpleBack from "../assets/seeWrapper/classic/wrapperPurpleBack.png";
-import wrapperGreenBack from "../assets/seeWrapper/classic/wrapperGreenBack.png";
-import wrapperBrownBack from "../assets/seeWrapper/classic/wrapperBrownBack.png";
-import wrapperBlueBack from "../assets/seeWrapper/classic/wrapperBlueBack.png";
-
-import wrapperEastBack from "../assets/seeWrapper/unique/wrapperEastBack.png";
-import wrapperWestBack from "../assets/seeWrapper/unique/wrapperWestBack.png";
-import wrapperBlackBack from "../assets/seeWrapper/unique/wrapperBlackBack.png";
-
-{
-  /* 꽃다발 앞덮개 */
-}
-import wrapperPinkFront from "../assets/seeWrapper/classic/wrapperPinkFront.png";
-import wrapperYellowFront from "../assets/seeWrapper/classic/wrapperYellowFront.png";
-import wrapperWhiteFront from "../assets/seeWrapper/classic/wrapperWhiteFront.png";
-import wrapperPurpleFront from "../assets/seeWrapper/classic/wrapperPurpleFront.png";
-import wrapperGreenFront from "../assets/seeWrapper/classic/wrapperGreenFront.png";
-import wrapperBrownFront from "../assets/seeWrapper/classic/wrapperBrownFront.png";
-import wrapperBlueFront from "../assets/seeWrapper/classic/wrapperBlueFront.png";
-
-import wrapperEastFront from "../assets/seeWrapper/unique/wrapperEastFront.png";
-import wrapperWestFront from "../assets/seeWrapper/unique/wrapperWestFront.png";
-import wrapperBlackFront from "../assets/seeWrapper/unique/wrapperBlackFront.png";
 import { FlowerItem } from "../types/flowers";
 
-const flowers: Record<string, FlowerItem[]> = {
-  장미: [
-    { image: roseRed, type: "ROSE", color: "RED" },
-    { image: rosePink, type: "ROSE", color: "PINK" },
-    { image: roseWhite, type: "ROSE", color: "WHITE" },
-    { image: roseBlue, type: "ROSE", color: "BLUE" },
-    { image: roseBlack, type: "ROSE", color: "BLACK" },
-  ],
-  튤립: [
-    { image: tulipRed, type: "TULIP", color: "RED" },
-    { image: tulipYellow, type: "TULIP", color: "YELLOW" },
-  ],
-  거베라: [
-    { image: gerbaraPink, type: "GERBERA", color: "PINK" },
-    { image: gerbaraYellow, type: "GERBERA", color: "YELLOW" },
-    { image: gerbaraBlue, type: "GERBERA", color: "BLUE" },
-  ],
-  리시안셔스: [
-    { image: lisianthusPink, type: "LISIANTHUS", color: "PINK" },
-    { image: lisianthusPurple, type: "LISIANTHUS", color: "PURPLE" },
-  ],
-  폼폼국화: [
-    { image: pomponBlue, type: "POMPON", color: "BLUE" },
-    { image: pomponYellow, type: "POMPON", color: "YELLOW" },
-  ],
-  라벤더: [{ image: lavenderPurple, type: "LAVENDER", color: "PURPLE" }],
-  카네이션: [{ image: canationPink, type: "CARNATION", color: "PINK" }],
-};
 
-export const classicFlowerPositions = [
-  { left: "50%", top: "3%", rotate: "-10deg" },
-  { left: "36%", top: "6%", rotate: "-25deg" },
-  { left: "64%", top: "6%", rotate: "20deg" },
-  { left: "43%", top: "18%", rotate: "-8deg" },
-  { left: "55%", top: "18%", rotate: "12deg" },
-];
-
-export const uniqueFlowerPositions = [
-  { left: "55%", top: "6%", rotate: "-5deg" },
-  { left: "45%", top: "10%", rotate: "-18deg" },
-  { left: "62%", top: "11%", rotate: "18deg" },
-  { left: "48%", top: "20%", rotate: "-6deg" },
-  { left: "58%", top: "20%", rotate: "8deg" },
-];
-
-export const uniqueWrapperNames = ["동양풍", "서양풍", "검정색"];
-
-export const wrapperBackImages: Record<string, string> = {
-  분홍색: wrapperPinkBack,
-  노란색: wrapperYellowBack,
-  하얀색: wrapperWhiteBack,
-  보라색: wrapperPurpleBack,
-  연두색: wrapperGreenBack,
-  갈색: wrapperBrownBack,
-  하늘색: wrapperBlueBack,
-  동양풍: wrapperEastBack,
-  서양풍: wrapperWestBack,
-  검정색: wrapperBlackBack,
-};
-
-export const wrapperFrontImages: Record<string, string> = {
-  분홍색: wrapperPinkFront,
-  노란색: wrapperYellowFront,
-  하얀색: wrapperWhiteFront,
-  보라색: wrapperPurpleFront,
-  연두색: wrapperGreenFront,
-  갈색: wrapperBrownFront,
-  하늘색: wrapperBlueFront,
-  동양풍: wrapperEastFront,
-  서양풍: wrapperWestFront,
-  검정색: wrapperBlackFront,
-};
 // 백엔드 응답 Body와 똑같은 구조로 인터페이스 정의
 export interface BouquetResponse {
   bouquetId: number;
@@ -164,49 +61,31 @@ export default function CompleteFlower({
     );
   };
 
-  const paperDesignMap: Record<string, string> = {
-    분홍색: "CLASSIC_PINK",
-    노란색: "CLASSIC_YELLOW",
-    하얀색: "CLASSIC_WHITE",
-    보라색: "CLASSIC_PURPLE",
-    연두색: "CLASSIC_GREEN",
-    갈색: "CLASSIC_BROWN",
-    하늘색: "CLASSIC_SKY_BLUE",
-    동양풍: "UNIQUE_ORIENTAL",
-    서양풍: "UNIQUE_FRENCH_VINTAGE",
-    검정색: "UNIQUE_BLACK",
-  };
+
 
   const handleComplete = async () => {
-    const body = {
-      purpose: `${person}를 위한 꽃다발`,
-      flowers: selectedFlowers.map((flower) => ({
-        type: flower.type,
-        color: flower.color,
-      })),
-      paperStyle: isUniqueWrapper ? "UNIQUE" : "CLASSIC",
-      paperDesign: paperDesignMap[selectedColor],
-    };
+  const body = {
+    purpose: `${person}를 위한 꽃다발`,
+    flowers: selectedFlowers.map((flower) => ({
+      type: flower.type,
+      color: flower.color,
+    })),
+    paperStyle: isUniqueWrapper ? "UNIQUE" : "CLASSIC",
+    paperDesign: paperDesignMap[selectedColor],
+  };
 
-    console.log(body);
+  console.log(body);
 
-    const response = await fetch("https://lotowb.com/api/bouquets", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    });
+  try {
+    const data = await createBouquet(body);
 
-    const data = await response.json();
-
-    console.log("status:", response.status);
     console.log("response:", data);
 
-    if (response.ok) {
-      onComplete(data);
-    }
-  };
+    onComplete(data);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
   return (
     <Card
@@ -224,7 +103,6 @@ export default function CompleteFlower({
           <div className="relative w-full h-full max-w-[380px] max-h-[380px]">
             {/* 선택된 꽃들 */}
             {selectedFlowers.map((flower, index) => {
-              const isTulip = flower.type === "TULIP";
 
               return (
                 <img
@@ -235,13 +113,9 @@ export default function CompleteFlower({
                   className={`
                     absolute object-contain z-20 cursor-pointer
                     ${
-                      isTulip
-                        ? isUniqueWrapper
-                          ? "w-40 h-40"
-                          : "w-50 h-50"
-                        : isUniqueWrapper
-                          ? "w-28 h-28"
-                          : "w-40 h-40"
+                      isUniqueWrapper
+                        ? "w-30 h-30"
+                        : "w-40 h-40"
                     }
                   `}
                   style={{
