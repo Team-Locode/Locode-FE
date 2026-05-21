@@ -200,7 +200,9 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
 
           {/* 포트폴리오 링크 */}
           <div className="flex justify-between items-center pt-4 ">
-            <PortfolioComponent />
+            <PortfolioComponent
+              requestedTones={displayData.summary.colorTone}
+            />
           </div>
 
           {/* 하단 인스타그램,네이버 연결 버튼 */}
