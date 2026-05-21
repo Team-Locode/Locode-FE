@@ -1,15 +1,38 @@
 import React, { useState, useEffect } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-// 1. 🎯 데이터에 style(클래식/유니크) 속성 추가
-const portfolioData = [
-  { src: "/images/port1.jpg", tags: ["핑크"], style: "클래식" },
-  { src: "/images/port2.jpg", tags: ["핑크", "화이트"], style: "클래식" },
-  { src: "/images/port3.jpg", tags: ["블랙", "레드"], style: "유니크" },
-  { src: "/images/port4.jpg", tags: ["컬러풀"], style: "유니크" },
-  { src: "/images/port5.jpg", tags: ["옐로우"], style: "클래식" },
-];
+import portc1 from "../assets/portfolio/classic/portc1.png";
+import portc2 from "../assets/portfolio/classic/portc2.png";
+import portc3 from "../assets/portfolio/classic/portc3.png";
 
+// 1.데이터에 style(클래식/유니크) 속성 추가
+const portfolioData = [
+  {
+    src: portc1,
+    tags: ["핑크", "화이트"],
+    style: "클래식",
+  },
+  {
+    src: portc2,
+    tags: ["옐로우"],
+    style: "클래식",
+  },
+  {
+    src: portc3,
+    tags: ["핑크"],
+    style: "클래식",
+  },
+  { src: "/images/portu2.png", tags: ["컬러풀"], style: "유니크" },
+  { src: "/images/portu3.png", tags: ["퍼플", "화이트"], style: "유니크" },
+];
+// 레드: "RED",
+//   핑크: "PINK",
+//   화이트: "WHITE",
+//   블루: "BLUE",
+//   블랙: "BLACK",
+//   옐로우: "YELLOW",
+//   보라: "PURPLE",
+//   퍼플: "PURPLE",
 // 2. 🎯 부모 컴포넌트로부터 넘어오는 Props에 requestedStyle 추가
 interface PortfolioComponentProps {
   requestedTones: string[]; // 예: ["핑크", "화이트"]
@@ -116,7 +139,7 @@ export default function PortfolioComponent({
       </div>
 
       {/* 갤러리 메인 컨테이너 */}
-      <div className="relative w-full aspect-square max-w-[400px] mx-auto rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm">
+      <div className="relative w-full aspect-[3/4] max-w-[400px] mx-auto rounded-xl overflow-hidden bg-gray-50 border border-gray-100 shadow-sm">
         {/* 이미지 */}
         <img
           src={displayImages[currentImageIndex]?.src}
@@ -133,7 +156,7 @@ export default function PortfolioComponent({
         >
           <svg
             width="18"
-            height="18"
+            height="40"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
