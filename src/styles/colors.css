@@ -9,9 +9,8 @@
     --color-pink-5: #FFAABB; /* 버튼 색 */
 
     --color-highlight: #EB5468; /* 강조 표현 */
-    --color-content-bg: oklab(
-      0.959999 0.00983775 0.00175911 / 0.5
-    ); /*완성 시 꽃 다발 뒷배경*/
+    --color-notice: #fdf1eb;
+    --color-content-bg: oklab(97.463% 0.00981 0.00848 / 0.5); /*완성 시 꽃 다발 뒷배경*/
     /* 30% 투명도의 oklab 색상 */
     --summary-bg: oklab(0.959999 0.00983775 0.00175911 / 0.3);
     --summary-text: lab(41.8321 5.88313 3.9148);

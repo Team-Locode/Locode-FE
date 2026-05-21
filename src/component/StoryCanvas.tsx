@@ -2,12 +2,14 @@
 import React, { forwardRef } from "react";
 import { FLOWER_MAP } from "../constants/FlowerMap";
 import {
-  wrapperBackImages,
-  wrapperFrontImages,
   classicFlowerPositions,
   uniqueFlowerPositions,
+} from "../constants/positions";
+import {
+  wrapperBackImages, 
+  wrapperFrontImages,
   uniqueWrapperNames,
-} from "./CompleteFlower";
+} from "../constants/wrappers";
 
 interface StoryCanvasProps {
   displayData: {

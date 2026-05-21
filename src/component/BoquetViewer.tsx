@@ -1,11 +1,13 @@
 import { FLOWER_MAP } from "../constants/FlowerMap";
 import {
-  wrapperBackImages,
-  wrapperFrontImages,
   classicFlowerPositions,
   uniqueFlowerPositions,
+} from "../constants/positions";
+import {
+  wrapperBackImages, 
+  wrapperFrontImages,
   uniqueWrapperNames,
-} from "./CompleteFlower";
+} from "../constants/wrappers";
 
 const PAPER_NAME_MAP: Record<string, string> = {
   분홍: "분홍색",
