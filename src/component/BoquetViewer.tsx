@@ -4,7 +4,7 @@ import {
   uniqueFlowerPositions,
 } from "../constants/positions";
 import {
-  wrapperBackImages, 
+  wrapperBackImages,
   wrapperFrontImages,
   uniqueWrapperNames,
 } from "../constants/wrappers";
@@ -104,15 +104,7 @@ export default function BouquetViewer({
               // 🎯 3. Tailwind의 -translate-x-1/2는 인라인 style의 transform과 충돌하므로 제거했습니다.
               className={`
                 absolute object-contain z-20
-                ${
-                  isTulip
-                    ? isUniqueWrapper
-                      ? "w-40 h-40"
-                      : "w-50 h-50"
-                    : isUniqueWrapper
-                      ? "w-28 h-28"
-                      : "w-40 h-40"
-                }
+                ${isUniqueWrapper ? "w-30 h-30" : "w-40 h-40"}
               `}
               style={{
                 left: position.left,

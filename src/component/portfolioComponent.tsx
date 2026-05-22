@@ -9,15 +9,35 @@ import portc5 from "../assets/portfolio/classic/portc5.png";
 import portc6 from "../assets/portfolio/classic/portc6.png";
 import portc7 from "../assets/portfolio/classic/portc7.png";
 import portc8 from "../assets/portfolio/classic/portc8.png";
+import portc9 from "../assets/portfolio/classic/portc9.png";
+import portc10 from "../assets/portfolio/classic/portc10.png";
+import portc11 from "../assets/portfolio/classic/portc11.png";
+import portc12 from "../assets/portfolio/classic/portc12.png";
+import portc13 from "../assets/portfolio/classic/portc13.png";
+import portc14 from "../assets/portfolio/classic/portc14.png";
+import portc15 from "../assets/portfolio/classic/portc15.png";
 
 //유니크
+import portu1 from "../assets/portfolio/unique/portu1.png";
+import portu2 from "../assets/portfolio/unique/portu2.png";
+import portu3 from "../assets/portfolio/unique/portu3.png";
+import portu4 from "../assets/portfolio/unique/portu4.png";
 import portu5 from "../assets/portfolio/unique/portu5.png";
+import portu6 from "../assets/portfolio/unique/portu6.png";
+import portu7 from "../assets/portfolio/unique/portu7.png";
+import portu8 from "../assets/portfolio/unique/portu8.png";
+import portu9 from "../assets/portfolio/unique/portu9.png";
 
 // 1.데이터에 style(클래식/유니크) 속성 추가
 const portfolioData = [
   {
     src: portc1,
     tags: ["핑크", "화이트"],
+    style: "클래식",
+  },
+  {
+    src: portc12,
+    tags: ["옐로우"],
     style: "클래식",
   },
   {
@@ -55,9 +75,75 @@ const portfolioData = [
     tags: ["컬러풀"],
     style: "클래식",
   },
-  { src: "/images/portu2.png", tags: ["컬러풀"], style: "유니크" },
-  { src: "/images/portu3.png", tags: ["퍼플", "화이트"], style: "유니크" },
+  {
+    src: portc9,
+    tags: ["화이트", "퍼플"],
+    style: "클래식",
+  },
+  {
+    src: portc10,
+    tags: ["화이트", "핑크"],
+    style: "클래식",
+  },
+  {
+    src: portc11,
+    tags: ["핑크"],
+    style: "클래식",
+  },
+  {
+    src: portc13,
+    tags: ["핑크", "퍼플"],
+    style: "클래식",
+  },
+  {
+    src: portc14,
+    tags: ["레드"],
+    style: "클래식",
+  },
+  {
+    src: portc15,
+    tags: ["블루", "퍼플"],
+    style: "클래식",
+  },
+  ,
+  { src: portu1, tags: ["블루", "화이트"], style: "유니크" },
   { src: portu5, tags: ["블루", "화이트"], style: "유니크" },
+  {
+    src: portu2,
+    tags: ["컬러풀"],
+    style: "유니크",
+  },
+  {
+    src: portu3,
+    tags: ["퍼플", "화이트"],
+    style: "유니크",
+  },
+  {
+    src: portu4,
+    tags: ["레드"],
+    style: "유니크",
+  },
+
+  {
+    src: portu6,
+    tags: ["블루", "퍼플"],
+    style: "유니크",
+  },
+  {
+    src: portu8,
+    tags: ["레드"],
+    style: "유니크",
+  },
+  {
+    src: portu7,
+    tags: ["핑크"],
+    style: "유니크",
+  },
+  {
+    src: portu9,
+    tags: ["블랙"],
+    style: "유니크",
+  },
 ];
 // 레드: "RED",
 //   핑크: "PINK",
