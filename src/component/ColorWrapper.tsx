@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import Card from "./Card";
 
-import eastWrapper from "../assets/wrapper/eastWrapper.png";
-import westWrapper from "../assets/wrapper/westWrapper.png";
+import eastWrapper from "../assets/wrapper/eastWrapper.svg";
+import westWrapper from "../assets/wrapper/westWrapper.svg";
 
 const classicColors: WrapperColor[] = [
   { name: "분홍색", type: "color", className: "bg-[#ffbed1] border-[#ff7fa5]" },
