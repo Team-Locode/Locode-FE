@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Card from "../component/Card";
 import { Outlet } from "react-router-dom";
 import CompleteFlower from "../component/CompleteFlower";
 import ColorWrapper from "../component/ColorWrapper";

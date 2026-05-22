@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 //클래식
 import portc1 from "../assets/portfolio/classic/portc1.png";

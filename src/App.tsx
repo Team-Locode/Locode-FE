@@ -21,7 +21,8 @@ const publicRoutes: RouteObject[] = [
         children: [
           {
             path: "modal",
-            element: <ModalPage />,
+            element: // 예시
+            <ModalPage onClose={() => {}} bouquetData={null} />,
           },
         ],
       },

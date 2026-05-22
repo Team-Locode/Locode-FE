@@ -1,5 +1,5 @@
 // src/component/StoryCanvas.tsx
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { FLOWER_MAP } from "../constants/FlowerMap";
 import {
   classicFlowerPositions,
@@ -62,10 +62,6 @@ const FLOWER_COLOR_MAP: Record<string, string> = {
 
 export const StoryCanvas = forwardRef<HTMLDivElement, StoryCanvasProps>(
   ({ displayData }, ref) => {
-    const finalColorKey =
-      PAPER_NAME_MAP[displayData.summary.paper] ||
-      displayData.summary.paper ||
-      "분홍색";
 
     return (
       <div className="absolute -top-[9999px] left-0">
