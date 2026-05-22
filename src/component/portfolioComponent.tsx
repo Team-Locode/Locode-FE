@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
-
+//클래식
 import portc1 from "../assets/portfolio/classic/portc1.png";
 import portc2 from "../assets/portfolio/classic/portc2.png";
 import portc3 from "../assets/portfolio/classic/portc3.png";
+import portc4 from "../assets/portfolio/classic/portc4.png";
+import portc5 from "../assets/portfolio/classic/portc5.png";
+import portc6 from "../assets/portfolio/classic/portc6.png";
+import portc7 from "../assets/portfolio/classic/portc7.png";
+import portc8 from "../assets/portfolio/classic/portc8.png";
+
+//유니크
+import portu5 from "../assets/portfolio/unique/portu5.png";
 
 // 1.데이터에 style(클래식/유니크) 속성 추가
 const portfolioData = [
@@ -19,11 +27,37 @@ const portfolioData = [
   },
   {
     src: portc3,
+    tags: ["핑크", "화이트"],
+    style: "클래식",
+  },
+  {
+    src: portc4,
     tags: ["핑크"],
+    style: "클래식",
+  },
+  {
+    src: portc5,
+    tags: ["블루", "화이트"],
+    style: "클래식",
+  },
+  {
+    src: portc6,
+    tags: ["퍼플", "화이트"],
+    style: "클래식",
+  },
+  {
+    src: portc8,
+    tags: ["컬러풀"],
+    style: "클래식",
+  },
+  {
+    src: portc7,
+    tags: ["컬러풀"],
     style: "클래식",
   },
   { src: "/images/portu2.png", tags: ["컬러풀"], style: "유니크" },
   { src: "/images/portu3.png", tags: ["퍼플", "화이트"], style: "유니크" },
+  { src: portu5, tags: ["블루", "화이트"], style: "유니크" },
 ];
 // 레드: "RED",
 //   핑크: "PINK",
