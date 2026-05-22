@@ -62,7 +62,6 @@ const FLOWER_COLOR_MAP: Record<string, string> = {
 
 export const StoryCanvas = forwardRef<HTMLDivElement, StoryCanvasProps>(
   ({ displayData }, ref) => {
-
     return (
       <div className="absolute -top-[9999px] left-0">
         <div

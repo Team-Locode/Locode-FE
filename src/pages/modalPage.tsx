@@ -106,6 +106,55 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
       alert("이미지 저장에 실패했습니다. 다시 시도해주세요.");
     }
   };
+  // 💡 인스타 스토리 직접 공유하기 함수 (Web Share API 활용)
+  const handleShareInstagram = async () => {
+    if (!storyRef.current) return;
+
+    try {
+      await document.fonts.ready;
+
+      // 1. 먼저 이미지를 찰칵 찍어서 dataUrl로 만듭니다 (저장하기 로직과 동일)
+      const dataUrl = await new Promise<string>((resolve, reject) => {
+        setTimeout(async () => {
+          try {
+            const url = await toPng(storyRef.current!, {
+              cacheBust: true,
+              pixelRatio: 2,
+              skipFonts: true,
+            });
+            resolve(url);
+          } catch (err) {
+            reject(err);
+          }
+        }, 300);
+      });
+
+      // 2. dataUrl을 실제 '파일(File)' 객체로 변환합니다. (공유 기능을 쓰기 위해 필수)
+      const res = await fetch(dataUrl);
+      const blob = await res.blob();
+      const file = new File([blob], "flowertowb_story.png", {
+        type: "image/png",
+      });
+
+      // 3. 모바일 기기인지 & 파일 공유 기능을 지원하는 브라우저인지 확인
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: "FLOWERTOWB",
+          text: "나만의 커스터마이징 플라워, 플라워토브 🌸",
+        });
+      } else {
+        // PC 접속이거나 지원하지 않는 브라우저일 경우 예외 처리
+        alert(
+          "모바일 환경에서만 직접 공유가 가능합니다! 📸\n대신 갤러리에 저장해 드릴게요.",
+        );
+        handleDownloadStoryImage(); // 바로 위에서 만든 저장 함수를 대신 실행!
+      }
+    } catch (error) {
+      console.error("스토리 이미지 공유 중 오류 발생:", error);
+      alert("공유하기에 실패했습니다. 이미지를 직접 저장해서 공유해주세요!");
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
@@ -243,7 +292,10 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
                 <span className="text-sm">카카오톡 상담</span>
               </button>
             </div>
-            <button className="w-full flex items-center justify-center gap-2 py-4 border border-gray-200 rounded-2xl text-sm font-bold hover:bg-gray-50 transition">
+            <button
+              onClick={handleShareInstagram}
+              className="w-full flex items-center justify-center gap-2 py-4 border border-gray-200 rounded-2xl text-sm font-bold hover:bg-gray-50 transition"
+            >
               <FaInstagram className="text-pink-500" /> 인스타그램 스토리
               공유하기
             </button>
