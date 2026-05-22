@@ -1,32 +1,32 @@
 {
   /* 꽃다발 뒷배경 */
 }
-import wrapperPinkBack from "../assets/seeWrapper/classic/wrapperPinkBack.png";
-import wrapperYellowBack from "../assets/seeWrapper/classic/wrapperYellowBack.png";
-import wrapperWhiteBack from "../assets/seeWrapper/classic/wrapperWhiteBack2.png";
-import wrapperPurpleBack from "../assets/seeWrapper/classic/wrapperPurpleBack.png";
-import wrapperGreenBack from "../assets/seeWrapper/classic/wrapperGreenBack.png";
-import wrapperBrownBack from "../assets/seeWrapper/classic/wrapperBrownBack.png";
-import wrapperBlueBack from "../assets/seeWrapper/classic/wrapperBlueBack.png";
+import wrapperPinkBack from "../assets/seeWrapper/classic/wrapperPinkBack.svg";
+import wrapperYellowBack from "../assets/seeWrapper/classic/wrapperYellowBack.svg";
+import wrapperWhiteBack from "../assets/seeWrapper/classic/wrapperWhiteBack2.svg";
+import wrapperPurpleBack from "../assets/seeWrapper/classic/wrapperPurpleBack.svg";
+import wrapperGreenBack from "../assets/seeWrapper/classic/wrapperGreenBack.svg";
+import wrapperBrownBack from "../assets/seeWrapper/classic/wrapperBrownBack.svg";
+import wrapperBlueBack from "../assets/seeWrapper/classic/wrapperBlueBack.svg";
 
-import wrapperEastBack from "../assets/seeWrapper/unique/wrapperEastBack.png";
-import wrapperWestBack from "../assets/seeWrapper/unique/wrapperWestBack.png";
-import wrapperBlackBack from "../assets/seeWrapper/unique/wrapperBlackBack.png";
+import wrapperEastBack from "../assets/seeWrapper/unique/wrapperEastBack.svg";
+import wrapperWestBack from "../assets/seeWrapper/unique/wrapperWestBack.svg";
+import wrapperBlackBack from "../assets/seeWrapper/unique/wrapperBlackBack.svg";
 
 {
   /* 꽃다발 앞덮개 */
 }
-import wrapperPinkFront from "../assets/seeWrapper/classic/wrapperPinkFront.png";
-import wrapperYellowFront from "../assets/seeWrapper/classic/wrapperYellowFront.png";
-import wrapperWhiteFront from "../assets/seeWrapper/classic/wrapperWhiteFront.png";
-import wrapperPurpleFront from "../assets/seeWrapper/classic/wrapperPurpleFront.png";
-import wrapperGreenFront from "../assets/seeWrapper/classic/wrapperGreenFront.png";
-import wrapperBrownFront from "../assets/seeWrapper/classic/wrapperBrownFront.png";
-import wrapperBlueFront from "../assets/seeWrapper/classic/wrapperBlueFront.png";
+import wrapperPinkFront from "../assets/seeWrapper/classic/wrapperPinkFront.svg";
+import wrapperYellowFront from "../assets/seeWrapper/classic/wrapperYellowFront.svg";
+import wrapperWhiteFront from "../assets/seeWrapper/classic/wrapperWhiteFront.svg";
+import wrapperPurpleFront from "../assets/seeWrapper/classic/wrapperPurpleFront.svg";
+import wrapperGreenFront from "../assets/seeWrapper/classic/wrapperGreenFront.svg";
+import wrapperBrownFront from "../assets/seeWrapper/classic/wrapperBrownFront.svg";
+import wrapperBlueFront from "../assets/seeWrapper/classic/wrapperBlueFront.svg";
 
-import wrapperEastFront from "../assets/seeWrapper/unique/wrapperEastFront.png";
-import wrapperWestFront from "../assets/seeWrapper/unique/wrapperWestFront.png";
-import wrapperBlackFront from "../assets/seeWrapper/unique/wrapperBlackFront.png";
+import wrapperEastFront from "../assets/seeWrapper/unique/wrapperEastFront.svg";
+import wrapperWestFront from "../assets/seeWrapper/unique/wrapperWestFront.svg";
+import wrapperBlackFront from "../assets/seeWrapper/unique/wrapperBlackFront.svg";
 
 export const uniqueWrapperNames = ["동양풍", "서양풍", "검정색"];
 
