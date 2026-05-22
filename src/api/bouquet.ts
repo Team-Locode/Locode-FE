@@ -1,18 +1,7 @@
+import { api } from './axios'; // 2번에서 만든 파일을 불러옴
+
 export const createBouquet = async (body: unknown) => {
-  const response = await fetch(
-    "https://lotowb.com/api/bouquets",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    }
-  );
-
-  if (!response.ok) {
-    throw new Error("꽃다발 생성 실패");
-  }
-
-  return response.json();
+  // baseURL이 세팅되어 있으니 뒷부분 주소('/bouquets')만 씁니다.
+  const response = await api.post('/bouquets', body);
+  return response.data;
 };
