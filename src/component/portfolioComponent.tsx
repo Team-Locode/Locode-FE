@@ -16,6 +16,7 @@ import portc12 from "../assets/portfolio/classic/portc12.png";
 import portc13 from "../assets/portfolio/classic/portc13.png";
 import portc14 from "../assets/portfolio/classic/portc14.png";
 import portc15 from "../assets/portfolio/classic/portc15.png";
+import portc16 from "../assets/portfolio/classic/portc16.png";
 
 //유니크
 import portu1 from "../assets/portfolio/unique/portu1.png";
@@ -27,12 +28,18 @@ import portu6 from "../assets/portfolio/unique/portu6.png";
 import portu7 from "../assets/portfolio/unique/portu7.png";
 import portu8 from "../assets/portfolio/unique/portu8.png";
 import portu9 from "../assets/portfolio/unique/portu9.png";
+import portu10 from "../assets/portfolio/unique/portu10.png";
 
 // 1.데이터에 style(클래식/유니크) 속성 추가
 const portfolioData = [
   {
     src: portc1,
     tags: ["핑크", "화이트"],
+    style: "클래식",
+  },
+  {
+    src: portc16,
+    tags: ["옐로우"],
     style: "클래식",
   },
   {
@@ -142,6 +149,11 @@ const portfolioData = [
   {
     src: portu9,
     tags: ["블랙"],
+    style: "유니크",
+  },
+  {
+    src: portu10,
+    tags: ["옐로우"],
     style: "유니크",
   },
 ];
