@@ -5,13 +5,13 @@ import eastWrapper from "../assets/wrapper/eastWrapper.png";
 import westWrapper from "../assets/wrapper/westWrapper.png";
 
 const classicColors: WrapperColor[] = [
-  { name: "분홍색", type: "color", className: "bg-pink-200 border-pink-400" },
-  { name: "노란색", type: "color", className: "bg-yellow-200 border-yellow-400" },
-  { name: "하얀색", type: "color", className: "bg-white border-gray-300" },
-  { name: "보라색", type: "color", className: "bg-purple-200 border-purple-400" },
-  { name: "연두색", type: "color", className: "bg-green-200 border-green-400" },
-  { name: "베이지색", type: "color", className: "bg-amber-600 border-amber-800" },
-  { name: "하늘색", type: "color", className: "bg-sky-200 border-sky-400" },
+  { name: "분홍색", type: "color", className: "bg-[#ffbed1] border-[#ff7fa5]" },
+  { name: "노란색", type: "color", className: "bg-[#fff582] border-[#ffec18]" },
+  { name: "하얀색", type: "color", className: "bg-white border-[#ffe8ef]" },
+  { name: "보라색", type: "color", className: "bg-purple-200 border-purple-300" },
+  { name: "연두색", type: "color", className: "bg-[#adf086] border-[#73e134]" },
+  { name: "베이지색", type: "color", className: "bg-[#dfb67c] border-[#b38950]" },
+  { name: "하늘색", type: "color", className: "bg-[#90deff] border-[#38c3ff]" },
 ];
 
 const uniqueColors: WrapperColor[] = [

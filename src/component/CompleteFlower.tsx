@@ -195,8 +195,8 @@ export default function CompleteFlower({
             flex items-center justify-center transition-all shadow-sm
             ${
               person.trim()
-                ? "bg-pink-5 hover:opacity-90"
-                : "bg-gray-300 cursor-not-allowed"
+                ? "bg-pink-400 hover:opacity-90"
+                : "bg-[#ffcbd5] cursor-not-allowed"
             }
           `}
         >
