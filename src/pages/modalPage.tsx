@@ -47,14 +47,14 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
     .trim();
 
   // 요약에 들어갈 실제 주문서 텍스트
-  const formattedSummary = `[플라워토브 꽃다발 요청]
+  const formattedSummary = `[꽃다발 만들기 페이지 통해 주문]
 🎂 받는 분: ${recipientName}
 💐 스타일: ${displayData.summary.style}
 🌸 꽃 구성: ${flowerNames}
 🎀 포장지: ${paperColor}
 🎨 컬러톤: ${displayData.summary.colorTone?.join(", ")}
 
-※ 커스터마이저로 제작된 이미지입니다.`;
+이벤트 참여용 인스타 아이디:`;
 
   // 복사하기 함수
   const handleCopy = async () => {
@@ -124,7 +124,7 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
         </div>
         {/* 컨텐츠 영역: 이미지 및 설명 */}
         <div className="p-6">
-          <div className="bg-content-area rounded-2xl p-10 flex justify-center mb-6">
+          <div className="bg-content-area bg-white/50 rounded-2xl p-10 flex justify-center mb-6">
             {/* 여기에 꽃다발 이미지 */}
             <BouquetViewer
               selectedFlowers={displayData.summary.flowers}
@@ -136,13 +136,64 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
             <h3 className="text-lg font-semibold mb-4">
               {displayData.summary.purpose || "나만의 꽃다발"}
             </h3>
-            <div className="bg-orange-50 text-orange-600 text-sm p-3 rounded-xl mb-6">
+            <div className="bg-orange-50 text-orange-600 text-sm p-3 border-1 border-orange-100 rounded-xl mb-5">
               ⚠️ 실제와는 다를 수 있음. 자세한 요구는 상담 필요!!
             </div>
           </div>
 
+          <div className="w-full border-t-2 border-dashed border-pink-200 my-2 mb-6"></div>
+
+          <div className="bg-white/70 border-pink-200 p-4 border-2 rounded-xl mb-4">
+            {/* 상단 이벤트 타이틀 */}
+            <div className="flex items-center gap-1.5 mb-3">
+              <span className="text-lg">🎁</span>
+              <h4 className="font-bold text-pink-600 text-sm tracking-wide">
+                인스타그램 팔로우 이벤트
+              </h4>
+            </div>
+
+            {/* Step 리스트 영역 */}
+            <ul className="flex flex-col gap-3">
+              {/* Step 1 */}
+              <li className="flex items-start gap-2.5">
+                <span className="flex-shrink-0 bg-pink-400 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mt-0.5">
+                  Step 1
+                </span>
+                <span className="text-sm text-gray-700 leading-snug">
+                  플라워토브 인스타그램(@towbflower131) 팔로우 꾹!
+                </span>
+              </li>
+
+              {/* Step 2 */}
+              <li className="flex items-start gap-2.5">
+                <span className="flex-shrink-0 bg-pink-400 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mt-0.5">
+                  Step 2
+                </span>
+                <span className="text-sm text-gray-700 leading-snug">
+                  아래 주문 내용을 복사하여 작성 후 보내주세요!
+                </span>
+              </li>
+
+              {/* Step 3 */}
+              <li className="flex items-start gap-2.5">
+                <span className="flex-shrink-0 bg-pink-400 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mt-0.5">
+                  Step 3
+                </span>
+                <span className="text-sm text-gray-700 leading-snug">
+                  인증 완료!
+                  <br />
+                  <span className="text-pink-500 font-medium text-xs">
+                    (확인 후 꽃다발에 곁들임꽃을 풍성하게 더해드려요🌸)
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
           <div className="space-y-4">
-            <p className="font-bold border-t border-pink-2 pt-4">주문 요약</p>
+            {/* <p className="font-bold border-t border-pink-2"></p> */}
+
+            <p className="font-bold">주문 요약</p>
             {/* 긴 내용... (자동으로 스크롤 생김) */}
             {/* 2. 기존 빈 div 대신 SummaryBox 적용 */}
             <SummaryBox content={formattedSummary} />
@@ -200,7 +251,10 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
 
           {/* 포트폴리오 링크 */}
           <div className="flex justify-between items-center pt-4 ">
-            <PortfolioComponent />
+            <PortfolioComponent
+              requestedTones={displayData.summary.colorTone}
+              requestedStyle={displayData.summary.style}
+            />
           </div>
 
           {/* 하단 인스타그램,네이버 연결 버튼 */}

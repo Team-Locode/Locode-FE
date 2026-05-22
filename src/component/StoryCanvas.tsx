@@ -6,7 +6,7 @@ import {
   uniqueFlowerPositions,
 } from "../constants/positions";
 import {
-  wrapperBackImages, 
+  wrapperBackImages,
   wrapperFrontImages,
   uniqueWrapperNames,
 } from "../constants/wrappers";
@@ -107,7 +107,7 @@ export const StoryCanvas = forwardRef<HTMLDivElement, StoryCanvasProps>(
 
 StoryCanvas.displayName = "StoryCanvas";
 
-// 🎯 Story 전용 Scaled BouquetViewer 컴포넌트 (모든 픽셀 값을 2.53배 키움)
+// 🎯 Story 전용 Scaled BouquetViewer 컴포넌트
 const StoryBouquetViewer = ({
   selectedFlowers,
   selectedColor,
@@ -119,7 +119,7 @@ const StoryBouquetViewer = ({
     PAPER_NAME_MAP[selectedColor] || selectedColor || "분홍색";
 
   const isUniqueWrapper =
-    ["동양풍", "서양풍", "검정색"].includes(finalColorKey) ||
+    uniqueWrapperNames.includes(finalColorKey) ||
     ["오리엔탈", "프렌치빈티지", "검정", "블랙"].includes(selectedColor);
 
   const currentFlowerPositions = isUniqueWrapper
@@ -130,7 +130,8 @@ const StoryBouquetViewer = ({
 
   return (
     <div className="relative w-[960px] h-[960px] flex-shrink-0">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[650px] h-full z-20">
+      {/* 🎯 [핵심 수정] 간격을 좁게 만들던 w-[650px] 감싸개를 없애고 메인 화면과 동일하게 w-full h-full로 바꿨습니다! */}
+      <div className="relative w-full h-full z-20">
         {selectedFlowers.map((flowerStr, index) => {
           const match = flowerStr.match(/^([^(]+)\(([^)]+)\)$/);
 
@@ -149,34 +150,25 @@ const StoryBouquetViewer = ({
 
           if (!flowerImgSrc) return null;
 
-          const isTulip = type === "TULIP";
           const position = currentFlowerPositions[index] || {
             left: "50%",
             top: "10%",
             rotate: "0deg",
           };
 
+          const sizeClass = isUniqueWrapper
+            ? "w-[370px] h-[370px]" // w-30 비율
+            : "w-[480px] h-[480px]"; // w-40 비율
+
           return (
             <img
               key={index}
               src={flowerImgSrc}
-              className={`
-                absolute object-contain
-                ${
-                  isTulip
-                    ? isUniqueWrapper
-                      ? "w-[405px] h-[405px]"
-                      : "w-[506px] h-[506px]"
-                    : isUniqueWrapper
-                      ? "w-[283px] h-[283px]"
-                      : "w-[405px] h-[405px]"
-                }
-              `}
+              className={`absolute object-contain z-20 ${sizeClass}`}
               style={{
                 left: position.left,
                 top: position.top,
-                // 이전 단계에서 내렸던 높이(180px) 유지
-                transform: `translateX(-50%) translateY(193px) rotate(${position.rotate})`,
+                transform: `translate(-50%, 10%) rotate(${position.rotate})`,
               }}
               alt={flowerStr}
             />
@@ -184,16 +176,16 @@ const StoryBouquetViewer = ({
         })}
       </div>
 
-      {/* 포장지 렌더링 (포장지는 원래 너비인 960px 캔버스를 기준으로 큼직하게 유지) */}
+      {/* 🎯 [핵심 수정] BouquetViewer에서 포장지를 w-[90%]로 키우신 것에 맞춰, 960px의 90%인 864px로 키웠습니다. */}
       <img
         src={wrapperBackImages[finalColorKey] || wrapperBackImages["분홍색"]}
-        className="absolute bottom-4 left-1/2 w-[708px] z-10"
+        className="absolute bottom-[4%] left-1/2 w-[864px] z-10"
         style={{ transform: "translateX(-50%)" }}
         alt="포장지 뒷면"
       />
       <img
         src={wrapperFrontImages[finalColorKey] || wrapperFrontImages["분홍색"]}
-        className="absolute bottom-4 left-1/2 w-[708px] z-30 pointer-events-none"
+        className="absolute bottom-[4%] left-1/2 w-[864px] z-30 pointer-events-none"
         style={{ transform: "translateX(-50%)" }}
         alt="포장지 앞면"
       />

@@ -4,7 +4,7 @@ import {
   uniqueFlowerPositions,
 } from "../constants/positions";
 import {
-  wrapperBackImages, 
+  wrapperBackImages,
   wrapperFrontImages,
   uniqueWrapperNames,
 } from "../constants/wrappers";
@@ -22,13 +22,14 @@ const PAPER_NAME_MAP: Record<string, string> = {
   오리엔탈: "동양풍",
   프렌치빈티지: "서양풍",
   검정: "검정색",
+  블랙: "검정색",
 };
 
 const FLOWER_NAME_MAP: Record<string, string> = {
   장미: "ROSE",
   튤립: "TULIP",
-  거베라: "GERBERA", // 올바른 맞춤법
-  게베라: "GERBERA", // 🎯 백엔드가 보내는 오타 완벽 방어 추가!
+  거베라: "GERBERA",
+  게베라: "GERBERA",
   리시안셔스: "LISIANTHUS",
   폼폼국화: "POMPON",
   라벤더: "LAVENDER",
@@ -59,8 +60,8 @@ export default function BouquetViewer({
     PAPER_NAME_MAP[selectedColor] || selectedColor || "분홍색";
 
   const isUniqueWrapper =
-    ["동양풍", "서양풍", "검정색"].includes(finalColorKey) ||
-    ["오리엔탈", "프렌치빈티지", "검정"].includes(selectedColor);
+    uniqueWrapperNames.includes(finalColorKey) ||
+    ["오리엔탈", "프렌치빈티지", "검정", "블랙"].includes(selectedColor);
 
   const currentFlowerPositions = isUniqueWrapper
     ? uniqueFlowerPositions
@@ -69,8 +70,8 @@ export default function BouquetViewer({
   if (!Array.isArray(selectedFlowers)) return null;
 
   return (
-    <div className="w-full aspect-square max-w-[300px] mx-auto flex items-center justify-center overflow-visible">
-      <div className="relative w-full h-full max-w-[380px] max-h-[380px] flex-shrink-0 ">
+    <div className="w-full aspect-square max-w-[380px] mx-auto flex items-center justify-center overflow-visible">
+      <div className="relative w-full h-full flex-shrink-0">
         {selectedFlowers.map((flowerStr, index) => {
           const match = flowerStr.match(/^([^(]+)\(([^)]+)\)$/);
 
@@ -78,18 +79,13 @@ export default function BouquetViewer({
           let color = "";
 
           if (match) {
-            const koreanName = match[1].trim();
-            const koreanColor = match[2].trim();
-
-            type = FLOWER_NAME_MAP[koreanName] || "";
-            color = FLOWER_COLOR_MAP[koreanColor] || "";
+            type = FLOWER_NAME_MAP[match[1].trim()] || "";
+            color = FLOWER_COLOR_MAP[match[2].trim()] || "";
           }
 
           const flowerImgSrc = FLOWER_MAP[type]?.[color];
 
           if (!flowerImgSrc) return null;
-
-          const isTulip = type === "TULIP";
 
           const position = currentFlowerPositions[index] || {
             left: "50%",
@@ -97,38 +93,30 @@ export default function BouquetViewer({
             rotate: "0deg",
           };
 
+          // 🎯 튤립 조건(isTulip)을 없애고, 포장지 스타일로만 크기를 결정하도록 깔끔하게 합쳤습니다.
+          // 전체적인 꽃 크기를 더 키우고 싶다면 아래 숫자를 조절해 주시면 됩니다! (예: 30% -> 35%)
+          const sizeClass = isUniqueWrapper
+            ? "w-[40%] h-[40%]"
+            : "w-[51%] h-[51%]";
+
           return (
             <img
               key={index}
               src={flowerImgSrc}
-              // 🎯 3. Tailwind의 -translate-x-1/2는 인라인 style의 transform과 충돌하므로 제거했습니다.
-              className={`
-                absolute object-contain z-20
-                ${
-                  isTulip
-                    ? isUniqueWrapper
-                      ? "w-40 h-40"
-                      : "w-50 h-50"
-                    : isUniqueWrapper
-                      ? "w-28 h-28"
-                      : "w-40 h-40"
-                }
-              `}
+              className={`absolute object-contain z-20 ${sizeClass}`}
               style={{
                 left: position.left,
                 top: position.top,
-                // 🎯 4. style에 transform을 명시적으로 선언하여 좌표를 고정합니다.
-                transform: `translateX(-50%) translateY(-1px) rotate(${position.rotate})`,
+                transform: `translate(-50%, 10%) rotate(${position.rotate})`,
               }}
               alt={flowerStr}
             />
           );
         })}
 
-        {/* 🎯 5. 포장지도 380px 컨테이너 기준 하단 중앙에 배치되도록 강제 고정 */}
         <img
           src={wrapperBackImages[finalColorKey] || wrapperBackImages["분홍색"]}
-          className="absolute bottom-4 left-1/2 w-[280px] z-10"
+          className="absolute bottom-[4%] left-1/2 w-[90%] z-10"
           style={{ transform: "translateX(-50%)" }}
           alt="포장지 뒷면"
         />
@@ -136,7 +124,7 @@ export default function BouquetViewer({
           src={
             wrapperFrontImages[finalColorKey] || wrapperFrontImages["분홍색"]
           }
-          className="absolute bottom-4 left-1/2 w-[280px] z-30 pointer-events-none"
+          className="absolute bottom-[4%] left-1/2 w-[90%] z-30 pointer-events-none"
           style={{ transform: "translateX(-50%)" }}
           alt="포장지 앞면"
         />
