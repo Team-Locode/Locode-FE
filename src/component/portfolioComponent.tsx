@@ -1,34 +1,34 @@
 import { useState, useEffect } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 //클래식
-import portc1 from "../assets/portfolio/classic/portc1.png";
-import portc2 from "../assets/portfolio/classic/portc2.png";
-import portc3 from "../assets/portfolio/classic/portc3.png";
-import portc4 from "../assets/portfolio/classic/portc4.png";
-import portc5 from "../assets/portfolio/classic/portc5.png";
-import portc6 from "../assets/portfolio/classic/portc6.png";
-import portc7 from "../assets/portfolio/classic/portc7.png";
-import portc8 from "../assets/portfolio/classic/portc8.png";
-import portc9 from "../assets/portfolio/classic/portc9.png";
-import portc10 from "../assets/portfolio/classic/portc10.png";
-import portc11 from "../assets/portfolio/classic/portc11.png";
-import portc12 from "../assets/portfolio/classic/portc12.png";
-import portc13 from "../assets/portfolio/classic/portc13.png";
-import portc14 from "../assets/portfolio/classic/portc14.png";
-import portc15 from "../assets/portfolio/classic/portc15.png";
-import portc16 from "../assets/portfolio/classic/portc16.png";
+import portc1 from "../assets/portfolio/classic/portc1.svg";
+import portc2 from "../assets/portfolio/classic/portc2.svg";
+import portc3 from "../assets/portfolio/classic/portc3.svg";
+import portc4 from "../assets/portfolio/classic/portc4.svg";
+import portc5 from "../assets/portfolio/classic/portc5.svg";
+import portc6 from "../assets/portfolio/classic/portc6.svg";
+import portc7 from "../assets/portfolio/classic/portc7.svg";
+import portc8 from "../assets/portfolio/classic/portc8.svg";
+import portc9 from "../assets/portfolio/classic/portc9.svg";
+import portc10 from "../assets/portfolio/classic/portc10.svg";
+import portc11 from "../assets/portfolio/classic/portc11.svg";
+import portc12 from "../assets/portfolio/classic/portc12.svg";
+import portc13 from "../assets/portfolio/classic/portc13.svg";
+import portc14 from "../assets/portfolio/classic/portc14.svg";
+import portc15 from "../assets/portfolio/classic/portc15.svg";
+import portc16 from "../assets/portfolio/classic/portc16.svg";
 
 //유니크
-import portu1 from "../assets/portfolio/unique/portu1.png";
-import portu2 from "../assets/portfolio/unique/portu2.png";
-import portu3 from "../assets/portfolio/unique/portu3.png";
-import portu4 from "../assets/portfolio/unique/portu4.png";
-import portu5 from "../assets/portfolio/unique/portu5.png";
-import portu6 from "../assets/portfolio/unique/portu6.png";
-import portu7 from "../assets/portfolio/unique/portu7.png";
-import portu8 from "../assets/portfolio/unique/portu8.png";
-import portu9 from "../assets/portfolio/unique/portu9.png";
-import portu10 from "../assets/portfolio/unique/portu10.png";
+import portu1 from "../assets/portfolio/unique/portu1.svg";
+import portu2 from "../assets/portfolio/unique/portu2.svg";
+import portu3 from "../assets/portfolio/unique/portu3.svg";
+import portu4 from "../assets/portfolio/unique/portu4.svg";
+import portu5 from "../assets/portfolio/unique/portu5.svg";
+import portu6 from "../assets/portfolio/unique/portu6.svg";
+import portu7 from "../assets/portfolio/unique/portu7.svg";
+import portu8 from "../assets/portfolio/unique/portu8.svg";
+import portu9 from "../assets/portfolio/unique/portu9.svg";
+import portu10 from "../assets/portfolio/unique/portu10.svg";
 
 // 1.데이터에 style(클래식/유니크) 속성 추가
 const portfolioData = [
