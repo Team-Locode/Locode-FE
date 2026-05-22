@@ -112,7 +112,7 @@ const portfolioData = [
     tags: ["블루", "퍼플"],
     style: "클래식",
   },
-  ,
+
   { src: portu1, tags: ["블루", "화이트"], style: "유니크" },
   { src: portu5, tags: ["블루", "화이트"], style: "유니크" },
   {

@@ -2,7 +2,7 @@ const SummaryBox = ({ content }: { content?: string }) => {
   return (
     <div className="w-full max-w-2xl mx-auto my-4">
       {/* 컴포넌트 본체 */}
-      <div className="bg-summary rounded-xl p-4 text-sm text-summary whitespace-pre-line leading-relaxed ">
+      <div className="bg-summary rounded-xl p-4 text-sm text-summary bg-white/70  whitespace-pre-line leading-relaxed ">
         {/* 요약 아이콘이나 타이틀이 필요하다면 여기에 추가 가능 */}
         <div className="flex items-start gap-2">
           <span className="mt-0.5">📝</span>
