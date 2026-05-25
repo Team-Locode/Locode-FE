@@ -24,7 +24,7 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
   const displayData = bouquetData || {
     bouquetId: 3,
     summary: {
-      purpose: "엄마을(를) 위한 꽃다발",
+      purpose: "엄마에게 전하는 꽃다발",
       style: "클래식",
       flowers: ["장미(레드)", "장미(블랙)", "장미(옐로우)"],
       paper: "분홍",
@@ -43,7 +43,7 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
     : `${displayData.summary.paper}색`;
 
   const recipientName = displayData.summary.purpose
-    ?.replace(/[을를]?\s*위한\s*꽃다발/g, "")
+    ?.replace(/에게\s*전하는\s*꽃다발/g, "")
     .trim();
 
   // 요약에 들어갈 실제 주문서 텍스트

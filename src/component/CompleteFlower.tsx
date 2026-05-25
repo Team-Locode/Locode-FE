@@ -65,7 +65,7 @@ export default function CompleteFlower({
 
   const handleComplete = async () => {
   const body = {
-    purpose: `${person}을(를) 위한 꽃다발`,
+    purpose: `${person}에게 전하는 꽃다발`,
     flowers: selectedFlowers.map((flower) => ({
       type: flower.type,
       color: flower.color,
