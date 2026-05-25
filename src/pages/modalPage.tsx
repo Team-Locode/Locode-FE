@@ -192,14 +192,25 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
 
           <div className="w-full border-t-2 border-dashed border-pink-200 my-2 mb-6"></div>
 
-          <div className="bg-white/70 border-pink-200 p-4 border-2 rounded-xl mb-4">
-            {/* 상단 이벤트 타이틀 */}
-            <div className="flex items-center gap-1.5 mb-3">
-              <span className="text-lg">🎁</span>
-              <h4 className="font-bold text-pink-600 text-sm tracking-wide">
-                인스타그램 팔로우 이벤트
-              </h4>
+          <div className="bg-white/70 border-pink-200 p-4 border-2 rounded-xl mb-4 relative overflow-hidden">
+            {/* 상단 이벤트 타이틀 & 3만원 이상 강조 배지 */}
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-1.5">
+                <span className="text-lg">🎁</span>
+                <h4 className="font-bold text-pink-600 text-sm tracking-wide">
+                  인스타그램 팔로우 이벤트
+                </h4>
+              </div>
+              {/* 강조 배지 (우측 상단) */}
+              <span className="bg-pink-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded-md shadow-sm">
+                3만원 이상 구매 시
+              </span>
             </div>
+
+            {/* 추가 강조 문구 (선택 사항 - 필요 없다면 삭제하셔도 됩니다) */}
+            <p className="text-xs text-gray-600 my-3 font-medium bg-pink-50 p-2 rounded-lg border border-pink-100">
+              💡 <strong className="text-pink-500">3만원 이상</strong> 구매하시는 고객님들을 위한 특별한 혜택입니다!
+            </p>
 
             {/* Step 리스트 영역 */}
             <ul className="flex flex-col gap-3">
