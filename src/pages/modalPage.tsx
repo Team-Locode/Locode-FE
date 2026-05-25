@@ -140,7 +140,9 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           files: [file],
+          title: "FLOWERTOWB",
           text: "나만의 커스터마이징 플라워, 플라워토브 🌸",
+          url: "https://lotowb.com",
         });
       } else {
         // PC 접속이거나 지원하지 않는 브라우저일 경우 예외 처리
