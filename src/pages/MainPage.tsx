@@ -53,7 +53,7 @@ export default function MainPage() {
         </div>
 
         {/* 고정 텍스트 */}
-        <span>을 위한 꽃다발</span>
+        <span>을(를) 위한 꽃다발</span>
       </div>
       <p className="text-pink-3 text-sm mt-2">
         누구를 위한 꽃다발인지 입력해주세요

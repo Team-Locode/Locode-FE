@@ -65,7 +65,7 @@ export default function CompleteFlower({
 
   const handleComplete = async () => {
   const body = {
-    purpose: `${person}를 위한 꽃다발`,
+    purpose: `${person}을(를) 위한 꽃다발`,
     flowers: selectedFlowers.map((flower) => ({
       type: flower.type,
       color: flower.color,
@@ -172,7 +172,9 @@ export default function CompleteFlower({
                       key={`${category}-${index}`}
                       onClick={() => handleAddFlower(flower)}
                       disabled={selectedFlowers.length >= 5}
-                      className="w-14 h-14 rounded-2xl border-2 border-pink-2 bg-white flex items-center justify-center cursor-pointer hover:scale-105 transition-all overflow-hidden disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="w-14 h-14 rounded-2xl border-2 border-pink-2 bg-white flex items-center
+                      justify-center cursor-pointer hover:scale-105 hover:scale-105 active:scale-95 active:bg-pink-100
+                      transition-all overflow-hidden disabled:opacity-40 disabled:cursor-not-allowed"
                     >
                       <img
                         src={flower.image}

@@ -24,7 +24,7 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
   const displayData = bouquetData || {
     bouquetId: 3,
     summary: {
-      purpose: "엄마를 위한 꽃다발",
+      purpose: "엄마을(를) 위한 꽃다발",
       style: "클래식",
       flowers: ["장미(레드)", "장미(블랙)", "장미(옐로우)"],
       paper: "분홍",
