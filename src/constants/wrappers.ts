@@ -62,7 +62,7 @@ export const paperDesignMap: Record<string, string> = {
     하얀색: "CLASSIC_WHITE",
     보라색: "CLASSIC_PURPLE",
     연두색: "CLASSIC_GREEN",
-    베이지색: "CLASSIC_BROWN",
+    베이지색: "CLASSIC_BEIGE",
     하늘색: "CLASSIC_SKY_BLUE",
     동양풍: "UNIQUE_ORIENTAL",
     서양풍: "UNIQUE_FRENCH_VINTAGE",
