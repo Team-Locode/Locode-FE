@@ -234,11 +234,11 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
             </div>
 
             {/* 추가 강조 문구 (선택 사항 - 필요 없다면 삭제하셔도 됩니다) */}
-            <p className="flex justify-center text-xs text-gray-600 my-3 font-medium bg-pink-50 p-2 rounded-lg border border-pink-100">
-              <div>
+            <div className="flex justify-center text-xs text-gray-600 my-3 font-medium bg-pink-50 p-2 rounded-lg border border-pink-100">
+              <p>
                 💡 <strong className="text-pink-500">3만원 이상</strong> 구매하시는 고객님들을 위한 특별한 혜택입니다!
-              </div>
-            </p>
+              </p>
+            </div>
 
             {/* Step 리스트 영역 */}
             <ul className="flex flex-col gap-3">
