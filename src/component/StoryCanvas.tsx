@@ -41,7 +41,6 @@ const PAPER_NAME_MAP: Record<string, string> = {
 // 🎯 서버 한글 데이터를 FLOWER_MAP 영문 키값으로 치환하기 위한 매핑 테이블
 const FLOWER_NAME_MAP: Record<string, string> = {
   장미: "ROSE",
-  튤립: "TULIP",
   게베라: "GERBERA",
   리시안셔스: "LISIANTHUS",
   폼폼국화: "POMPON",

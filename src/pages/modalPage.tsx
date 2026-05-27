@@ -11,6 +11,7 @@ import BouquetViewer from "../component/BoquetViewer";
 import { useRef } from "react";
 import { toPng } from "html-to-image";
 import { StoryCanvas } from "../component/StoryCanvas";
+import { Link } from "react-router-dom";
 
 //TODO:네이버 예약,하단 네이버 버튼
 // 사장님한테 링크 받아서 해야함(아니면 예약에서 튕김)
@@ -186,11 +187,36 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
               {displayData.summary.purpose || "나만의 꽃다발"}
             </h3>
             <div className="bg-orange-50 text-orange-600 text-sm p-3 border-1 border-orange-100 rounded-xl mb-5">
-              ⚠️ 실제와는 다를 수 있음. 자세한 요구는 상담 필요!!
+              ⚠️ 실제와는 다를 수 있음. 자세한 요구는 상담 필요!!<br/>
+              ⚠️ 단색 꽃(레드, 블루, 블랙 등): 제작 전 반드시 상담 필요!!
             </div>
           </div>
 
           <div className="w-full border-t-2 border-dashed border-pink-200 my-2 mb-6"></div>
+
+          <div className="bg-white/70 border-pink-200 p-4 border-2 rounded-xl mb-4 relative overflow-hidden">
+          {/* 상단 이벤트 타이틀 & 전원 증정 배지 */}
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-1.5">
+              <span className="text-lg">💐</span>
+              <h4 className="font-bold text-pink-600 text-sm tracking-wide">
+                웹 오픈 기념 구매 인증 이벤트
+              </h4>
+            </div>
+            {/* 가격 조건 없음을 강조하는 배지 */}
+            <span className="bg-pink-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded-md shadow-sm">
+              금액 무관
+            </span>
+          </div>
+
+          {/* 핵심 혜택 요약 안내 문구 */}
+          <div className="text-xs text-gray-600 my-3 font-medium bg-pink-50 p-2.5 rounded-lg border border-pink-100 flex flex-col gap-1">
+            <p>💡 이 서비스를 통해 주문하시는 모든 분께 <strong className="text-pink-500">물주머니를 기본 제공</strong>해 드립니다!</p>
+            <p>📸 구글 폼을 통해 구매 내역을 인증하시면 추첨 선물로 핸드크림까지 받아가실 수 있어요.</p>
+          </div>
+          <Link to={"https://docs.google.com/forms/d/e/1FAIpQLSeMlvK_lRL-uFjvQE5QfbbbQqUiSOP3nWYpvwQfniMJSc8y5A/viewform?usp=header"}
+            className="text-pink-500 text-sm font-bold">🧷구글 폼 바로 가기</Link>
+        </div>
 
           <div className="bg-white/70 border-pink-200 p-4 border-2 rounded-xl mb-4 relative overflow-hidden">
             {/* 상단 이벤트 타이틀 & 3만원 이상 강조 배지 */}
@@ -208,8 +234,10 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
             </div>
 
             {/* 추가 강조 문구 (선택 사항 - 필요 없다면 삭제하셔도 됩니다) */}
-            <p className="text-xs text-gray-600 my-3 font-medium bg-pink-50 p-2 rounded-lg border border-pink-100">
-              💡 <strong className="text-pink-500">3만원 이상</strong> 구매하시는 고객님들을 위한 특별한 혜택입니다!
+            <p className="flex justify-center text-xs text-gray-600 my-3 font-medium bg-pink-50 p-2 rounded-lg border border-pink-100">
+              <div>
+                💡 <strong className="text-pink-500">3만원 이상</strong> 구매하시는 고객님들을 위한 특별한 혜택입니다!
+              </div>
             </p>
 
             {/* Step 리스트 영역 */}
@@ -241,13 +269,12 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
                 </span>
                 <span className="text-sm text-gray-700 leading-snug">
                   인증 완료!
-                  <br />
-                  <span className="text-pink-500 font-medium text-xs">
-                    (확인 후 꽃다발에 곁들임꽃을 풍성하게 더해드려요🌸)
-                  </span>
                 </span>
               </li>
             </ul>
+            <p className="flex justify-center text-center text-base text-gray-600 font-bold py-3 pb-1 rounded-lg">      
+              🌸 확인 후 꽃다발에 곁들임꽃을 🌸<br/>풍성하게 더해드려요
+            </p>
           </div>
 
           <div className="space-y-4">

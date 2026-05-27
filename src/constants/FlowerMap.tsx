@@ -3,8 +3,6 @@ import gerbaraBlue from "../assets/flowers/gerbaraBlue.svg";
 import gerbaraPink from "../assets/flowers/gerbaraPink.svg";
 import gerbaraYellow from "../assets/flowers/gerbaraYellow.svg";
 import lavenderPurple from "../assets/flowers/lavenderPurple.svg";
-import tulipRed from "../assets/flowers/tulipRed.svg";
-import tulipYellow from "../assets/flowers/tulipYellow.svg";
 import lisianthusPink from "../assets/flowers/LisianthusPink.svg";
 import lisianthusPurple from "../assets/flowers/LisianthusPurple.svg";
 import pomponBlue from "../assets/flowers/PomponBlue.svg";
@@ -22,10 +20,6 @@ export const FLOWER_MAP: Record<string, Record<string, string>> = {
     WHITE: roseWhite,
     BLUE: roseBlue,
     BLACK: roseBlack,
-  },
-  TULIP: {
-    RED: tulipRed,
-    YELLOW: tulipYellow,
   },
   LISIANTHUS: {
     PINK: lisianthusPink,
