@@ -194,55 +194,19 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
 
           <div className="w-full border-t-2 border-dashed border-pink-200 my-2 mb-6"></div>
 
-          <div className="bg-white/70 border-pink-200 p-4 border-2 rounded-xl mb-4 relative overflow-hidden">
-          {/* 상단 이벤트 타이틀 & 전원 증정 배지 */}
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-1.5">
-              <span className="text-lg">💐</span>
+          <div className="flex flex-col gap-4">
+
+          {/* 1. 인스타그램 인증 이벤트 */}
+          <div className="bg-white/70 border-pink-200 p-4 border-2 rounded-xl relative overflow-hidden">
+            <div className="flex items-center gap-1.5 mb-3">
+              <span className="text-lg">🎁</span>
               <h4 className="font-bold text-pink-600 text-sm tracking-wide">
-                웹 오픈 기념 구매 인증 이벤트
+                인스타그램 팔로우 이벤트
               </h4>
             </div>
-            {/* 가격 조건 없음을 강조하는 배지 */}
-            <span className="bg-pink-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded-md shadow-sm">
-              금액 무관
-            </span>
-          </div>
 
-          {/* 핵심 혜택 요약 안내 문구 */}
-          <div className="text-xs text-gray-600 my-3 font-medium bg-pink-50 p-2.5 rounded-lg border border-pink-100 flex flex-col gap-1">
-            <p>💡 이 서비스를 통해 주문하시는 모든 분께 <strong className="text-pink-500">물주머니를 기본 제공</strong>해 드립니다!</p>
-            <p>📸 구글 폼을 통해 구매 내역을 인증하시면 추첨 선물로 핸드크림까지 받아가실 수 있어요.</p>
-          </div>
-          <Link to={"https://docs.google.com/forms/d/e/1FAIpQLSeMlvK_lRL-uFjvQE5QfbbbQqUiSOP3nWYpvwQfniMJSc8y5A/viewform?usp=header"}
-            className="text-pink-500 text-sm font-bold">🧷구글 폼 바로 가기</Link>
-        </div>
-
-          <div className="bg-white/70 border-pink-200 p-4 border-2 rounded-xl mb-4 relative overflow-hidden">
-            {/* 상단 이벤트 타이틀 & 3만원 이상 강조 배지 */}
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-1.5">
-                <span className="text-lg">🎁</span>
-                <h4 className="font-bold text-pink-600 text-sm tracking-wide">
-                  인스타그램 팔로우 이벤트
-                </h4>
-              </div>
-              {/* 강조 배지 (우측 상단) */}
-              <span className="bg-pink-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded-md shadow-sm">
-                3만원 이상 구매 시
-              </span>
-            </div>
-
-            {/* 추가 강조 문구 (선택 사항 - 필요 없다면 삭제하셔도 됩니다) */}
-            <div className="flex justify-center text-xs text-gray-600 my-3 font-medium bg-pink-50 p-2 rounded-lg border border-pink-100">
-              <p>
-                💡 <strong className="text-pink-500">3만원 이상</strong> 구매하시는 고객님들을 위한 특별한 혜택입니다!
-              </p>
-            </div>
-
-            {/* Step 리스트 영역 */}
-            <ul className="flex flex-col gap-3">
-              {/* Step 1 */}
+            {/* 참여 방법 Step */}
+            <ul className="flex flex-col gap-2.5 mb-4">
               <li className="flex items-start gap-2.5">
                 <span className="flex-shrink-0 bg-pink-400 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mt-0.5">
                   Step 1
@@ -251,31 +215,68 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
                   플라워토브 인스타그램(@towbflower131) 팔로우 꾹!
                 </span>
               </li>
-
-              {/* Step 2 */}
               <li className="flex items-start gap-2.5">
                 <span className="flex-shrink-0 bg-pink-400 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mt-0.5">
                   Step 2
                 </span>
                 <span className="text-sm text-gray-700 leading-snug">
-                  아래 주문 내용을 복사하여 작성 후 보내주세요!
-                </span>
-              </li>
-
-              {/* Step 3 */}
-              <li className="flex items-start gap-2.5">
-                <span className="flex-shrink-0 bg-pink-400 text-white text-[10px] font-bold px-2 py-0.5 rounded-full mt-0.5">
-                  Step 3
-                </span>
-                <span className="text-sm text-gray-700 leading-snug">
-                  인증 완료!
+                  아래 주문 요약을 복사하여 작성 후 전송하면 인증 완료!
                 </span>
               </li>
             </ul>
-            <p className="flex justify-center text-center text-base text-gray-600 font-bold py-3 pb-1 rounded-lg">      
-              🌸 확인 후 꽃다발에 곁들임꽃을 🌸<br/>풍성하게 더해드려요
-            </p>
+
+            {/* 구매 금액별 혜택 안내 박스 */}
+            <div className="bg-pink-50 mb-0.5 p-3 rounded-lg border border-pink-100 flex flex-col gap-2 text-sm text-gray-700">
+              <p className="font-bold text-pink-600 mb-1 text-xs">💡 구매 금액별 인증 혜택</p>
+              
+              {/* 3만원 미만 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-md border border-pink-50 shadow-sm">
+                <span className="font-semibold text-gray-600 text-xs">3만원 미만 구매 시</span>
+                <span className="font-bold text-blue-500 text-xs">💧 물주머니 기본 제공</span>
+              </div>
+              
+              {/* 3만원 이상 */}
+              <div className="flex items-center justify-between bg-white p-2.5 rounded-md border border-pink-50 shadow-sm">
+                <span className="font-semibold text-gray-600 text-xs">3만원 이상 구매 시</span>
+                <span className="font-bold text-pink-500 text-xs">🌸 곁들임꽃 풍성하게 추가</span>
+              </div>
+            </div>
           </div>
+
+          {/* 2. 구글폼 구매 인증 이벤트 */}
+          <div className="bg-white/70 border-pink-200 p-4 mb-4 border-2 rounded-xl relative overflow-hidden">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-1.5">
+                <span className="text-lg">💐</span>
+                <h4 className="font-bold text-pink-600 text-sm tracking-wide">
+                  웹 오픈 기념 구매 인증 이벤트
+                </h4>
+              </div>
+              {/* 가격 조건 없음을 강조하는 배지 */}
+              <span className="bg-pink-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded-md shadow-sm">
+                금액 무관
+              </span>
+            </div>
+
+            {/* 핵심 혜택 요약 안내 문구 */}
+            <div className="text-xs text-gray-700 my-3 font-medium bg-pink-50 p-3 rounded-lg border border-pink-100 flex flex-col gap-1.5">
+              <p>
+                💡 구글 폼을 통해 구매 내역을 인증하시면, 
+                추첨을 통해 <strong className="text-pink-500">총 4분께 꽃향기 핸드크림</strong>을 선물로 드립니다!
+              </p>
+            </div>
+
+            <Link 
+              to={"https://docs.google.com/forms/d/e/1FAIpQLSeMlvK_lRL-uFjvQE5QfbbbQqUiSOP3nWYpvwQfniMJSc8y5A/viewform?usp=header"}
+              className="inline-flex items-center gap-1 text-pink-500 text-sm font-bold hover:text-pink-600 transition-colors mt-1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🧷 구글 폼 바로 가기
+            </Link>
+          </div>
+
+        </div>
 
           <div className="space-y-4">
             {/* <p className="font-bold border-t border-pink-2"></p> */}
