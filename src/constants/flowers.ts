@@ -3,8 +3,6 @@ import gerbaraBlue from "../assets/flowers/gerbaraBlue.svg";
 import gerbaraPink from "../assets/flowers/gerbaraPink.svg";
 import gerbaraYellow from "../assets/flowers/gerbaraYellow.svg";
 import lavenderPurple from "../assets/flowers/lavenderPurple.svg";
-import tulipRed from "../assets/flowers/tulipRed.svg";
-import tulipYellow from "../assets/flowers/tulipYellow.svg";
 import lisianthusPink from "../assets/flowers/LisianthusPink.svg";
 import lisianthusPurple from "../assets/flowers/LisianthusPurple.svg";
 import pomponBlue from "../assets/flowers/PomponBlue.svg";
@@ -23,10 +21,6 @@ export const flowers: Record<string, FlowerItem[]> = {
     { image: roseWhite, type: "ROSE", color: "WHITE" },
     { image: roseBlue, type: "ROSE", color: "BLUE" },
     { image: roseBlack, type: "ROSE", color: "BLACK" },
-  ],
-  튤립: [
-    { image: tulipRed, type: "TULIP", color: "RED" },
-    { image: tulipYellow, type: "TULIP", color: "YELLOW" },
   ],
   거베라: [
     { image: gerbaraPink, type: "GERBERA", color: "PINK" },

@@ -27,7 +27,6 @@ const PAPER_NAME_MAP: Record<string, string> = {
 
 const FLOWER_NAME_MAP: Record<string, string> = {
   장미: "ROSE",
-  튤립: "TULIP",
   거베라: "GERBERA",
   게베라: "GERBERA",
   리시안셔스: "LISIANTHUS",
@@ -93,7 +92,6 @@ export default function BouquetViewer({
             rotate: "0deg",
           };
 
-          // 🎯 튤립 조건(isTulip)을 없애고, 포장지 스타일로만 크기를 결정하도록 깔끔하게 합쳤습니다.
           // 전체적인 꽃 크기를 더 키우고 싶다면 아래 숫자를 조절해 주시면 됩니다! (예: 30% -> 35%)
           const sizeClass = isUniqueWrapper
             ? "w-[40%] h-[40%]"
