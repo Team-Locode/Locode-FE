@@ -262,7 +262,8 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
             <div className="text-xs text-gray-700 my-3 font-medium bg-pink-50 p-3 rounded-lg border border-pink-100 flex flex-col gap-1.5">
               <p>
                 💡 구글 폼을 통해 구매 내역을 인증하시면, 
-                추첨을 통해 <strong className="text-pink-500">총 4분께 록시땅 핸드크림</strong>을 선물로 드립니다!
+                추첨을 통해 <strong className="text-pink-500">총 4분께 록시땅 핸드크림</strong>을 선물로 드립니다!<br/>
+                <span className="text-[11px] text-red-500">(※ 상황에 따라 경품은 변경될 수 있습니다.)</span>
               </p>
             </div>
 
