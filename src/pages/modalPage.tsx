@@ -273,7 +273,7 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
                 <p>
                   💡 구글 폼을 통해 구매 내역을 인증하시면, 추첨을 통해{" "}
                   <strong className="text-pink-500">
-                    총 6분께 록시땅 핸드크림
+                    총 4분께 록시땅 핸드크림
                   </strong>
                   을 선물로 드립니다!
                   <br />
