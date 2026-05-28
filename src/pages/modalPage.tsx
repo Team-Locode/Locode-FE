@@ -205,11 +205,50 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
 
           {/* 🎯 여기부터 아코디언 토글 이벤트 3개 영역 */}
           <div className="flex flex-col gap-4">
+
+            {/* 3. 인스타그램 스토리 공유 이벤트 */}
+            <div className="bg-white/70 border-pink-200 border-2 rounded-xl relative overflow-hidden transition-all">
+              <button
+                onClick={() => handleToggle(0)}
+                className="w-full p-4 flex items-center justify-between hover:bg-pink-50/50 transition-colors"
+              >
+                <div className="flex items-center gap-1.5">
+                  <span className="text-lg">☕</span>
+                  <h4 className="font-bold text-pink-600 text-sm tracking-wide">
+                    인스타그램 스토리 공유 이벤트
+                  </h4>
+                </div>
+                <span className="text-pink-400 text-xs">{openIndex === 0 ? "▲" : "▼"}</span>
+              </button>
+
+              {openIndex === 0 && (
+                <div className="px-4 pb-4 border-t border-pink-100 pt-3">
+                  <div className="bg-pink-50 p-3 rounded-lg border border-pink-100 flex flex-col gap-2 text-sm text-gray-700">
+                    <p className="font-medium leading-relaxed text-xs">
+                      <strong className="text-pink-500">[꽃다발 DIY]</strong> 서비스로 나만의 꽃다발을 만들고 저장하기를 눌러 저장하거나 스토리 공유하기 기능으로 스토리에 공유하고 인스타 계정(@locode_official_)을 태그 해주시면 끝!
+                    </p>
+                    <div className="flex items-center justify-between bg-white p-2.5 rounded-md border border-pink-50 shadow-sm mt-1">
+                      <span className="font-semibold text-gray-600 text-xs">당첨 혜택</span>
+                      <span className="font-bold text-amber-600 text-xs">☕ 추첨을 통해 10분께 커피 쿠폰</span>
+                    </div>
+                  </div>
+                  {/* 기존 다운로드/공유 액션 연동 */}
+                  <div className="flex gap-2 mt-3">
+                    <button onClick={handleDownloadStoryImage} className="flex-1 bg-gray-100 text-gray-700 p-2 rounded-xl text-xs font-bold hover:bg-gray-200">
+                      📸 스토리 이미지 저장
+                    </button>
+                    <button onClick={handleShareInstagram} className="flex-1 bg-pink-100 text-pink-600 p-2 rounded-xl text-xs font-bold hover:bg-pink-200">
+                      🚀 스토리 바로 공유
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
             
             {/* 1. 인스타그램 인증 이벤트 */}
             <div className="bg-white/70 border-pink-200 border-2 rounded-xl relative overflow-hidden transition-all">
               <button
-                onClick={() => handleToggle(0)}
+                onClick={() => handleToggle(1)}
                 className="w-full p-4 flex items-center justify-between hover:bg-pink-50/50 transition-colors"
               >
                 <div className="flex items-center gap-1.5">
@@ -218,10 +257,10 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
                     인스타그램 팔로우 이벤트
                   </h4>
                 </div>
-                <span className="text-pink-400 text-xs">{openIndex === 0 ? "▲" : "▼"}</span>
+                <span className="text-pink-400 text-xs">{openIndex === 1 ? "▲" : "▼"}</span>
               </button>
 
-              {openIndex === 0 && (
+              {openIndex === 1 && (
                 <div className="px-4 pb-4 border-t border-pink-100 pt-3">
                   <ul className="flex flex-col gap-2.5 mb-4">
                     <li className="flex items-start gap-2.5">
@@ -263,9 +302,9 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
             </div>
 
             {/* 2. 구글폼 구매 인증 이벤트 */}
-            <div className="bg-white/70 border-pink-200 border-2 rounded-xl relative overflow-hidden transition-all">
+            <div className="bg-white/70 border-pink-200 mb-4 border-2 rounded-xl relative overflow-hidden transition-all">
               <button
-                onClick={() => handleToggle(1)}
+                onClick={() => handleToggle(2)}
                 className="w-full p-4 flex items-center justify-between hover:bg-pink-50/50 transition-colors"
               >
                 <div className="flex items-center gap-1.5">
@@ -278,11 +317,11 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
                   <span className="bg-pink-500 text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded-md shadow-sm">
                     금액 무관
                   </span>
-                  <span className="text-pink-400 text-xs">{openIndex === 1 ? "▲" : "▼"}</span>
+                  <span className="text-pink-400 text-xs">{openIndex === 2 ? "▲" : "▼"}</span>
                 </div>
               </button>
 
-              {openIndex === 1 && (
+              {openIndex === 2 && (
                 <div className="px-4 pb-4 border-t border-pink-100 pt-3">
                   <div className="text-xs text-gray-700 font-medium bg-pink-50 p-3 rounded-lg border border-pink-100 flex flex-col gap-1.5">
                     <p>
@@ -302,45 +341,6 @@ export default function ModalPage({ onClose, bouquetData }: ModalPageProps) {
                   >
                     🧷 구글 폼 바로 가기
                   </Link>
-                </div>
-              )}
-            </div>
-
-            {/* 3. 인스타그램 스토리 공유 이벤트 */}
-            <div className="bg-white/70 border-pink-200 border-2 rounded-xl mb-4 relative overflow-hidden transition-all">
-              <button
-                onClick={() => handleToggle(2)}
-                className="w-full p-4 flex items-center justify-between hover:bg-pink-50/50 transition-colors"
-              >
-                <div className="flex items-center gap-1.5">
-                  <span className="text-lg">☕</span>
-                  <h4 className="font-bold text-pink-600 text-sm tracking-wide">
-                    인스타그램 스토리 공유 이벤트
-                  </h4>
-                </div>
-                <span className="text-pink-400 text-xs">{openIndex === 2 ? "▲" : "▼"}</span>
-              </button>
-
-              {openIndex === 2 && (
-                <div className="px-4 pb-4 border-t border-pink-100 pt-3">
-                  <div className="bg-pink-50 p-3 rounded-lg border border-pink-100 flex flex-col gap-2 text-sm text-gray-700">
-                    <p className="font-medium leading-relaxed text-xs">
-                      <strong className="text-pink-500">[꽃다발 DIY]</strong> 서비스로 나만의 꽃다발을 만들고 저장하기를 눌러 저장하거나 스토리 공유하기 기능으로 스토리에 공유하고 인스타 계정(@locode_official_)을 태그 해주시면 끝!
-                    </p>
-                    <div className="flex items-center justify-between bg-white p-2.5 rounded-md border border-pink-50 shadow-sm mt-1">
-                      <span className="font-semibold text-gray-600 text-xs">당첨 혜택</span>
-                      <span className="font-bold text-amber-600 text-xs">☕ 추첨을 통해 10분께 커피 쿠폰</span>
-                    </div>
-                  </div>
-                  {/* 기존 다운로드/공유 액션 연동 */}
-                  <div className="flex gap-2 mt-3">
-                    <button onClick={handleDownloadStoryImage} className="flex-1 bg-gray-100 text-gray-700 p-2 rounded-xl text-xs font-bold hover:bg-gray-200">
-                      📸 스토리 이미지 저장
-                    </button>
-                    <button onClick={handleShareInstagram} className="flex-1 bg-pink-100 text-pink-600 p-2 rounded-xl text-xs font-bold hover:bg-pink-200">
-                      🚀 스토리 바로 공유
-                    </button>
-                  </div>
                 </div>
               )}
             </div>
