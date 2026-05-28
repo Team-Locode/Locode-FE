@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import CompleteFlower from "../component/CompleteFlower";
 import ColorWrapper from "../component/ColorWrapper";
@@ -27,6 +27,18 @@ export default function MainPage() {
   // 🎯 1. 서버에서 받아온 꽃다발 데이터를 저장할 State 추가
   const [bouquetData, setBouquetData] = useState<BouquetResponse | null>(null);
 
+  // 🔥 1. 인앱 브라우저인지 확인하는 상태값 추가
+  const [isInAppBrowser, setIsInAppBrowser] = useState(false);
+
+  // 🔥 2. 페이지에 처음 들어올 때 접속 환경 검사
+  useEffect(() => {
+    const ua = navigator.userAgent.toLowerCase();
+    // 카카오톡, 인스타그램, 또는 (아이폰인데 사파리가 아닌 경우) 감지
+    if (ua.includes("instagram") || ua.includes("kakaotalk")) {
+      setIsInAppBrowser(true);
+    }
+  }, []);
+
   // 🎯 2. 완료되었을 때 실행할 핸들러 함수
   const handleFlowerComplete = (data: BouquetResponse) => {
     setBouquetData(data); // 서버 응답 데이터 저장
@@ -35,6 +47,19 @@ export default function MainPage() {
 
   return (
     <div className="flex flex-col items-center w-full p-8">
+      {/* 🔥 3. 최상단 배너: 인앱 브라우저일 때만 렌더링됩니다 */}
+      {isInAppBrowser && (
+        <div className="w-full max-w-sm mb-6 bg-red-50 border border-red-200 rounded-2xl p-4 text-center">
+          <p className="text-sm font-bold text-red-400 mb-1">
+            ⚠️ 카톡/인스타 브라우저 접속 감지
+          </p>
+          <p className="text-xs text-red-400 font-medium leading-relaxed">
+            현재 화면에서는 이미지 저장이 안 될 수 있어요!
+            <br />
+            <strong>'다른 브라우저(Safari/Chrome)로 열기'</strong>를 해주세요.
+          </p>
+        </div>
+      )}
       <Outlet />
       <h2 className="text-pink-4 text-2xl font-bold mb-4 text-center">
         🤍 소중한 사람을 위한 <br />
